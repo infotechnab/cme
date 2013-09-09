@@ -1,0 +1,277 @@
+@media print{
+  .printview {
+         background-color: #ffffff;
+    }
+ .recive_sign{
+    width: 98%;
+    padding: 2%;
+    text-align: center;
+}
+.sign{
+    width: 20%;
+    float: left;
+    margin-right: 3%;
+}
+   
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: coral;
+}
+ .printview {
+         background-color: #ffffff;
+    }
+.full{
+    margin: 0 auto 0 auto;
+    padding: 0;
+    background-color: #D0D0D0;
+    width: 70%
+}
+.title{
+    margin: 0 auto 0 auto;
+    text-align: center;
+    width: 50%;
+    height: auto;
+}
+.form{
+    margin: 0 auto 0 auto;
+    width: 98%;
+   
+ 
+}
+#uname,#pass{
+    padding: 3%;
+}
+#login{
+    font-size: 150%;
+}
+.cme{
+    text-align: center;
+}
+.cus_detail{
+    margin: 0 auto 0 auto;
+    width: 90%;
+    border: solid 1px #002166;
+    padding: 2%;
+  
+    
+    
+}
+.rolelogout{
+    float: right;
+    margin-top: -5%;
+    margin-right: 2%;
+}
+h2{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.intext{
+    padding:2%;
+    width: 96%;
+    
+}
+.intexth{
+    padding: 4%;
+    width: 91%;
+}
+
+.intextd{
+    padding: 2%;
+    width: 29.5%;
+}
+.intexna{
+    padding: 2%;
+    width: 28%;
+}
+
+.cidentity{
+    width: 98%;
+    border: solid 1px #002166;
+    margin: 1%;
+    padding: 1%;
+    text-align: center;
+}
+#clpid{
+    text-align: center;
+}
+.cus_search{
+    width: 50%;
+    border: solid 1px #000;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    padding: 2%;
+}
+.cus_search_menu{
+    width: 50%;
+    border: solid 1px #000;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    padding: 2%;
+}
+
+.cus_search_list{
+   
+    
+    text-align: center;
+    margin: 0 auto 0 auto;
+    padding: 2%;
+}
+.listimg{
+    width: 60%;
+    height: 30px;
+}
+
+#sucessmsg{
+    color: #003399;
+}
+.userdetail{
+    float: left;
+    height: auto;
+    width: 55%;
+    
+}
+.tbllist
+{
+border-collapse:collapse;
+}
+
+.tbllist,tr , .tdlist
+{
+border: 1px solid black;
+padding: 6px;
+}
+
+
+.userdetail table td{
+    text-align: left;
+}
+.clear{
+    clear: both;
+   
+}
+.frm_manage{
+    width: 80%;
+    margin: 0 auto 0 auto;
+    
+}
+
+.frm{
+    float: right;
+    width: 15%;
+}
+.frminp{
+    float: left;
+    margin-left: 5%;
+}
+
+.userdetailimg{
+  
+  float: right;
+        
+}
+.issued {
+    width: 25%;
+}
+.det_info{
+    padding: 2%;
+}
+.id_details{
+    border: solid 1px #000;
+}
+.cme_agent{
+    width: 50%;
+    border: solid 1px #000;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    padding: 2%;
+}
+.cme_agent_form{
+    width: 70%;
+    border: solid 1px #000;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    padding: 2%;
+}
+.full_form{
+    margin: 0 auto 0 auto;
+    padding: 0;
+    background-color: #D0D0D0;
+    width: 60%
+}
+.cme_name{
+    float: left;
+    width: 25%;
+}
+.cme_agent_logo{
+    float: right;
+    width: 25%;
+}
+.cme_n_a{
+    width: 80%;
+    margin: 0 auto 0 auto;
+}
+.cme_form{
+    width: 100%;
+    height: auto;
+}
+.cme_customer{
+    width: 50%;
+    float: left;
+    height: auto;
+    text-align: left;
+    margin: 0 auto 0 3%;
+}
+.cme_official{
+    width: 40%;
+    float: right;
+}
+#owork{
+    width: 90%;
+    height: 185px;
+    background-color: #003399;
+    
+}
+.cme_a_add{
+    padding: 2%;
+    width: 56%;
+}
+.t_left{
+    float: left;
+    width: 48%;
+   
+    margin-right: 1%;
+}
+.t_right{
+    width: 45%;
+    float: right;
+}
+.intexthc{
+     padding: 4%;
+    width: 98%;
+}
+.intids{
+    padding: 4%;
+    width: 40%;
+    float: left;
+    margin-right: 1%;
+}
+.a_name{
+    padding: 4%;
+}
+.tra_dis{
+    text-align: center;
+}
+.recive_sign{
+    width: 98%;
+    padding: 2%;
+    text-align: center;
+}
+.sign{
+    width: 20%;
+    float: left;
+    margin-right: 3%;
+}
+
