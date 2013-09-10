@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 09, 2013 at 11:51 AM
+-- Generation Time: Sep 10, 2013 at 10:43 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -29,20 +29,23 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `branch` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `b_name` varchar(2000) NOT NULL,
+  `b_title` varchar(200) NOT NULL,
+  `b_code` varchar(200) NOT NULL,
   `person` varchar(200) NOT NULL,
   `ph_number` varchar(100) NOT NULL,
   `mb_number` varchar(100) NOT NULL,
   `address` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `branch`
 --
 
-INSERT INTO `branch` (`id`, `b_name`, `person`, `ph_number`, `mb_number`, `address`) VALUES
-(1, 'Manakamana Plala,', ' Basantapur bazar, Chitwan, Nepal Phone:056-691759', 'sdf', 'sdf', 'sdf'),
-(3, 'hello my new branch', 'lsdkjf', 'lskdjf', 'lksjdf', 'lkdjsf');
+INSERT INTO `branch` (`id`, `b_name`, `b_title`, `b_code`, `person`, `ph_number`, `mb_number`, `address`) VALUES
+(1, 'Manakamana Plala,', 'MD', '002', ' Basantapur bazar, Chitwan, Nepal Phone:056-691759', 'sdf', 'sdf', 'sdf'),
+(3, 'hello my new branch', 'TD', '003', 'lsdkjf', 'lskdjf', 'lksjdf', 'lkdjsf'),
+(4, 'Head Office', 'HD', '001', 'you', '987', '987', 'chitwan');
 
 -- --------------------------------------------------------
 
@@ -61,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `cme_agent` (
   `a_principal` varchar(200) NOT NULL,
   `image` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `cme_agent`
@@ -73,7 +76,8 @@ INSERT INTO `cme_agent` (`id`, `a_name`, `n_name`, `a_address`, `a_number`, `t_n
 (3, 'jljdlf', '', 'ljsdlfj', 'lsjflj', '', 'ljsl@JFJ.FJD', 'dsfsfdf', 'Galvanize_Frequency_v4.gif'),
 (5, 'skdljfsdfsdfsdfsdfdsf', '', 'laskdjf', 'jsadlkfj', '', 'lsdjkfa@yaho.com', 'lsadkjf', '1148875_505034842899906_1919721415_n3.jpg'),
 (6, 'lasdfjlfjas', 'unicode upade', 'asldkjf', '987987', '', 'ramji@uahoo.com', 'aa', 'delete.jpg'),
-(7, 'toll', 'free', 'number', '123', '456789123456', 'ramji@uahoo.com', 'apple', 'flower_n.jpg');
+(7, 'toll', 'free', 'number', '123', '456789123456', 'ramji@uahoo.com', 'apple', 'flower_n.jpg'),
+(8, 'dsfkfj', 'lsakjdf', 'alskdjf', '09890', '0978087098', 'ramji@uahoo.com', 'sdfdsf', '1148875_505034842899906_1919721415_n4.jpg');
 
 -- --------------------------------------------------------
 
@@ -107,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `cme_tranzaction` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`t_id`),
   KEY `u_id` (`u_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=98 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=99 ;
 
 --
 -- Dumping data for table `cme_tranzaction`
@@ -142,7 +146,8 @@ INSERT INTO `cme_tranzaction` (`t_id`, `ref_number`, `auth_code`, `agent`, `u_id
 (94, 'sdfsf', 'sdfdsfdsf', 'new company', 1, '', 'sdfsf', 'Mr.', ' Mr.', 'Nepal', 5665464, 'ram ram', 'ram', 'ram', '-09-9,-09', 'Business', 'Mother', 'citizenship', '123', 'sdafh', '0000-00-00', '2005-01-08', '2013-09-09 11:09:53'),
 (95, 'dfs;glfjg', 'asldfj', 'new company', 1, '', 'alsdkjflkjf', 'Mr.', ' Mr.', 'Nambia', 54654654, 'ram ram', 'ram', 'ram', '-09-9,-09', 'Business', 'Brother', 'citizenship', '123', 'sdafh', '0000-00-00', '2005-01-08', '2013-09-09 11:09:29'),
 (96, 'sdfaf', 'saldkjf', 'new company', 1, '', 'sldakjf', 'Mr.', ' Mr.', 'Nambia', 88987, 'ram ram', 'ram', 'ram', '-09-9,-09', 'Business', 'Brother', 'citizenship', '123', 'sdafh', '0000-00-00', '2005-01-08', '2013-09-09 11:09:55'),
-(97, 'sdff', 'sdlfkj', 'new company', 1, '', 'lsdkjf', 'Mr.', ' Mr.', 'Nambia', 898798, 'ram ram', 'ram', 'ram', '-09-9,-09', 'Business', 'Brother', 'citizenship', '123', 'sdafh', '1999-02-08', '2005-01-08', '2013-09-09 11:09:19');
+(97, 'sdff', 'sdlfkj', 'new company', 1, '', 'lsdkjf', 'Mr.', ' Mr.', 'Nambia', 898798, 'ram ram', 'ram', 'ram', '-09-9,-09', 'Business', 'Brother', 'citizenship', '123', 'sdafh', '1999-02-08', '2005-01-08', '2013-09-09 11:09:19'),
+(98, '231213', '32112', 'new company', 1, 'Head Office', 'sldjkfjf', 'Mr.', 'Mr.', 'Bahamas', 2147483647, 'sldfj', 'sjdlf', 'ljsdf', '098098', 'Business', 'Brother', 'citizenship', 'sdlfjlfj', 'jsdfj', '1991-01-08', '1991-02-08', '2013-09-10 08:09:12');
 
 -- --------------------------------------------------------
 
@@ -152,12 +157,14 @@ INSERT INTO `cme_tranzaction` (`t_id`, `ref_number`, `auth_code`, `agent`, `u_id
 
 CREATE TABLE IF NOT EXISTS `customer_info` (
   `c_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cus_id` varchar(50) NOT NULL,
+  `full_id` varchar(100) NOT NULL,
   `title` varchar(200) NOT NULL,
   `fname` varchar(200) NOT NULL,
   `mname` varchar(200) NOT NULL,
   `lname` varchar(200) NOT NULL,
   `gender` varchar(100) NOT NULL,
-  `dob` datetime NOT NULL,
+  `dob` date NOT NULL,
   `address` varchar(500) NOT NULL,
   `distric` varchar(200) NOT NULL,
   `vdc` varchar(200) NOT NULL,
@@ -173,17 +180,20 @@ CREATE TABLE IF NOT EXISTS `customer_info` (
   PRIMARY KEY (`c_id`),
   KEY `id` (`id`),
   KEY `u_id` (`u_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `customer_info`
 --
 
-INSERT INTO `customer_info` (`c_id`, `title`, `fname`, `mname`, `lname`, `gender`, `dob`, `address`, `distric`, `vdc`, `tole`, `zone`, `country`, `conpersonal`, `conhome`, `image`, `email`, `id`, `u_id`) VALUES
-(1, 'Mr.', 'ramji', 'prasad', 'subedi', 'male', '0000-00-00 00:00:00', 'mukundapur', 'nawalparisi', 'beldiha', 'uttam', 'lumbini', 'Nepal', '98476', '77182', 'canon-logo2.jpg', 'ramjisubedi1991@yahoo.com', 1, 1),
-(2, 'Ms.', 'sonam', 'kumari', 'sonam', 'female', '0000-00-00 00:00:00', 'chitwan', 'chitwan', 'chitwan', '', 'narayani', 'Nepal', '999', '', '', '', 1, 1),
-(3, 'Mr.', 'sadkfj', 'salkjdf', 'alskdjf', 'male', '0000-00-00 00:00:00', 'sad;flk', 'asldjf', 'adskjf', 'dsafjkl', 'dasjfkl', 'Nepal', '0808', '098098', '', 'ramjisubedi1991@yahoo.com', 1, 1),
-(4, 'Mr.', 'ram', 'raqm', 'ram', 'male', '0000-00-00 00:00:00', 'ram', 'aram', 'arm', 'ram', 'dsffdf', 'Nepal', '-09-9', '-09', '', '', 1, 1);
+INSERT INTO `customer_info` (`c_id`, `cus_id`, `full_id`, `title`, `fname`, `mname`, `lname`, `gender`, `dob`, `address`, `distric`, `vdc`, `tole`, `zone`, `country`, `conpersonal`, `conhome`, `image`, `email`, `id`, `u_id`) VALUES
+(1, '01002', 'HD-001-01002', 'Mr.', 'sdaf', 'alsdkjf', 'asldfkj', 'male', '1991-02-08', 'ldskjf', 'asldfkj', 'lksafjd', 'asfldkj', 'asldkfj', 'Nepal', '', '', '', '', 4, 1),
+(2, '01003', 'HD-001-01003', 'Mr.', 'lksadjflkfj', 'lsdjlfkaj', 'alsdjf', 'male', '1998-02-08', 'sda;fj', 'asldkfj', 'as;ldjkf', 'asldfj', 'asdlkfj', 'Nepal', '', '', '', '', 4, 1),
+(3, '01004', 'HD-001-01004', 'Mr.', 'lksadjflkfj', 'lsdjlfkaj', 'alsdjf', 'male', '1998-02-08', 'sda;fj', 'asldkfj', 'as;ldjkf', 'asldfj', 'asdlkfj', 'Nepal', '', '', '', '', 4, 1),
+(4, '01005', 'HD-001-01005', 'Mr.', 'lksadjflkfj', 'lsdjlfkaj', 'alsdjf', 'male', '1998-02-08', 'sda;fj', 'asldkfj', 'as;ldjkf', 'asldfj', 'asdlkfj', 'Nepal', '', '', '', '', 4, 1),
+(5, '01006', 'HD-001-01006', 'Mr.', 'lksadjflkfj', 'lsdjlfkaj', 'alsdjf', 'male', '1998-02-08', 'sda;fj', 'asldkfj', 'as;ldjkf', 'asldfj', 'asdlkfj', 'Nepal', '', '', '', '', 4, 1),
+(6, '01007', 'HD-001-01007', 'Mr.', 'lksadjflkfj', 'lsdjlfkaj', 'alsdjf', 'male', '1998-02-08', 'sda;fj', 'asldkfj', 'as;ldjkf', 'asldfj', 'asdlkfj', 'Nepal', '', '', '', '', 4, 1),
+(7, '01008', 'HD-001-01008', 'Mr.', 'lksadjflkfj', 'lsdjlfkaj', 'alsdjf', 'male', '1998-02-08', 'sda;fj', 'asldkfj', 'as;ldjkf', 'asldfj', 'asdlkfj', 'Nepal', '', '', '', '', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -202,21 +212,41 @@ CREATE TABLE IF NOT EXISTS `identity_detail` (
   `c_id` int(11) NOT NULL,
   PRIMARY KEY (`ci_id`),
   KEY `c_id` (`c_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=161 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=289 ;
 
 --
 -- Dumping data for table `identity_detail`
 --
 
 INSERT INTO `identity_detail` (`ci_id`, `type`, `id_number`, `issue_place`, `issue_date`, `expire_date`, `image`, `c_id`) VALUES
-(153, 'citizenship', '', '', '0000-00-00', '0000-00-00', ' ', 3),
-(154, 'license', '', '', '0000-00-00', '0000-00-00', ' ', 3),
-(155, 'passport', '', '', '0000-00-00', '0000-00-00', ' ', 3),
-(156, 'other', '', '', '0000-00-00', '0000-00-00', ' ', 3),
-(157, 'citizenship', '123', 'sdafh', '0000-00-00', '0000-00-00', '1148875_505034842899906_1919721415_n.jpg', 4),
-(158, 'license', '456', 'aksldfh', '0000-00-00', '0000-00-00', ' ', 4),
-(159, 'passport', '789', 'sakjdfh', '0000-00-00', '0000-00-00', ' ', 4),
-(160, 'other', '789', 'hy', '0000-00-00', '0000-00-00', 'galvanizing_procss1.png', 4);
+(261, 'citizenship', '', '', '0000-00-00', '0000-00-00', ' ', 1),
+(262, 'license', '', '', '0000-00-00', '0000-00-00', ' ', 1),
+(263, 'passport', '', '', '0000-00-00', '0000-00-00', ' ', 1),
+(264, 'other', '', '', '0000-00-00', '0000-00-00', ' ', 1),
+(265, 'citizenship', '', '', '0000-00-00', '0000-00-00', ' ', 2),
+(266, 'license', '', '', '0000-00-00', '0000-00-00', ' ', 2),
+(267, 'passport', '', '', '0000-00-00', '0000-00-00', ' ', 2),
+(268, 'other', '', '', '0000-00-00', '0000-00-00', ' ', 2),
+(269, 'citizenship', '', '', '0000-00-00', '0000-00-00', ' ', 3),
+(270, 'license', '', '', '0000-00-00', '0000-00-00', ' ', 3),
+(271, 'passport', '', '', '0000-00-00', '0000-00-00', ' ', 3),
+(272, 'other', '', '', '0000-00-00', '0000-00-00', ' ', 3),
+(273, 'citizenship', '', '', '0000-00-00', '0000-00-00', ' ', 4),
+(274, 'license', '', '', '0000-00-00', '0000-00-00', ' ', 4),
+(275, 'passport', '', '', '0000-00-00', '0000-00-00', ' ', 4),
+(276, 'other', '', '', '0000-00-00', '0000-00-00', ' ', 4),
+(277, 'citizenship', '', '', '0000-00-00', '0000-00-00', ' ', 5),
+(278, 'license', '', '', '0000-00-00', '0000-00-00', ' ', 5),
+(279, 'passport', '', '', '0000-00-00', '0000-00-00', ' ', 5),
+(280, 'other', '', '', '0000-00-00', '0000-00-00', ' ', 5),
+(281, 'citizenship', '', '', '0000-00-00', '0000-00-00', ' ', 6),
+(282, 'license', '', '', '0000-00-00', '0000-00-00', ' ', 6),
+(283, 'passport', '', '', '0000-00-00', '0000-00-00', ' ', 6),
+(284, 'other', '', '', '0000-00-00', '0000-00-00', ' ', 6),
+(285, 'citizenship', '', '', '0000-00-00', '0000-00-00', ' ', 7),
+(286, 'license', '', '', '0000-00-00', '0000-00-00', ' ', 7),
+(287, 'passport', '', '', '0000-00-00', '0000-00-00', ' ', 7),
+(288, 'other', '', '', '0000-00-00', '0000-00-00', ' ', 7);
 
 -- --------------------------------------------------------
 
@@ -233,17 +263,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`u_id`),
   UNIQUE KEY `uname` (`uname`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`u_id`, `uname`, `upass`, `role`, `id`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ad', 1),
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ad', 4),
 (2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'us', 1),
 (3, 'ram', '4641999a7679fcaef2df0e26d11e3c72', 'ad', 3),
-(4, 'hellodsfsdfdsf', '69a329523ce1ec88bf63061863d9cb14', 'us', 3);
+(4, 'hellodsfsdfdsf', '69a329523ce1ec88bf63061863d9cb14', 'us', 3),
+(6, 'newadmin', '21232f297a57a5a743894a0e4a801fc3', 'ad', 1),
+(7, 'newuser', 'ee11cbb19052e40b07aac0ca060c23ee', 'us', 3),
+(8, 'lastuser', 'ee11cbb19052e40b07aac0ca060c23ee', 'us', 1);
 
 --
 -- Constraints for dumped tables
