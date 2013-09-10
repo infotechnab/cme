@@ -83,14 +83,14 @@
     <td colspan="4" style="text-align: center; font-size: 13px;font-family: 'Arial Black', Gadget, sans-serif;"> <strong><?php echo $baddress." ".","." "."Phone Number : ".$bnumber; ?></strong></td>
   </tr>
   <tr>
-    <td width="130"> <b> Reference/Code Number </b></td>
-    <td width="261"><?php echo $refcode; ?></td>
+    <td width="130" > <b> Reference/Code Number </b></td>
+    <td width="250" ><?php echo $refcode; ?></td>
     <td> <b> Authorization Code If any </b></td>
     <td width="142"><?php echo $authcode; ?></td>
   </tr>
   <tr>
     <td colspan="2"><strong>Receiver's Info</strong></td>
-    <td class="officestamp" colspan="2" rowspan="5" style="text-align:center; color: #D0D0D0;"><strong>Office Stamp</strong></td>
+    <td class="officestamp" colspan="2" rowspan="6" style="text-align:center; color: #D0D0D0;"><strong>Office Stamp</strong></td>
   </tr>
   
   <tr>
@@ -108,50 +108,53 @@
   <tr>
     <td><b>Country:</b></td>
     <td>Nepal</td>
-    </tr>
+    
   <tr>
     <td><b>Relationship with Sender:</b></td>
     <td><?php echo $relation; ?></td>
-    <td colspan="2"><strong>Receiver's ID Detail</strong></td>
+    
   </tr>
   <tr>
     <td><b>Contact Number:</b></td>
     <td><?php echo $phone; ?></td>
-    <td><strong>Type: </strong></td>
-    <td><?php echo $idtype; ?></td>
+    <td colspan="2"><strong>Receiver's ID Detail</strong></td>
+    
   </tr>
   <tr>
     <td colspan="2"><strong>Sender's Info</strong></td>
-   <td><strong>ID Number: </strong></td>
-    <td><?php echo $idnum; ?></td>
+    <td><strong>Type: </strong></td>
+    <td><?php echo $idtype; ?></td>
+   
   </tr>
   <tr>
     <td> <b>Name:</b> </td>
     <td><?php echo $stitle." ".$sname; ?></td>
+    <td><strong>ID Number: </strong></td>
+    <td><?php echo $idnum; ?></td>
     
-    <td><strong>Issued Place:</strong></td>
-    <td><?php echo $idplace; ?></td>
+    
   </tr>
   <tr>
    <td><b>Country:</b></td>
     <td><?php echo $country; ?></td>
-    <td><strong>Issued Date: </strong></td>
-    <td><?php echo $iddate; ?></td>
+    <td><strong>Issued Place:</strong></td>
+    <td><?php echo $idplace; ?></td>
+   
   </tr>
-  <tr>
-    
-    
-  </tr>
+ 
   <tr>
     <td><b>Income Source:</b></td>
     <td><?php echo $income; ?></td>
-     <td><strong>Expiry Date: </strong></td>
-    <td><?php echo $idexpire; ?></td>
+     <td><strong>Issued Date: </strong></td>
+    <td><?php echo $iddate; ?></td>
+    
     
   </tr>
   <tr>
     <td><strong>Amount: </strong></td>
     <td><?php echo $amount; ?></td>
+     <td><strong>Expiry Date: </strong></td>
+    <td><?php echo $idexpire; ?></td>
    
   </tr>
   <tr>
@@ -175,36 +178,36 @@
     <td colspan="4"><strong>web: www.cmeremit.com.np Email: info@cmeremit.com Facebook: www.facebook.com/cmeremit</strong></td>
   </tr>
 </table>
+        <br/>
 
-
-<p style="text-align: center;">Official Copy</p>
 
 <hr style="border: dotted 1px #000;" />
-<p>&nbsp;</p>
+<br/>
     </div>
     
     
     
-    <a id="pageprint" href="#" onclick="window.print(); return false;" style="margin-left: 100px; margin-right: 50px; "> Print </a>
-    <?php echo anchor('view/index','Home'); ?>
+    
+    <a class="pageprint" href="#" onclick="window.print(); return false;" style="margin-left: 100px; margin-right: 50px; "> Print </a>
+    <?php echo anchor('view/index','Home','class="pageprint"'); ?> 
     
     <div id="customercopy" style=" float: left; font-size: 11px;">
-    <table  border="1" cellpadding="1" style="border-collapse:collapse; width: 715px;  ">
+   <table  border="1" cellpadding="1" style="border-collapse:collapse; width: 715px;  ">
   <tr>
       <th colspan="4" scope="col"><img src="<?php echo base_url(); ?>content/images/sagarmatha.png" width="500" height="58"/><img src="<?php echo base_url(); ?>agentimg/<?php echo $img; ?>" width="150" height="50" /></th>
   </tr>
   <tr>
-   <td colspan="4" style="text-align: center; font-size: 13px;font-family: 'Arial Black', Gadget, sans-serif;"> <strong><?php echo $baddress." ".","." "."Phone Number : ".$bnumber; ?></strong></td>
+    <td colspan="4" style="text-align: center; font-size: 13px;font-family: 'Arial Black', Gadget, sans-serif;"> <strong><?php echo $baddress." ".","." "."Phone Number : ".$bnumber; ?></strong></td>
   </tr>
   <tr>
-    <td width="130"> <b> Reference/Code Number </b></td>
-    <td width="261"><?php echo $refcode; ?></td>
+    <td width="130" > <b> Reference/Code Number </b></td>
+    <td width="250" ><?php echo $refcode; ?></td>
     <td> <b> Authorization Code If any </b></td>
     <td width="142"><?php echo $authcode; ?></td>
   </tr>
   <tr>
     <td colspan="2"><strong>Receiver's Info</strong></td>
-    <td class="officestamp" colspan="2" rowspan="5" style="text-align:center; color: #D0D0D0;"><strong>Office Stamp</strong></td>
+    <td class="officestamp" colspan="2" rowspan="6" style="text-align:center; color: #D0D0D0;"><strong>Office Stamp</strong></td>
   </tr>
   
   <tr>
@@ -222,50 +225,53 @@
   <tr>
     <td><b>Country:</b></td>
     <td>Nepal</td>
-    </tr>
+    
   <tr>
     <td><b>Relationship with Sender:</b></td>
     <td><?php echo $relation; ?></td>
-    <td colspan="2"><strong>Receiver's ID Detail</strong></td>
+    
   </tr>
   <tr>
     <td><b>Contact Number:</b></td>
     <td><?php echo $phone; ?></td>
-    <td><strong>Type: </strong></td>
-    <td><?php echo $idtype; ?></td>
+    <td colspan="2"><strong>Receiver's ID Detail</strong></td>
+    
   </tr>
   <tr>
     <td colspan="2"><strong>Sender's Info</strong></td>
-   <td><strong>ID Number: </strong></td>
-    <td><?php echo $idnum; ?></td>
+    <td><strong>Type: </strong></td>
+    <td><?php echo $idtype; ?></td>
+   
   </tr>
   <tr>
     <td> <b>Name:</b> </td>
     <td><?php echo $stitle." ".$sname; ?></td>
+    <td><strong>ID Number: </strong></td>
+    <td><?php echo $idnum; ?></td>
     
-    <td><strong>Issued Place:</strong></td>
-    <td><?php echo $idplace; ?></td>
+    
   </tr>
   <tr>
    <td><b>Country:</b></td>
     <td><?php echo $country; ?></td>
-    <td><strong>Issued Date: </strong></td>
-    <td><?php echo $iddate; ?></td>
+    <td><strong>Issued Place:</strong></td>
+    <td><?php echo $idplace; ?></td>
+   
   </tr>
-  <tr>
-    
-    
-  </tr>
+ 
   <tr>
     <td><b>Income Source:</b></td>
     <td><?php echo $income; ?></td>
-     <td><strong>Expiry Date: </strong></td>
-    <td><?php echo $idexpire; ?></td>
+     <td><strong>Issued Date: </strong></td>
+    <td><?php echo $iddate; ?></td>
+    
     
   </tr>
   <tr>
     <td><strong>Amount: </strong></td>
     <td><?php echo $amount; ?></td>
+     <td><strong>Expiry Date: </strong></td>
+    <td><?php echo $idexpire; ?></td>
    
   </tr>
   <tr>
@@ -289,9 +295,7 @@
     <td colspan="4"><strong>web: www.cmeremit.com.np Email: info@cmeremit.com Facebook: www.facebook.com/cmeremit</strong></td>
   </tr>
 </table>
-   
-<p style="text-align: center;">Customer Copy</p>
-        
+  
     </div>
 </body>
 </html>

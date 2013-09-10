@@ -66,8 +66,24 @@ class view extends CI_Controller {
                 $data = array('upload_data' => $this->upload->data('customerfile'));
                 //============= customer detail==========
                 $cusimage = $data['upload_data']['file_name'];
-
-                $cid = $this->input->post('cid');
+                $query = $this->dbmodel->customer();
+                $c = '0';
+                $cusid = '1000';
+                $cid = '0';
+                foreach ($query as $data)
+                {
+                    $cusid = $data->cus_id;
+                    $cid = $data->c_id;
+                }
+                    $cusid = $cusid+1;
+                     $cusid = $c.$cusid;
+                    
+                    $cid = $cid+1;
+                //$cid = $this->input->post('cid');
+                    $btid = $this->input->post('btid');
+                    $bcodid = $this->input->post('bcodid');
+                    
+                    $fullid = $btid."-".$bcodid."-".$cusid;
                 $fname = $this->input->post('fname');
                 $mname = $this->input->post('mname');
                 $lname = $this->input->post('lname');
@@ -292,7 +308,7 @@ class view extends CI_Controller {
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
              }
                 
-                $this->dbmodel->add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname);
+                $this->dbmodel->add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid);
                 $this->dbmodel->add_id_ctzn($cid,$typectzn,$ctznid,$ctznplace,$ctzndate,$ctznimage,$ectzndate);
                  $this->dbmodel->add_id_license($cid,$typelicense,$lid,$lplace,$ldate,$limage,$eldate);
                  $this->dbmodel->add_id_passport($cid,$typepassport,$pid,$pplace,$pdate,$pimage,$epdate);
@@ -307,7 +323,25 @@ class view extends CI_Controller {
              {
                  //=====customer detail======//
                 $cusimage = "";
-                $cid = $this->input->post('cid');
+                  $query = $this->dbmodel->customer();
+                $c = '0';
+                $cusid = '1000';
+                 $cid = '0';
+                foreach ($query as $data)
+                {
+                    $cusid = $data->cus_id;
+                    $cid = $data->c_id;
+                }
+                    $cusid = $cusid+1;
+                    $cusid = $c.$cusid;
+                    
+                   
+                    $cid = $cid+1;
+               // $cid = $this->input->post('cid');
+                    $btid = $this->input->post('btid');
+                    $bcodid = $this->input->post('bcodid');
+                    
+                    $fullid = $btid."-".$bcodid."-".$cusid;
                 $fname = $this->input->post('fname');
                 $mname = $this->input->post('mname');
                 $lname = $this->input->post('lname');
@@ -522,7 +556,7 @@ class view extends CI_Controller {
                 $eoday = $this->input->post('odaye');
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
              }
-                $this->dbmodel->add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname);
+                $this->dbmodel->add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid);
                 $this->dbmodel->add_id_ctzn($cid,$typectzn,$ctznid,$ctznplace,$ctzndate,$ctznimage,$ectzndate);
                  $this->dbmodel->add_id_license($cid,$typelicense,$lid,$lplace,$ldate,$limage,$eldate);
                  $this->dbmodel->add_id_passport($cid,$typepassport,$pid,$pplace,$pdate,$pimage,$epdate);
@@ -1371,7 +1405,23 @@ class view extends CI_Controller {
         public function get_agent()
         {
              if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
-         $data['query']= $this->dbmodel->get_agent();
+                 
+                  $config = array();
+            $config["base_url"] = base_url() . "index.php/view/get_agent";
+            $config["total_rows"] = $this->dbmodel->record_count_agent();
+            $config["per_page"] = 6;
+            //$config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+            $agent = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+            $data["query"] = $this->dbmodel->get_agentlist($config["per_page"], $agent);
+            $data["links"] = $this->pagination->create_links();
+                
+                 
+                 
+         //$data['query']= $this->dbmodel->get_agent();
          $this->load->view('cme/templets/header');  
         $this->load->view('cme/remittance/agentlist',$data);
         $this->load->view('cme/templets/footer');
@@ -1383,7 +1433,21 @@ class view extends CI_Controller {
          public function get_useragent()
         {
              if ($this->session->userdata('logged_in')) {
-         $data['query']= $this->dbmodel->get_agent();
+              
+                  $config = array();
+            $config["base_url"] = base_url() . "index.php/view/get_useragent";
+            $config["total_rows"] = $this->dbmodel->record_count_agent();
+            $config["per_page"] = 6;
+            //$config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+            $agent = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+            $data["query"] = $this->dbmodel->get_agentlist($config["per_page"], $agent);
+            $data["links"] = $this->pagination->create_links();
+                 
+         //$data['query']= $this->dbmodel->get_agent();
          $this->load->view('cme/templets/header');  
         $this->load->view('cme/remittance/foruser',$data);
         $this->load->view('cme/templets/footer');
@@ -1399,8 +1463,21 @@ class view extends CI_Controller {
         {
             
          if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+             
+              $config = array();
+            $config["base_url"] = base_url() . "index.php/view/userlist";
+            $config["total_rows"] = $this->dbmodel->record_count_user();
+            $config["per_page"] = 6;
+            //$config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+            $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             
-             $data['userlist'] = $this->dbmodel->userlist();
+            $data["userlist"] = $this->dbmodel->userlist($config["per_page"], $user);
+            $data["links"] = $this->pagination->create_links();
+            
+             //$data['userlist'] = $this->dbmodel->userlist();
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/user/userlist',$data);
         $this->load->view('cme/templets/footer');
@@ -1473,7 +1550,7 @@ class view extends CI_Controller {
             //set validation rules
            
             $this->form_validation->set_rules('uname', 'User Name', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('pass', 'Password', 'required|xss_clean');
+            //$this->form_validation->set_rules('pass', 'Password', 'required|xss_clean');
              $this->form_validation->set_rules('role', 'Role', 'required|xss_clean');
               $this->form_validation->set_rules('branch', 'Branch', 'required|xss_clean');
             
@@ -1489,12 +1566,12 @@ class view extends CI_Controller {
  
                 //if valid
                 $user = $this->input->post('uname');
-                $pass = $this->input->post('pass');
+                //$pass = $this->input->post('pass');
                 $role = $this->input->post('role');
                 $branch = $this->input->post('branch');
                
                 
-                $this->dbmodel->update_user($id,$user,$pass,$role,$branch);
+                $this->dbmodel->update_user($id,$user,$role,$branch);
                 $this->session->set_flashdata('message', 'Update sucessfully');
                 redirect('view/userlist');
             }
@@ -1700,12 +1777,34 @@ class view extends CI_Controller {
     
     public function cuslist()
     {
-         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in')) {
+            if($this->session->userdata('username')=="ad"){
+                
+                 $config = array();
+            $config["base_url"] = base_url() . "index.php/view/cuslist";
+            $config["total_rows"] = $this->dbmodel->record_count_cuslist();
+            $config["per_page"] = 6;
+            //$config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+            $cuslist = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             
-             $data['cuslist'] = $this->dbmodel->cuslist();
+            $data["cuslist"] = $this->dbmodel->cuslist($config["per_page"], $cuslist);
+            $data["links"] = $this->pagination->create_links();
+                
+                
+                
+                 //$data['cuslist'] = $this->dbmodel->cuslist();
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/customer/cuslist',$data);
-        $this->load->view('cme/templets/footer');
+        $this->load->view('cme/templets/footer');                
+            }
+ else {
+     $this->session->set_flashdata('message', 'One Customer added sucessfully');
+     redirect('view/index');
+ }
+            
              
          } else {
             redirect('login', 'refresh');
@@ -1717,8 +1816,21 @@ class view extends CI_Controller {
      public function branchlist()
     {
          if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+             
+              $config = array();
+            $config["base_url"] = base_url() . "index.php/view/get_agent";
+            $config["total_rows"] = $this->dbmodel->record_count_branch();
+            $config["per_page"] = 6;
+            //$config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+            $branch = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             
-             $data['blist'] = $this->dbmodel->branchlist();
+            $data["blist"] = $this->dbmodel->branchlist($config["per_page"], $branch);
+            $data["links"] = $this->pagination->create_links();
+            
+             //$data['blist'] = $this->dbmodel->branchlist();
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/branch/branchlist',$data);
         $this->load->view('cme/templets/footer');
@@ -1749,6 +1861,8 @@ class view extends CI_Controller {
             $this->load->library(array('form_validation', 'session'));
             
             $this->form_validation->set_rules('bname', 'Branch Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('btitle', 'Branch Title', 'required|xss_clean');
+            $this->form_validation->set_rules('bcode', 'Branch Code', 'required|xss_clean');
             $this->form_validation->set_rules('bperson', 'Branch Person', 'required|xss_clean');
              $this->form_validation->set_rules('bphnumber', 'Phone Number', 'required|xss_clean');
               $this->form_validation->set_rules('bmbnumber', 'Mobile Number', 'required|xss_clean');
@@ -1765,12 +1879,14 @@ class view extends CI_Controller {
  
                 //if valid
                 $bname = $this->input->post('bname');
+                $btitle = $this->input->post('btitle');
+                $bcode = $this->input->post('bcode');
                 $bperson = $this->input->post('bperson');
                 $bphnumber = $this->input->post('bphnumber');
                 $bmbnumber = $this->input->post('bmbnumber');
                 $address = $this->input->post('baddress');
                 
-                $this->dbmodel->addbranch($bname,$bperson,$bphnumber,$bmbnumber,$address);
+                $this->dbmodel->addbranch($bname,$bperson,$bphnumber,$bmbnumber,$address,$btitle,$bcode);
                 $this->session->set_flashdata('message', 'Branch added sucessfully');
                 redirect('view/branchlist');
             }
@@ -1806,6 +1922,8 @@ class view extends CI_Controller {
             //set validation rules
            
             $this->form_validation->set_rules('bname', 'Branch Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('btitle', 'Branch Title', 'required|xss_clean');
+            $this->form_validation->set_rules('bcode', 'Branch Code', 'required|xss_clean');
             $this->form_validation->set_rules('bperson', 'Branch Person', 'required|xss_clean');
              $this->form_validation->set_rules('bphnumber', 'Phone Number', 'required|xss_clean');
               $this->form_validation->set_rules('bmbnumber', 'Mobile Number', 'required|xss_clean');
@@ -1822,12 +1940,14 @@ class view extends CI_Controller {
  
                 //if valid
                 $bname = $this->input->post('bname');
+                $btitle = $this->input->post('btitle');
+                $bcode = $this->input->post('bcode');
                 $bperson = $this->input->post('bperson');
                 $bphnumber = $this->input->post('bphnumber');
                 $bmbnumber = $this->input->post('bmbnumber');
                 $address = $this->input->post('baddress');
                 
-                $this->dbmodel->update_branch($id,$bname,$bperson,$bphnumber,$bmbnumber,$address);
+                $this->dbmodel->update_branch($id,$bname,$bperson,$bphnumber,$bmbnumber,$address,$btitle,$bcode);
                 $this->session->set_flashdata('message', 'Update sucessfully');
                 redirect('view/branchlist');
             }

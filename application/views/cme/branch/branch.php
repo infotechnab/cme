@@ -3,6 +3,8 @@
                 <?php echo form_open('view/addbranch');?>
                     <label> <b>Add new Branch</b></label> <br/> <br/>
                     <input class="intexth" type="text" name="bname" placeholder="Branch Name" /> <br/><br/>
+                    <input class="intexth" type="text" name="btitle" placeholder="Branch Title" /> <br/><br/>
+                    <input class="intexth" type="text" name="bcode" placeholder="Branch Code" /> <br/><br/>
                     <input class="intexth" type="text" name="bperson" placeholder="Contact Person" /> <br/><br/>
                     
                     <input class="intexth" type="text"  name="bphnumber" placeholder="Phone Number" /> <br/><br/>

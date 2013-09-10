@@ -44,6 +44,7 @@
                 </table>             
                
                 <br/>
+                  <?php  echo $links; ?>
                 
             </div>
         </div>          

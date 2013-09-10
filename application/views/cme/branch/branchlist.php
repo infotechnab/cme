@@ -18,6 +18,8 @@
                     <tr class="trlist">
                         <td class="tdlist"> S.N </td>
                         <td class="tdlist"> Branch Name</td>
+                        <td class="tdlist"> Branch Title</td>
+                        <td class="tdlist"> Branch Code</td>
                         <td class="tdlist"> Contact Person</td>
                         <td class="tdlist"> Contact Number </td>
                         
@@ -28,6 +30,8 @@
                     <tr class="trlist">
                         <td class="tdlist"> <?php echo $data->id; ?></td>
                         <td class="tdlist"> <?php echo $data->b_name; ?></td>
+                        <td class="tdlist"> <?php echo $data->b_title; ?></td>
+                        <td class="tdlist"> <?php echo $data->b_code; ?></td>
                         <td class="tdlist"> <?php echo $data->person; ?></td>
                         <td class="tdlist"> <?php echo $data->ph_number.",".$data->mb_number; ?></td>
                         
@@ -39,6 +43,7 @@
                 </table>             
                
                 <br/>
+                 <?php  echo $links; ?>
                 
             </div>
         </div>          

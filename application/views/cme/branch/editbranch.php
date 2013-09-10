@@ -13,6 +13,8 @@
                 {
                     $id = $data->id;
                     $bname = $data->b_name;
+                    $btitle = $data->b_title;
+                    $bcode = $data->b_code;
                     $person = $data->person;
                     $phnumber = $data->ph_number;
                     $mbnumber = $data->mb_number;
@@ -25,6 +27,8 @@
                     <label> <b>Add new Branch</b></label> <br/> <br/>
                     <input type="hidden" name="id" value="<?php echo $id; ?>" />
                     <input class="intexth" type="text" name="bname" placeholder="Branch Name" value="<?php echo $bname; ?>" /> <br/><br/>
+                    <input class="intexth" type="text" name="btitle" placeholder="Branch Title" value="<?php echo $btitle; ?>" /> <br/><br/>
+                    <input class="intexth" type="text" name="bcode" placeholder="Branch Code" value="<?php echo $bcode; ?>" /> <br/><br/>
                     <input class="intexth" type="text" name="bperson" placeholder="Contact Person" value="<?php echo $person; ?>" /> <br/><br/>
                     
                     <input class="intexth" type="text"  name="bphnumber" placeholder="Phone Number" value="<?php echo $phnumber; ?>" /> <br/><br/>

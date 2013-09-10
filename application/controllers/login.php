@@ -46,12 +46,20 @@ class Login extends CI_Controller {
                     $id = $data->id;
                    // $branch = $data->branch;
                 }
+                $branch = $this->dbmodel->get_branch($id); 
+                foreach ($branch as $data)
+                {
+                    $btitle= $data->b_title;
+                    $bcode = $data->b_code;
+                }
 		if($query) // if the user's credentials validated...
 		{
 			$data = array( 
 				'username' => $role,
                                 'id'=>$uid,
                             'bid'=>$id,
+                            'btitle'=>$btitle,
+                            'bcode'=>$bcode,
                             //'branch'=>$branch,
 				'logged_in' => true
 			);

@@ -2,6 +2,8 @@
        $role = $this->session->userdata('username');
        $bid = $this->session->userdata('bid');
        $user_id = $this->session->userdata('id');
+       $btid = $this->session->userdata('btitle');
+       $bcodid = $this->session->userdata('bcode');
        
        
             $cid='0';
@@ -27,6 +29,8 @@
                 
                 <input type="hidden" name="userid" value="<?php echo $user_id; ?>"/>
                 <input type="hidden" name="brid" value="<?php echo $bid; ?>"/>
+                 <input type="text" name="btid" value="<?php echo $btid; ?>"/>
+                  <input type="text" name="bcodid" value="<?php echo $bcodid; ?>"/>
                 
                 
                 <table >
@@ -92,7 +96,7 @@
                             <td colspan="2"> <input class="intext"  type="text" name="address" placeholder="Adderss" /> </td>
                     </tr>
                     <tr>                         
-                             <td> <input class="intexth"   type="text" name="vdc" placeholder="VDC"/> </td>
+                             <td> <input class="intexth"   type="text" name="vdc" placeholder="VDC / Municipality"/> </td>
                              <td> <input class="intexth"  type="text" name="tole" placeholder="Tole"/> </td>
                     </tr>
                     

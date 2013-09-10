@@ -113,7 +113,7 @@
                             <td colspan="2"> <input class="intext"  type="text" name="address" placeholder="Adderss" value="<?php echo $address; ?>" /> </td>
                     </tr>
                     <tr>                         
-                             <td> <input class="intexth"   type="text" name="vdc" placeholder="VDC" value="<?php echo $vdc; ?>"/> </td>
+                             <td> <input class="intexth"   type="text" name="vdc" placeholder="VDC / Municipality" value="<?php echo $vdc; ?>"/> </td>
                              <td> <input class="intexth"  type="text" name="tole" placeholder="Tole" value="<?php echo $tole; ?>"/> </td>
                     </tr>
                     

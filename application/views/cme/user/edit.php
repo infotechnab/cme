@@ -22,7 +22,7 @@
                     <label> <b>Edit user</b></label> <br/> <br/>
                     <input type="hidden" name="id" value="<?php echo $id; ?>" />
                     <input class="intexth" type="text" name="uname" placeholder="User Name" value="<?php echo $uname; ?>" /> <br/><br/>
-                    <input class="intexth" type="text" name="pass" placeholder="Password" value="<?php echo $pass; ?>"/> <br/><br/>
+                   <!-- <input class="intexth" type="password" name="pass" placeholder="Password" value="<?php // echo $pass; ?>"/> <br/><br/> -->
                     <select class="intexth" name="role" style="width:460px;">
                         <option <?php if($roel=='') { echo 'Selected="Selected"'; } ?> value=""> Select role...</option>
                         <option  <?php if($roel=='ad') { echo 'Selected="Selected"'; } ?> value="ad"  selected > Admin </option>

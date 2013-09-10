@@ -134,11 +134,13 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-    public function add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname)
+    public function add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid)
     {
-       
+      
         $data=array(
             'c_id'=>$cid,
+            'cus_id'=>$cusid,
+            'full_id'=>$fullid,
             'fname'=>$fname,
             'mname'=>$mname,
             'lname'=>$lname,
@@ -334,9 +336,20 @@ class Dbmodel extends CI_Model {
          return $agentimg->result();
         
     }
+      public function record_count_agent() {
+        return $this->db->count_all('cme_agent');
+    }
 
-        public function get_agent()
+        public function get_agentlist($limit,$start)
     {
+             $this->db->limit($limit, $start); 
+        $query = $this->db->get('cme_agent');
+        return $query->result();
+    }
+    
+     public function get_agent()
+    {
+              
         $query = $this->db->get('cme_agent');
         return $query->result();
     }
@@ -382,8 +395,13 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-    public function userlist()
+     public function record_count_user() {
+        return $this->db->count_all('user');
+    }
+    
+    public function userlist($limit,$start)
     {
+        $this->db->limit($limit, $start);
         $userlist = $this->db->get('user');
         return $userlist->result();
     }
@@ -436,23 +454,40 @@ class Dbmodel extends CI_Model {
     {
          $this->db->delete('cme_agent', array('id' => $id));
     }
+    public function record_count_cuslist() {
+        return $this->db->count_all('customer_info');
+    }
+    
+   
+    
+    
 
-    public function cuslist()
+    public function cuslist($limit, $start)
     {
+        $this->db->limit($limit, $start); 
         $cuslist = $this->db->get('customer_info');
         return $cuslist->result();
     }
-    public function branchlist()
+    
+     public function record_count_branch() {
+        return $this->db->count_all('branch');
+    }
+    
+    
+    public function branchlist($limit,$start)
     {
+        $this->db->limit($limit, $start); 
         $blist = $this->db->get('branch');
         return $blist->result();
     }
     
-    public function addbranch($bname,$bperson,$bphnumber,$bmbnumber,$address)
+    public function addbranch($bname,$bperson,$bphnumber,$bmbnumber,$address,$btitle,$bcode)
     {
          $this->load->database();
                    $data = array(
             'b_name' => $bname,
+            'b_title'=>$btitle,
+            'b_code'=>$bcode,
             'person' => $bperson,
             'ph_number'=> $bphnumber,
             'mb_number' => $bmbnumber,
@@ -467,11 +502,13 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-    public function update_branch($id,$bname,$bperson,$bphnumber,$bmbnumber,$address)
+    public function update_branch($id,$bname,$bperson,$bphnumber,$bmbnumber,$address,$btitle,$bcode)
     {
          $this->load->database();
                    $data = array(
             'b_name' => $bname,
+            'b_title'=>$btitle,
+            'b_code'=>$bcode,
             'person' => $bperson,
             'ph_number'=> $bphnumber,
             'mb_number' => $bmbnumber,
@@ -518,13 +555,13 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-     public function update_user($id,$user,$pass,$role,$branch)
+     public function update_user($id,$user,$role,$branch)
     {
        
         $this->load->database();
                    $data = array(
             'uname' => $user,
-            'upass' => md5($pass),
+            //'upass' => md5($pass),
             'role'=> $role,
             'id' => $branch);
         
