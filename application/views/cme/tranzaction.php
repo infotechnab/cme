@@ -55,7 +55,7 @@
                 </table>
                 
               
-            <div class="cidentity"> 
+            <div class="cidentitytran"> 
                 
                 <div class="t_left">
             <label id="clpid"> <b > Sender Info </b></label> <hr/> 

@@ -139,39 +139,57 @@
               
             <div class="cidentity"> 
             <label id="clpid"> <b > Customer Identity </b></label> <hr/> 
-            <table>
-                <tr>
-                    <th></th>
-                    <th>Ctitzenship</th>
-                    <th>License</th>
-                    <th>Passport</th>
-                  <!--  <th>Expire Date</th> -->
-                    <th>Other</th>
-                    
-                </tr>
-                <tr>
-                    <td>Identity Number</td>
-                   <?php $mydate=getdate(date("U"));?> 
-                    <td><input type="hidden" name="citizenship" value="citizenship" /><input type="text" name="ctznid" placeholder="ID Number" /></td>
-                    <td><input type="hidden" name="license" value="license" /><input type="text" name="lid" placeholder="ID Number" /></td>
-                    <td><input type="hidden" name="passport" value="passport" /><input type="text" name="pid" placeholder="ID Number"/></td>
-                  <!--  <td><input type="text" name="ctznexpire" value="<?php //echo "  $mydate[year]- $mydate[mon]- $mydate[mday]"; ?>" /></td> -->
-                    <td><input type="hidden" name="other" value="other" /><input type="text" name="oid" placeholder="ID Number" /></td>
-                </tr>
-                <tr>
-                    <td>Issued Place</td>
-                    <td><input type="text" name="ctznplace" placeholder="Issued Place" /></td>
-                    <td><input type="text" name="lplace" placeholder="Issued Place" /></td>
-                    
-                    <td><input type="text" name="pplace" placeholder="Issued Place" /></td>
-                    <!--<td><input type="text" name="pexpire" value="<?php //echo "  $mydate[year]- $mydate[mon]- $mydate[mday]"; ?>" /></td> -->
-                    <td><input type="text" name="oplace" placeholder="Issued Place" /></td>
-                </tr>
-                <tr>
-                    <td>Issue Date</td>
-                    <td><input type="text" class="issued" name="ctznyear" placeholder="Year" /> 
-                        <select class="issued" name="ctznmonth">
-                                <option>Month</option>
+            
+            <?php
+           
+            $array= array( 'Citizenship','Licences','Passport','Other');
+            
+             
+           
+            foreach ($array as $data)
+            {
+               ?>
+            
+            
+           
+<table  style="float: left; margin-right: 3%; ">
+<tr>
+<td colspan="3" style="text-align:center"  > <b> <?php echo $data; ?> </b> <input type="hidden" name="<?php echo $data;?>" value="<?php echo $data;?>"/></td>
+</tr>
+<tr>
+<td colspan="3"> <input type="text" style="width:265px; padding:5px;" name="<?php echo $data."_id"; ?>" placeholder="ID Number" /></td>
+</tr>
+<tr>
+<td colspan="3"> <input type="text" style="width:265px; padding:5px;" name="<?php echo $data."_place"; ?>" placeholder="Issued Place" /></td>
+</tr>
+<tr>
+<td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_year"; ?>" /> </td> 
+<td> <select style=" padding:3px;" name="<?php echo $data."_month"; ?>" >
+       <option>Month</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+    </select> </td>
+<td> <input type="text" style="width:80px; padding:3px;" placeholder="Day" name="<?php echo $data."_day"; ?>" /></td>
+</tr>
+<?php if($data == 'Citizenship')
+{?>
+<tr>
+<td></td>
+</tr> <?php } 
+else { ?>
+<tr>
+<td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_yeare"; ?>" /> </td>
+<td> <select style=" padding:3px;" name="<?php echo $data."_monthe"; ?>" ><option>Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
                                 <option value="3">March</option>
@@ -183,150 +201,23 @@
                                 <option value="9">September</option>
                                 <option value="10">October</option>
                                 <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        <input type="text" class="issued" name="ctznday" placeholder="Day" /></td>
-                    
-                    <td><input type="text" class="issued" name="lyear" placeholder="Year" /> 
-                        <select class="issued" name="lmonth">
-                                <option>Month</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        <input type="text" class="issued" name="lday" placeholder="Day" /></td>
-                    
-                    <td><input type="text" class="issued" name="pyear" placeholder="Year" /> 
-                        <select class="issued" name="pmonth">
-                                <option>Month</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        <input type="text" class="issued" name="pday" placeholder="Day" /></td>
-                    <!--<td><input type="text" name="lexpire" value="<?php //echo "  $mydate[year]- $mydate[mon]- $mydate[mday]"; ?>"/></td> -->
-                    <td><input type="text" class="issued" name="oyear" placeholder="Year" /> 
-                        <select class="issued" name="omonth">
-                                <option>Month</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        <input type="text" class="issued" name="oday" placeholder="Day" /></td>
-                </tr>
-                
-                <tr>
-                    <td>Expiry Date</td>
-                    <td><input type="text" class="issued" name="ctznyeare" placeholder="Year" /> 
-                        <select class="issued" name="ctznmonthe">
-                                <option>Month</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        <input type="text" class="issued" name="ctzndaye" placeholder="Day" /></td>
-                    
-                    <td><input type="text" class="issued" name="lyeare" placeholder="Year" /> 
-                        <select class="issued" name="lmonthe">
-                                <option>Month</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        <input type="text" class="issued" name="ldaye" placeholder="Day" /></td>
-                    
-                    <td><input type="text" class="issued" name="pyeare" placeholder="Year" /> 
-                        <select class="issued" name="pmonthe">
-                                <option>Month</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        <input type="text" class="issued" name="pdaye" placeholder="Day" /></td>
-                    <!--<td><input type="text" name="lexpire" value="<?php //echo "  $mydate[year]- $mydate[mon]- $mydate[mday]"; ?>"/></td> -->
-                    <td><input type="text" class="issued" name="oyeare" placeholder="Year" /> 
-                        <select class="issued" name="omonthe">
-                                <option>Month</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        <input type="text" class="issued" name="odaye" placeholder="Day" /></td>
-                </tr>
-                 
-                 <tr>
-                    <td>Select Image</td>
-                    <td><input type="file" name="ctznfile" /></td>
-                    
-                    <td><input type="file" name="lfile" /></td>
-                    <td><input type="file" name="pfile" /></td>
-                  <!--  <td><input type="text" name="oexpire" value="<?php //echo "  $mydate[year]- $mydate[mon]- $mydate[mday]"; ?>" /></td> -->
-                    <td><input type="file" name="ofile" /></td>
-                </tr>
-            </table>
+                                <option value="12">December</option> </select> </td>
+<td> <input type="text" style="width:80px; padding:3px;" placeholder="Day" name="<?php echo $data."_daye"; ?>" /></td>
+</tr> <?php } ?>
+<tr>
+    <td colspan="3"><input type="file" name="<?php echo $data."file" ?>" /></td>
+</tr>
+</table> <?php } ?>
+            
+
+ 
+     <div style="clear: left;"/>      
+            
+  
+            </div>
+                  
+            
+            
             </div>
            <input type="submit" name="submit" value="Add Details" />
            <?php echo form_close(); ?>

@@ -163,16 +163,16 @@ class Dbmodel extends CI_Model {
         
     }
     
-    public function add_id_ctzn($cid,$typectzn,$ctznid,$ctznplace,$ctzndate,$image,$ectzndate)
+    public function add_id_ctzn($cid,$typectzn,$ctznid,$ctznplace,$ctzndate,$image)
     {
-       
+    
         $data=array(            
             'c_id'=>$cid,
             'type'=>$typectzn,
             'id_number'=>$ctznid,
             'issue_place'=>$ctznplace,
             'issue_date'=>$ctzndate,
-            'expire_date'=>$ectzndate,
+            //'expire_date'=>$ectzndate,
                 'image' =>$image );
          $this->db->insert('identity_detail', $data);
     }
@@ -244,7 +244,7 @@ class Dbmodel extends CI_Model {
     }
     
     
-     public function update_id_ctzn($cid,$ctznid,$ctznplace,$ctzndate,$image,$ectzndate,$typectzn)
+     public function update_id_ctzn($cid,$ctznid,$ctznplace,$ctzndate,$image,$typectzn)
     {
        
         $data=array(            

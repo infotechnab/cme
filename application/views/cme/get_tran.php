@@ -118,7 +118,7 @@
                 </table>
 
 
-            <div class="cidentity">
+            <div class="cidentitytran">
 
                 <div class="t_left">
             <label id="clpid"> <b > Sender Info </b></label> <hr/>
@@ -421,7 +421,8 @@
                 <div class="t_right">
             <label id="clpid"> <b > Receiver Info </b></label> <hr/>
 
-            <input type="hidden" name="rtitle" value=" <?php echo $title; ?>" />
+           <!-- <input type="hidden" name="rtitle" value=" <?php echo $title; ?>" /> -->
+            <input type="radio" name="rtitle" value="Mr." <?php if($title=='Mr.') { ?> checked <?php } ?> /> <b> Mr.</b> &nbsp; <input type="radio" name="rtitle" value="Mrs."<?php if($title=='Mrs.') { ?> checked <?php } ?> /><b> Mrs.</b> &nbsp; <input type="radio" name="rtitle" value="Miss."<?php if($title=='Miss.') { ?> checked <?php } ?> /><b> Miss.</b> &nbsp; <input type="radio" name="rtitle" value="Ms."<?php if($title=='Ms.') { ?> checked <?php } ?> /><b> Ms.</b>
             <input class="intexth" type="text" name="r_name" placeholder="Reciver Name" value="<?php echo $fname." ".$lname; ?>" /> <br/>  <br/>
              <input class="intexth" type="text" name="r_add" placeholder="Reciver Address" value="<?php echo $address; ?>" /> <br/> <br/>
              <input class="intexth" type="text" name="r_city" placeholder="Reciver Tole" value="<?php echo $tole; ?>"/> <br/> <br/>

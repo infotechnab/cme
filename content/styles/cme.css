@@ -86,9 +86,17 @@ h2{
     padding: 2%;
     width: 28%;
 }
+.cidentitytran{
+     width: 98%;
+    border: solid 1px #002166;
+    margin: 1%;
+    padding: 1%;
+    text-align: center;
+    
+}
 
 .cidentity{
-    width: 98%;
+    width: 75%;
     border: solid 1px #002166;
     margin: 1%;
     padding: 1%;

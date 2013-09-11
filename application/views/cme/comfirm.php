@@ -7,7 +7,7 @@
 </head>
     <style>
         @media print{
-            .pageprint{
+            #pageprint{
                 display: none;
             }
             .officestamp{
@@ -75,102 +75,93 @@
                 }
          ?> 
     <div id="officecopy" style="float: left; font-size: 11px;">
-<table  border="1" cellpadding="2" style="border-collapse:collapse; width: 715px;  ">
+<table  border="1" cellpadding="1" style="border-collapse:collapse; width: 715px;  ">
   <tr>
-      <th colspan="8" scope="col"><img src="<?php echo base_url(); ?>content/images/sagarmatha.png" width="500" height="58"/><img src="<?php echo base_url(); ?>agentimg/<?php echo $img; ?>" width="150" height="50" /></th>
+      <th colspan="4" scope="col"><img src="<?php echo base_url(); ?>content/images/sagarmatha.png" width="500" height="58"/><img src="<?php echo base_url(); ?>agentimg/<?php echo $img; ?>" width="150" height="50" /></th>
   </tr>
   <tr>
-    <td colspan="8" style="text-align: center; font-size: 13px;font-family: 'Arial Black', Gadget, sans-serif;"> <strong><?php echo $baddress." ".","." "."Phone Number : ".$bnumber; ?></strong></td>
+    <td colspan="4" style="text-align: center; font-size: 13px;font-family: 'Arial Black', Gadget, sans-serif;"> <strong><?php echo $baddress." ".","." "."Phone Number : ".$bnumber; ?></strong></td>
   </tr>
   <tr>
-    <td width="130"  > <b> Reference/Code Number </b></td>
-    <td colspan="3"  width="270" ><?php echo $refcode; ?></td>
-    <td colspan="2"  > <b> Authorization Code If any </b></td>
-    <td colspan="3"><?php echo $authcode; ?></td>
-     
+    <td width="130" > <b> Reference/Code Number </b></td>
+    <td width="250" ><?php echo $refcode; ?></td>
+    <td> <b> Authorization Code If any </b></td>
+    <td width="142"><?php echo $authcode; ?></td>
   </tr>
   <tr>
-    <td colspan="4"><strong>Receiver's Info</strong></td>
-    <td class="officestamp" colspan="4" rowspan="7" style="text-align:center; color: #D0D0D0;"><strong>Office Stamp</strong></td>
+    <td colspan="2"><strong>Receiver's Info</strong></td>
+    <td class="officestamp" colspan="2" rowspan="6" style="text-align:center; color: #D0D0D0;"><strong>Office Stamp</strong></td>
   </tr>
   
   <tr>
     <td> <b>Name: </b></td>
-    <td colspan="3" ><?php echo $rtitle." ".$rname; ?></td>
+    <td><?php echo $rtitle." ".$rname; ?></td>
   </tr>
   <tr>
     <td> <b>Address: </b></td>
-    <td colspan="3"><?php echo $address; ?></td>
+    <td><?php echo $address; ?></td>
   </tr>
   <tr>
     <td><b>Tole : </b></td>
-    <td width="68"><?php echo $city; ?></td>
-    <td width="104"><b>Country:</b></td>
-    <td width="41">Nepal</td>
+    <td><?php echo $city; ?></td>
   </tr>
   <tr>
+    <td><b>Country:</b></td>
+    <td>Nepal</td>
+    
+  <tr>
     <td><b>Relationship with Sender:</b></td>
-    <td colspan="3"><?php echo $relation; ?></td>
+    <td><?php echo $relation; ?></td>
     
   </tr>
   <tr>
     <td><b>Contact Number:</b></td>
-    <td colspan="3"><?php echo $phone; ?></td>
+    <td><?php echo $phone; ?></td>
+    <td colspan="2"><strong>Receiver's ID Detail</strong></td>
+    
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Sender's Info</strong></td>
+    <td><strong>Type: </strong></td>
+    <td><?php echo $idtype; ?></td>
+   
+  </tr>
+  <tr>
+    <td> <b>Name:</b> </td>
+    <td><?php echo $stitle." ".$sname; ?></td>
+    <td><strong>ID Number: </strong></td>
+    <td><?php echo $idnum; ?></td>
     
     
   </tr>
   <tr>
-    <td colspan="4"><strong>Receiver's ID Detail</strong></td>
-    
-    
-   
-   
-  </tr>
-  <tr>
-       <td colspan="2"><strong>Type: </strong></td>
-    <td colspan="2"><?php echo $idtype; ?></td>
-    <td colspan="4"><strong>Sender's Info</strong></td>
-     
-    
-    
-  </tr>
-  <tr>
-      <td colspan="2"><strong>ID Number: </strong></td>
-    <td colspan="2"><?php echo $idnum; ?></td>
-    <td width="60px"> <b>Name:</b> </td>
-    <td colspan="3"><?php echo $stitle." ".$sname; ?></td>
-   
-   
-  
-   
-     
+   <td><b>Country:</b></td>
+    <td><?php echo $country; ?></td>
+    <td><strong>Issued Place:</strong></td>
+    <td><?php echo $idplace; ?></td>
    
   </tr>
  
   <tr>
-    <td colspan="2"><strong>Issued Place:</strong></td>
-    <td colspan="2"><?php echo $idplace; ?></td>
-     <td><b>Country:</b></td>
-    <td><?php echo $country; ?></td>
     <td><b>Income Source:</b></td>
     <td><?php echo $income; ?></td>
+     <td><strong>Issued Date: </strong></td>
+    <td><?php echo $iddate; ?></td>
+    
     
   </tr>
-       <tr>
-    
-     <td colspan="1"><strong>Issued Date: </strong></td>
-    <td colspan="1"><?php echo $iddate; ?></td>
-     <td colspan="1"><strong>Expiry Date: </strong></td>
-    <td colspan="1"><?php echo $idexpire; ?></td>
-     <td><strong>Amount: </strong></td>
-    <td colspan="3"> <b><?php echo $amount; ?> </b></td>
+  <tr>
+    <td><strong>Amount: </strong></td>
+    <td><?php echo $amount; ?></td>
+     <td><strong>Expiry Date: </strong></td>
+    <td><?php echo $idexpire; ?></td>
    
   </tr>
   <tr>
-    <td colspan="8"><strong>Transaction Disclaimer</strong></td>
+    <td colspan="4"><strong>Transaction Disclaimer</strong></td>
   </tr>
   <tr>
-    <td colspan="8"><p>I hereby declare that the information furnished above is true and   correct and guarantee to indemnify the <b> <?php echo $agent; ?> </b> in the event of the third party claim or any loss   arising out of the above transaction.</p>
+    <td colspan="4"><p>I hereby declare that the information furnished above is true and   correct and guarantee to indemnify the <b> <?php echo $agent; ?> </b> in the event of the third party claim or any loss   arising out of the above transaction.माथि उल्लेख गरिएको विवरण साँचो छ । अन्यथा भएमा / अरु व्यक्तिले दाबि गरेमा मैले बुझिलिएको रकम चितवन मनी एक्सप्रेसलाई तिरी बुझाउने छु । साथै झुठो ठहरिएमा कानुन बमोजिम सहुँला बुझाउँला ।</p>
 
   
     <p>&nbsp;</p>
@@ -184,7 +175,7 @@
        
   </tr>
   <tr>
-    <td colspan="8"><strong>web: www.cmeremit.com.np Email: info@cmeremit.com Facebook: www.facebook.com/cmeremit</strong></td>
+    <td colspan="4"><strong>web: www.cmeremit.com.np Email: info@cmeremit.com Facebook: www.facebook.com/cmeremit</strong></td>
   </tr>
 </table>
         <br/>
@@ -201,102 +192,93 @@
     <?php echo anchor('view/index','Home','class="pageprint"'); ?> 
     
     <div id="customercopy" style=" float: left; font-size: 11px;">
-   <table  border="1" cellpadding="2" style="border-collapse:collapse; width: 715px;  ">
+   <table  border="1" cellpadding="1" style="border-collapse:collapse; width: 715px;  ">
   <tr>
-      <th colspan="8" scope="col"><img src="<?php echo base_url(); ?>content/images/sagarmatha.png" width="500" height="58"/><img src="<?php echo base_url(); ?>agentimg/<?php echo $img; ?>" width="150" height="50" /></th>
+      <th colspan="4" scope="col"><img src="<?php echo base_url(); ?>content/images/sagarmatha.png" width="500" height="58"/><img src="<?php echo base_url(); ?>agentimg/<?php echo $img; ?>" width="150" height="50" /></th>
   </tr>
   <tr>
-    <td colspan="8" style="text-align: center; font-size: 13px;font-family: 'Arial Black', Gadget, sans-serif;"> <strong><?php echo $baddress." ".","." "."Phone Number : ".$bnumber; ?></strong></td>
+    <td colspan="4" style="text-align: center; font-size: 13px;font-family: 'Arial Black', Gadget, sans-serif;"> <strong><?php echo $baddress." ".","." "."Phone Number : ".$bnumber; ?></strong></td>
   </tr>
   <tr>
-    <td width="130"  > <b> Reference/Code Number </b></td>
-    <td colspan="3" width="270"  ><?php echo $refcode; ?></td>
-    <td colspan="2"> <b> Authorization Code If any </b></td>
-    <td colspan="3"><?php echo $authcode; ?></td>
-     
+    <td width="130" > <b> Reference/Code Number </b></td>
+    <td width="250" ><?php echo $refcode; ?></td>
+    <td> <b> Authorization Code If any </b></td>
+    <td width="142"><?php echo $authcode; ?></td>
   </tr>
   <tr>
-    <td colspan="4"><strong>Receiver's Info</strong></td>
-    <td class="officestamp" colspan="4" rowspan="7" style="text-align:center; color: #D0D0D0;"><strong>Office Stamp</strong></td>
+    <td colspan="2"><strong>Receiver's Info</strong></td>
+    <td class="officestamp" colspan="2" rowspan="6" style="text-align:center; color: #D0D0D0;"><strong>Office Stamp</strong></td>
   </tr>
   
   <tr>
     <td> <b>Name: </b></td>
-    <td colspan="3"><?php echo $rtitle." ".$rname; ?></td>
+    <td><?php echo $rtitle." ".$rname; ?></td>
   </tr>
   <tr>
     <td> <b>Address: </b></td>
-    <td colspan="3"><?php echo $address; ?></td>
+    <td><?php echo $address; ?></td>
   </tr>
   <tr>
     <td><b>Tole : </b></td>
-    <td width="68"><?php echo $city; ?></td>
-    <td width="104"><b>Country:</b></td>
-    <td width="41">Nepal</td>
+    <td><?php echo $city; ?></td>
   </tr>
   <tr>
+    <td><b>Country:</b></td>
+    <td>Nepal</td>
+    
+  <tr>
     <td><b>Relationship with Sender:</b></td>
-    <td colspan="3"><?php echo $relation; ?></td>
+    <td><?php echo $relation; ?></td>
     
   </tr>
   <tr>
     <td><b>Contact Number:</b></td>
-    <td colspan="3"><?php echo $phone; ?></td>
+    <td><?php echo $phone; ?></td>
+    <td colspan="2"><strong>Receiver's ID Detail</strong></td>
+    
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Sender's Info</strong></td>
+    <td><strong>Type: </strong></td>
+    <td><?php echo $idtype; ?></td>
+   
+  </tr>
+  <tr>
+    <td> <b>Name:</b> </td>
+    <td><?php echo $stitle." ".$sname; ?></td>
+    <td><strong>ID Number: </strong></td>
+    <td><?php echo $idnum; ?></td>
     
     
   </tr>
   <tr>
-    <td colspan="4"><strong>Receiver's ID Detail</strong></td>
-    
-    
-   
-   
-  </tr>
-  <tr>
-       <td colspan="2"><strong>Type: </strong></td>
-    <td colspan="2"><?php echo $idtype; ?></td>
-    <td colspan="4"><strong>Sender's Info</strong></td>
-     
-    
-    
-  </tr>
-  <tr>
-      <td colspan="2"><strong>ID Number: </strong></td>
-    <td colspan="2"><?php echo $idnum; ?></td>
-    <td width="60px"> <b>Name:</b> </td>
-    <td colspan="3"><?php echo $stitle." ".$sname; ?></td>
-   
-   
-  
-   
-     
+   <td><b>Country:</b></td>
+    <td><?php echo $country; ?></td>
+    <td><strong>Issued Place:</strong></td>
+    <td><?php echo $idplace; ?></td>
    
   </tr>
  
   <tr>
-    <td colspan="2"><strong>Issued Place:</strong></td>
-    <td colspan="2"><?php echo $idplace; ?></td>
-     <td><b>Country:</b></td>
-    <td><?php echo $country; ?></td>
     <td><b>Income Source:</b></td>
     <td><?php echo $income; ?></td>
+     <td><strong>Issued Date: </strong></td>
+    <td><?php echo $iddate; ?></td>
+    
     
   </tr>
-       <tr>
-    
-     <td colspan="1"><strong>Issued Date: </strong></td>
-    <td colspan="1"><?php echo $iddate; ?></td>
-     <td colspan="1"><strong>Expiry Date: </strong></td>
-    <td colspan="1"><?php echo $idexpire; ?></td>
-     <td><strong>Amount: </strong></td>
-    <td colspan="3"> <b><?php echo $amount; ?> </b></td>
+  <tr>
+    <td><strong>Amount: </strong></td>
+    <td><?php echo $amount; ?></td>
+     <td><strong>Expiry Date: </strong></td>
+    <td><?php echo $idexpire; ?></td>
    
   </tr>
   <tr>
-    <td colspan="8"><strong>Transaction Disclaimer</strong></td>
+    <td colspan="4"><strong>Transaction Disclaimer</strong></td>
   </tr>
   <tr>
-    <td colspan="8"><p>I hereby declare that the information furnished above is true and   correct and guarantee to indemnify the <b> <?php echo $agent; ?> </b> in the event of the third party claim or any loss   arising out of the above transaction.</p>
+    <td colspan="4"><p>I hereby declare that the information furnished above is true and   correct and guarantee to indemnify the <b> <?php echo $agent; ?> </b> in the event of the third party claim or any loss   arising out of the above transaction.माथि उल्लेख गरिएको विवरण साँचो छ । अन्यथा भएमा / अरु व्यक्तिले दाबि गरेमा मैले बुझिलिएको रकम चितवन मनी एक्सप्रेसलाई तिरी बुझाउने छु । साथै झुठो ठहरिएमा कानुन बमोजिम सहुँला बुझाउँला ।</p>
 
   
     <p>&nbsp;</p>
@@ -310,7 +292,7 @@
        
   </tr>
   <tr>
-    <td colspan="8"><strong>web: www.cmeremit.com.np Email: info@cmeremit.com Facebook: www.facebook.com/cmeremit</strong></td>
+    <td colspan="4"><strong>web: www.cmeremit.com.np Email: info@cmeremit.com Facebook: www.facebook.com/cmeremit</strong></td>
   </tr>
 </table>
   

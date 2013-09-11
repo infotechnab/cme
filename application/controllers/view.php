@@ -41,7 +41,7 @@ class view extends CI_Controller {
             $this->load->library(array('form_validation', 'session'));
             //set validation rules
             $this->form_validation->set_rules('fname', 'First Name', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('mname', 'Middle Name', 'required|xss_clean');
+            //$this->form_validation->set_rules('mname', 'Middle Name', 'required|xss_clean');
             $this->form_validation->set_rules('lname', 'Last Name', 'required|xss_clean');
             $this->form_validation->set_rules('address', 'Address', 'required|xss_clean');
             $this->form_validation->set_rules('zone', 'Zone', 'required|xss_clean');
@@ -111,11 +111,11 @@ class view extends CI_Controller {
                 //
                 //=======for ctzn =====//
                           
-            if ($_FILES && $_FILES['ctznfile']['name'] !== "")
+            if ($_FILES && $_FILES['Citizenshipfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('ctznfile'))
+                 if (!$this->upload->do_upload('Citizenshipfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('ctznfile'));
+                  $data = array('error' => $this->upload->display_errors('Citizenshipfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -123,21 +123,22 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('ctznfile'));
+                     $data = array('upload_data' => $this->upload->data('Citizenshipfile'));
                
                 $ctznimage = $data['upload_data']['file_name'];
             
-                $typectzn = $this->input->post('citizenship');
-                $ctznid = $this->input->post('ctznid');
-                $ctznplace = $this->input->post('ctznplace');
-                $year = $this->input->post('ctznyear');
-                $month = $this->input->post('ctznmonth');
-                $day = $this->input->post('ctznday');
+                $typectzn = $this->input->post('Citizenship');
+                $ctznid = $this->input->post('Citizenship_id');
+                $ctznplace = $this->input->post('Citizenship_place');
+                $year = $this->input->post('Citizenship_year');
+                $month = $this->input->post('Citizenship_month');
+               
+                $day = $this->input->post('Citizenship_day');
                 $ctzndate = $year."-".$month."-".$day;
-                $eyear = $this->input->post('ctznyeare');
-                $emonth = $this->input->post('ctznmonthe');
-                $eday = $this->input->post('ctzndaye');
-                $ectzndate = $eyear."-".$emonth."-".$eday;
+               // $eyear = $this->input->post('ctznyeare');
+               // $emonth = $this->input->post('ctznmonthe');
+               // $eday = $this->input->post('ctzndaye');
+               // $ectzndate = $eyear."-".$emonth."-".$eday;
                
                  }
                  }
@@ -145,27 +146,27 @@ class view extends CI_Controller {
              {
                  
                 $ctznimage = " ";
-                $typectzn = $this->input->post('citizenship');
-                $ctznid = $this->input->post('ctznid');
-                $ctznplace = $this->input->post('ctznplace');
-                $year = $this->input->post('ctznyear');
-                $month = $this->input->post('ctznmonth');
-                $day = $this->input->post('ctznday');
+                $typectzn = $this->input->post('Citizenship');
+                $ctznid = $this->input->post('Citizenship_id');
+                $ctznplace = $this->input->post('Citizenship_place');
+                $year = $this->input->post('Citizenship_year');
+                $month = $this->input->post('Citizenship_month');
+                $day = $this->input->post('Citizenship_day');
                 $ctzndate = $year."-".$month."-".$day;
-                 $eyear = $this->input->post('ctznyeare');
-                $emonth = $this->input->post('ctznmonthe');
-                $eday = $this->input->post('ctzndaye');
-                $ectzndate = $eyear."-".$emonth."-".$eday;
+               //  $eyear = $this->input->post('ctznyeare');
+               // $emonth = $this->input->post('ctznmonthe');
+              //  $eday = $this->input->post('ctzndaye');
+               // $ectzndate = $eyear."-".$emonth."-".$eday;
              }
                 
                 
                 //=====for license =======//
              
-              if ($_FILES && $_FILES['lfile']['name'] !== "")
+              if ($_FILES && $_FILES['Licencesfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('lfile'))
+                 if (!$this->upload->do_upload('Licencesfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('lfile'));
+                  $data = array('error' => $this->upload->display_errors('Licencesfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -173,20 +174,21 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('lfile'));
+                     $data = array('upload_data' => $this->upload->data('Licencesfile'));
                
                 $limage = $data['upload_data']['file_name'];
             
-                $typelicense = $this->input->post('license');
-                $lid = $this->input->post('lid');
-                $lplace = $this->input->post('lplace');
-               $lyear = $this->input->post('lyear');
-                $lmonth = $this->input->post('lmonth');
-                $lday = $this->input->post('lday');
+                $typelicense = $this->input->post('Licences');
+                $lid = $this->input->post('Licences_id');
+                $lplace = $this->input->post('Licences_place');
+               $lyear = $this->input->post('Licences_year');
+                $lmonth = $this->input->post('Licences_month');
+                $lday = $this->input->post('Licences_day');
                 $ldate = $lyear."-".$lmonth."-".$lday;
-                $elyear = $this->input->post('lyeare');
-                $elmonth = $this->input->post('lmonthe');
-                $elday = $this->input->post('ldaye');
+                
+                $elyear = $this->input->post('Licences_yeare');
+                $elmonth = $this->input->post('Licences_monthe');
+                $elday = $this->input->post('Licences_daye');
                 $eldate = $elyear."-".$elmonth."-".$elday;
                 
                  }
@@ -195,27 +197,27 @@ class view extends CI_Controller {
              {
                  
                 $limage = " ";
-                $typelicense = $this->input->post('license');
-                $lid = $this->input->post('lid');
-                $lplace = $this->input->post('lplace');
-                $lyear = $this->input->post('lyear');
-                $lmonth = $this->input->post('lmonth');
-                $lday = $this->input->post('lday');
+                $typelicense = $this->input->post('Licences');
+                $lid = $this->input->post('Licences_id');
+                $lplace = $this->input->post('Licences_place');
+               $lyear = $this->input->post('Licences_year');
+                $lmonth = $this->input->post('Licences_month');
+                $lday = $this->input->post('Licences_day');
                 $ldate = $lyear."-".$lmonth."-".$lday;
-                 $elyear = $this->input->post('lyeare');
-                $elmonth = $this->input->post('lmonthe');
-                $elday = $this->input->post('ldaye');
+                $elyear = $this->input->post('Licences_yeare');
+                $elmonth = $this->input->post('Licences_monthe');
+                $elday = $this->input->post('Licences_daye');
                 $eldate = $elyear."-".$elmonth."-".$elday;
              }            
                
                 
                 //========for passport ====//
                 
-                 if ($_FILES && $_FILES['pfile']['name'] !== "")
+                 if ($_FILES && $_FILES['Passportfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('pfile'))
+                 if (!$this->upload->do_upload('Passportfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('pfile'));
+                  $data = array('error' => $this->upload->display_errors('Passportfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -223,20 +225,20 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('pfile'));
+                     $data = array('upload_data' => $this->upload->data('Passportfile'));
                
                 $pimage = $data['upload_data']['file_name'];
             
-                 $typepassport = $this->input->post('passport');
-                $pid = $this->input->post('pid');
-                $pplace = $this->input->post('pplace');
-                $pyear = $this->input->post('pyear');
-                $pmonth = $this->input->post('pmonth');
-                $pday = $this->input->post('pday');
+                 $typepassport = $this->input->post('Passport');
+                $pid = $this->input->post('Passport_id');
+                $pplace = $this->input->post('Passport_place');
+                $pyear = $this->input->post('Passport_year');
+                $pmonth = $this->input->post('Passport_month');
+                $pday = $this->input->post('Passport_day');
                 $pdate = $pyear."-".$pmonth."-".$pday;
-                $epyear = $this->input->post('pyeare');
-                $epmonth = $this->input->post('pmonthe');
-                $epday = $this->input->post('pdaye');
+                $epyear = $this->input->post('Passport_yeare');
+                $epmonth = $this->input->post('Passport_monthe');
+                $epday = $this->input->post('Passport_daye');
                 $epdate = $epyear."-".$epmonth."-".$epday;
                 
                  }
@@ -245,27 +247,27 @@ class view extends CI_Controller {
              {
                  
                 $pimage = " ";
-                $typepassport = $this->input->post('passport');
-                $pid = $this->input->post('pid');
-                $pplace = $this->input->post('pplace');
-                $pyear = $this->input->post('pyear');
-                $pmonth = $this->input->post('pmonth');
-                $pday = $this->input->post('pday');
+                $typepassport = $this->input->post('Passport');
+                $pid = $this->input->post('Passport_id');
+                $pplace = $this->input->post('Passport_place');
+                $pyear = $this->input->post('Passport_year');
+                $pmonth = $this->input->post('Passport_month');
+                $pday = $this->input->post('Passport_day');
                 $pdate = $pyear."-".$pmonth."-".$pday;
-                 $epyear = $this->input->post('pyeare');
-                $epmonth = $this->input->post('pmonthe');
-                $epday = $this->input->post('pdaye');
+                $epyear = $this->input->post('Passport_yeare');
+                $epmonth = $this->input->post('Passport_monthe');
+                $epday = $this->input->post('Passport_daye');
                 $epdate = $epyear."-".$epmonth."-".$epday;
              }
                       
                 
                 // =====for others =======//
                 
-                 if ($_FILES && $_FILES['ofile']['name'] !== "")
+                 if ($_FILES && $_FILES['Otherfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('ofile'))
+                 if (!$this->upload->do_upload('Otherfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('ofile'));
+                  $data = array('error' => $this->upload->display_errors('Otherfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -273,20 +275,20 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('ofile'));
+                     $data = array('upload_data' => $this->upload->data('Otherfile'));
                
                 $oimage = $data['upload_data']['file_name'];
             
-                $typeother = $this->input->post('other');
-                $oid = $this->input->post('oid');
-                $oplace = $this->input->post('oplace');
-                $oyear = $this->input->post('oyear');
-                $omonth = $this->input->post('omonth');
-                $oday = $this->input->post('oday');
+                $typeother = $this->input->post('Other');
+                $oid = $this->input->post('Other_id');
+                $oplace = $this->input->post('Other_place');
+                $oyear = $this->input->post('Other_year');
+                $omonth = $this->input->post('Other_month');
+                $oday = $this->input->post('Other_day');
                 $odate = $oyear."-".$omonth."-".$oday;
-                $eoyear = $this->input->post('oyeare');
-                $eomonth = $this->input->post('omonthe');
-                $eoday = $this->input->post('odaye');
+                $eoyear = $this->input->post('Other_yeare');
+                $eomonth = $this->input->post('Other_monthe');
+                $eoday = $this->input->post('Other_daye');
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
                
                  }
@@ -295,21 +297,21 @@ class view extends CI_Controller {
              {
                  
                 $oimage = " ";
-                 $typeother = $this->input->post('other');
-                $oid = $this->input->post('oid');
-                $oplace = $this->input->post('oplace');
-                $oyear = $this->input->post('oyear');
-                $omonth = $this->input->post('omonth');
-                $oday = $this->input->post('oday');
+                 $typeother = $this->input->post('Other');
+                $oid = $this->input->post('Other_id');
+                $oplace = $this->input->post('Other_place');
+                $oyear = $this->input->post('Other_year');
+                $omonth = $this->input->post('Other_month');
+                $oday = $this->input->post('Other_day');
                 $odate = $oyear."-".$omonth."-".$oday;
-                $eoyear = $this->input->post('oyeare');
-                $eomonth = $this->input->post('omonthe');
-                $eoday = $this->input->post('odaye');
+                $eoyear = $this->input->post('Other_yeare');
+                $eomonth = $this->input->post('Other_monthe');
+                $eoday = $this->input->post('Other_daye');
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
              }
                 
                 $this->dbmodel->add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid);
-                $this->dbmodel->add_id_ctzn($cid,$typectzn,$ctznid,$ctznplace,$ctzndate,$ctznimage,$ectzndate);
+                $this->dbmodel->add_id_ctzn($cid,$typectzn,$ctznid,$ctznplace,$ctzndate,$ctznimage);
                  $this->dbmodel->add_id_license($cid,$typelicense,$lid,$lplace,$ldate,$limage,$eldate);
                  $this->dbmodel->add_id_passport($cid,$typepassport,$pid,$pplace,$pdate,$pimage,$epdate);
                  $this->dbmodel->add_id_other($cid,$typeother,$oid,$oplace,$odate,$oimage,$eodate);
@@ -368,11 +370,11 @@ class view extends CI_Controller {
                 
                  //===========customer id detail ================//
                 //
-                if ($_FILES && $_FILES['ctznfile']['name'] !== "")
+               if ($_FILES && $_FILES['Citizenshipfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('ctznfile'))
+                 if (!$this->upload->do_upload('Citizenshipfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('ctznfile'));
+                  $data = array('error' => $this->upload->display_errors('Citizenshipfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -380,46 +382,48 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('ctznfile'));
+                     $data = array('upload_data' => $this->upload->data('Citizenshipfile'));
                
                 $ctznimage = $data['upload_data']['file_name'];
             
-                $typectzn = $this->input->post('citizenship');
-                $ctznid = $this->input->post('ctznid');
-                $ctznplace = $this->input->post('ctznplace');
-                $year = $this->input->post('ctznyear');
-                $month = $this->input->post('ctznmonth');
-                $day = $this->input->post('ctznday');
+                $typectzn = $this->input->post('Citizenship');
+                $ctznid = $this->input->post('Citizenship_id');
+                $ctznplace = $this->input->post('Citizenship_place');
+                $year = $this->input->post('Citizenship_year');
+                $month = $this->input->post('Citizenshi_month');
+                $day = $this->input->post('Citizenship_day');
                 $ctzndate = $year."-".$month."-".$day;
-                 $eyear = $this->input->post('ctznyeare');
-                $emonth = $this->input->post('ctznmonthe');
-                $eday = $this->input->post('ctzndaye');
-                $ectzndate = $eyear."-".$emonth."-".$eday;
+               // $eyear = $this->input->post('ctznyeare');
+               // $emonth = $this->input->post('ctznmonthe');
+               // $eday = $this->input->post('ctzndaye');
+               // $ectzndate = $eyear."-".$emonth."-".$eday;
+               
                  }
                  }
              else
              {
                  
                 $ctznimage = " ";
-                $typectzn = $this->input->post('citizenship');
-                $ctznid = $this->input->post('ctznid');
-                $ctznplace = $this->input->post('ctznplace');
-                $year = $this->input->post('ctznyear');
-                $month = $this->input->post('ctznmonth');
-                $day = $this->input->post('ctznday');
+                $typectzn = $this->input->post('Citizenship');
+                $ctznid = $this->input->post('Citizenship_id');
+                $ctznplace = $this->input->post('Citizenship_place');
+                $year = $this->input->post('Citizenship_year');
+                $month = $this->input->post('Citizenship_month');
+                
+                $day = $this->input->post('Citizenship_day');
                 $ctzndate = $year."-".$month."-".$day;
-                 $eyear = $this->input->post('ctznyeare');
-                $emonth = $this->input->post('ctznmonthe');
-                $eday = $this->input->post('ctzndaye');
-                $ectzndate = $eyear."-".$emonth."-".$eday;
+               //  $eyear = $this->input->post('ctznyeare');
+               // $emonth = $this->input->post('ctznmonthe');
+              //  $eday = $this->input->post('ctzndaye');
+               // $ectzndate = $eyear."-".$emonth."-".$eday;
              }
                 
                 //=====for license =======//
-              if ($_FILES && $_FILES['lfile']['name'] !== "")
+              if ($_FILES && $_FILES['Licencesfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('lfile'))
+                 if (!$this->upload->do_upload('Licencesfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('lfile'));
+                  $data = array('error' => $this->upload->display_errors('Licencesfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -427,47 +431,48 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('lfile'));
+                     $data = array('upload_data' => $this->upload->data('Licencesfile'));
                
                 $limage = $data['upload_data']['file_name'];
             
-                $typelicense = $this->input->post('license');
-                $lid = $this->input->post('lid');
-                $lplace = $this->input->post('lplace');
-                $lyear = $this->input->post('lyear');
-                $lmonth = $this->input->post('lmonth');
-                $lday = $this->input->post('lday');
+                $typelicense = $this->input->post('Licences');
+                $lid = $this->input->post('Licences_id');
+                $lplace = $this->input->post('Licences_place');
+               $lyear = $this->input->post('Licences_year');
+                $lmonth = $this->input->post('Licences_month');
+                $lday = $this->input->post('Licences_day');
                 $ldate = $lyear."-".$lmonth."-".$lday;
-                $elyear = $this->input->post('lyeare');
-                $elmonth = $this->input->post('lmonthe');
-                $elday = $this->input->post('ldaye');
+                $elyear = $this->input->post('Licences_yeare');
+                $elmonth = $this->input->post('Licences_monthe');
+                $elday = $this->input->post('Licences_daye');
                 $eldate = $elyear."-".$elmonth."-".$elday;
+                
                  }
                  }
              else
              {
                  
                 $limage = " ";
-                $typelicense = $this->input->post('license');
-                $lid = $this->input->post('lid');
-                $lplace = $this->input->post('lplace');
-                $lyear = $this->input->post('lyear');
-                $lmonth = $this->input->post('lmonth');
-                $lday = $this->input->post('lday');
+                $typelicense = $this->input->post('Licences');
+                $lid = $this->input->post('Licences_id');
+                $lplace = $this->input->post('Licences_place');
+               $lyear = $this->input->post('Licences_year');
+                $lmonth = $this->input->post('Licences_month');
+                $lday = $this->input->post('Licences_day');
                 $ldate = $lyear."-".$lmonth."-".$lday;
-                $elyear = $this->input->post('lyeare');
-                $elmonth = $this->input->post('lmonthe');
-                $elday = $this->input->post('ldaye');
+                $elyear = $this->input->post('Licences_yeare');
+                $elmonth = $this->input->post('Licences_monthe');
+                $elday = $this->input->post('Licences_daye');
                 $eldate = $elyear."-".$elmonth."-".$elday;
              }
                 
                 //========for passport ====//
                 
-                 if ($_FILES && $_FILES['pfile']['name'] !== "")
+                 if ($_FILES && $_FILES['Passportfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('pfile'))
+                 if (!$this->upload->do_upload('Passportfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('pfile'));
+                  $data = array('error' => $this->upload->display_errors('Passportfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -475,47 +480,49 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('pfile'));
+                     $data = array('upload_data' => $this->upload->data('Passportfile'));
                
                 $pimage = $data['upload_data']['file_name'];
             
-                $typepassport = $this->input->post('passport');
-                $pid = $this->input->post('pid');
-                $pplace = $this->input->post('pplace');
-                $pyear = $this->input->post('pyear');
-                $pmonth = $this->input->post('pmonth');
-                $pday = $this->input->post('pday');
+                 $typepassport = $this->input->post('Passport');
+                $pid = $this->input->post('Passport_id');
+                $pplace = $this->input->post('Passport_place');
+                $pyear = $this->input->post('Passport_year');
+                $pmonth = $this->input->post('Passport_month');
+                $pday = $this->input->post('Passport_day');
                 $pdate = $pyear."-".$pmonth."-".$pday;
-                $epyear = $this->input->post('pyeare');
-                $epmonth = $this->input->post('pmonthe');
-                $epday = $this->input->post('pdaye');
+                $epyear = $this->input->post('Passport_yeare');
+                $epmonth = $this->input->post('Passport_monthe');
+                $epday = $this->input->post('Passport_daye');
                 $epdate = $epyear."-".$epmonth."-".$epday;
+                
                  }
                  }
              else
              {
                  
                 $pimage = " ";
-                $typepassport = $this->input->post('passport');
-                $pid = $this->input->post('pid');
-                $pplace = $this->input->post('pplace');
-                $pyear = $this->input->post('pyear');
-                $pmonth = $this->input->post('pmonth');
-                $pday = $this->input->post('pday');
+                $typepassport = $this->input->post('Passport');
+                $pid = $this->input->post('Passport_id');
+                $pplace = $this->input->post('Passport_place');
+                $pyear = $this->input->post('Passport_year');
+                $pmonth = $this->input->post('Passport_month');
+                $pday = $this->input->post('Passport_day');
                 $pdate = $pyear."-".$pmonth."-".$pday;
-                $epyear = $this->input->post('pyeare');
-                $epmonth = $this->input->post('pmonthe');
-                $epday = $this->input->post('pdaye');
+                $epyear = $this->input->post('Passport_yeare');
+                $epmonth = $this->input->post('Passport_monthe');
+                $epday = $this->input->post('Passport_daye');
                 $epdate = $epyear."-".$epmonth."-".$epday;
              }
+                      
                 
                 // =====for others =======//
                 
-                 if ($_FILES && $_FILES['ofile']['name'] !== "")
+                 if ($_FILES && $_FILES['Otherfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('ofile'))
+                 if (!$this->upload->do_upload('Otherfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('ofile'));
+                  $data = array('error' => $this->upload->display_errors('Otherfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -523,41 +530,42 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('ofile'));
+                     $data = array('upload_data' => $this->upload->data('Otherfile'));
                
                 $oimage = $data['upload_data']['file_name'];
             
-                $typeother = $this->input->post('other');
-                $oid = $this->input->post('oid');
-                $oplace = $this->input->post('oplace');
-                $oyear = $this->input->post('oyear');
-                $omonth = $this->input->post('omonth');
-                $oday = $this->input->post('oday');
+                $typeother = $this->input->post('Other');
+                $oid = $this->input->post('Other_id');
+                $oplace = $this->input->post('Other_place');
+                $oyear = $this->input->post('Other_year');
+                $omonth = $this->input->post('Other_month');
+                $oday = $this->input->post('Other_day');
                 $odate = $oyear."-".$omonth."-".$oday;
-                $eoyear = $this->input->post('oyeare');
-                $eomonth = $this->input->post('omonthe');
-                $eoday = $this->input->post('odaye');
+                $eoyear = $this->input->post('Other_yeare');
+                $eomonth = $this->input->post('Other_monthe');
+                $eoday = $this->input->post('Other_daye');
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
+               
                  }
                  }
              else
              {
                  
                 $oimage = " ";
-                $typeother = $this->input->post('other');
-                $oid = $this->input->post('oid');
-                $oplace = $this->input->post('oplace');
-                $oyear = $this->input->post('oyear');
-                $omonth = $this->input->post('omonth');
-                $oday = $this->input->post('oday');
+                 $typeother = $this->input->post('Other');
+                $oid = $this->input->post('Other_id');
+                $oplace = $this->input->post('Other_place');
+                $oyear = $this->input->post('Other_year');
+                $omonth = $this->input->post('Other_month');
+                $oday = $this->input->post('Other_day');
                 $odate = $oyear."-".$omonth."-".$oday;
-                $eoyear = $this->input->post('oyeare');
-                $eomonth = $this->input->post('omonthe');
-                $eoday = $this->input->post('odaye');
+                $eoyear = $this->input->post('Other_yeare');
+                $eomonth = $this->input->post('Other_monthe');
+                $eoday = $this->input->post('Other_daye');
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
              }
                 $this->dbmodel->add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid);
-                $this->dbmodel->add_id_ctzn($cid,$typectzn,$ctznid,$ctznplace,$ctzndate,$ctznimage,$ectzndate);
+                $this->dbmodel->add_id_ctzn($cid,$typectzn,$ctznid,$ctznplace,$ctzndate,$ctznimage);
                  $this->dbmodel->add_id_license($cid,$typelicense,$lid,$lplace,$ldate,$limage,$eldate);
                  $this->dbmodel->add_id_passport($cid,$typepassport,$pid,$pplace,$pdate,$pimage,$epdate);
                  $this->dbmodel->add_id_other($cid,$typeother,$oid,$oplace,$odate,$oimage,$eodate);
@@ -611,7 +619,7 @@ class view extends CI_Controller {
             $this->load->library(array('form_validation', 'session'));
             //set validation rules
             $this->form_validation->set_rules('fname', 'First Name', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('mname', 'Middle Name', 'required|xss_clean');
+           // $this->form_validation->set_rules('mname', 'Middle Name', 'required|xss_clean');
             $this->form_validation->set_rules('lname', 'Last Name', 'required|xss_clean');
             $this->form_validation->set_rules('address', 'Address', 'required|xss_clean');
             $this->form_validation->set_rules('zone', 'Zone', 'required|xss_clean');
@@ -665,11 +673,11 @@ class view extends CI_Controller {
                 //
                 //=======for ctzn =====//
                           
-            if ($_FILES && $_FILES['ctznfile']['name'] !== "")
+            if ($_FILES && $_FILES['Citizenshipfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('ctznfile'))
+                 if (!$this->upload->do_upload('Citizenshipfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('ctznfile'));
+                  $data = array('error' => $this->upload->display_errors('Citizenshipfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -677,49 +685,50 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('ctznfile'));
+                     $data = array('upload_data' => $this->upload->data('Citizenshipfile'));
                
                 $ctznimage = $data['upload_data']['file_name'];
             
-                $typectzn = $this->input->post('iek');
-                $ctznid = $this->input->post('ida');
-                $ctznplace = $this->input->post('ide');
-                $year = $this->input->post('idi');
-                $month = $this->input->post('idj');
-                $day = $this->input->post('idk');
+                $typectzn = $this->input->post('Citizenship');
+                $ctznid = $this->input->post('Citizenship_id');
+                $ctznplace = $this->input->post('Citizenship_place');
+                $year = $this->input->post('Citizenship_year');
+                $month = $this->input->post('Citizenship_month');
+               
+                $day = $this->input->post('Citizenship_day');
                 $ctzndate = $year."-".$month."-".$day;
-                $eyear = $this->input->post('idu');
-                $emonth = $this->input->post('idv');
-                $eday = $this->input->post('idw');
-                $ectzndate = $eyear."-".$emonth."-".$eday;
+               // $eyear = $this->input->post('ctznyeare');
+               // $emonth = $this->input->post('ctznmonthe');
+               // $eday = $this->input->post('ctzndaye');
+               // $ectzndate = $eyear."-".$emonth."-".$eday;
                
                  }
                  }
              else
              {
                  
-                $ctznimage = $this->input->post('ieg');
-                $typectzn = $this->input->post('iek');
-                $ctznid = $this->input->post('ida');
-                $ctznplace = $this->input->post('ide');
-                $year = $this->input->post('idi');
-                $month = $this->input->post('idj');
-                $day = $this->input->post('idk');
+                $ctznimage = $this->input->post('Citizenshipimage');
+               $typectzn = $this->input->post('Citizenship');
+                $ctznid = $this->input->post('Citizenship_id');
+                $ctznplace = $this->input->post('Citizenship_place');
+                $year = $this->input->post('Citizenship_year');
+                $month = $this->input->post('Citizenship_month');
+                $day = $this->input->post('Citizenship_day');
                 $ctzndate = $year."-".$month."-".$day;
-                $eyear = $this->input->post('idu');
-                $emonth = $this->input->post('idv');
-                $eday = $this->input->post('idw');
-                $ectzndate = $eyear."-".$emonth."-".$eday;
+               //  $eyear = $this->input->post('ctznyeare');
+               // $emonth = $this->input->post('ctznmonthe');
+              //  $eday = $this->input->post('ctzndaye');
+               // $ectzndate = $eyear."-".$emonth."-".$eday;
              }
                 
                 
                 //=====for license =======//
              
-              if ($_FILES && $_FILES['lfile']['name'] !== "")
+              if ($_FILES && $_FILES['Licencesfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('lfile'))
+                 if (!$this->upload->do_upload('Licencesfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('lfile'));
+                  $data = array('error' => $this->upload->display_errors('Licencesfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -727,20 +736,21 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('lfile'));
+                     $data = array('upload_data' => $this->upload->data('Licencesfile'));
                
                 $limage = $data['upload_data']['file_name'];
             
-                $typelicense = $this->input->post('iel');
-                $lid = $this->input->post('idb');
-                $lplace = $this->input->post('idf');
-               $lyear = $this->input->post('idl');
-                $lmonth = $this->input->post('idm');
-                $lday = $this->input->post('idn');
+                $typelicense = $this->input->post('Licences');
+                $lid = $this->input->post('Licences_id');
+                $lplace = $this->input->post('Licences_place');
+               $lyear = $this->input->post('Licences_year');
+                $lmonth = $this->input->post('Licences_month');
+                $lday = $this->input->post('Licences_day');
                 $ldate = $lyear."-".$lmonth."-".$lday;
-                $elyear = $this->input->post('idx');
-                $elmonth = $this->input->post('idy');
-                $elday = $this->input->post('idz');
+                
+                $elyear = $this->input->post('Licences_yeare');
+                $elmonth = $this->input->post('Licences_monthe');
+                $elday = $this->input->post('Licences_daye');
                 $eldate = $elyear."-".$elmonth."-".$elday;
                 
                  }
@@ -748,28 +758,28 @@ class view extends CI_Controller {
              else
              {
                  
-                $limage = $this->input->post('ieh');
-                $typelicense = $this->input->post('iel');
-               $lid = $this->input->post('idb');
-                $lplace = $this->input->post('idf');
-               $lyear = $this->input->post('idl');
-                $lmonth = $this->input->post('idm');
-                $lday = $this->input->post('idn');
+                $limage = $this->input->post('Licencesimage');
+                $typelicense = $this->input->post('Licences');
+                $lid = $this->input->post('Licences_id');
+                $lplace = $this->input->post('Licences_place');
+               $lyear = $this->input->post('Licences_year');
+                $lmonth = $this->input->post('Licences_month');
+                $lday = $this->input->post('Licences_day');
                 $ldate = $lyear."-".$lmonth."-".$lday;
-                $elyear = $this->input->post('idx');
-                $elmonth = $this->input->post('idy');
-                $elday = $this->input->post('idz');
+                $elyear = $this->input->post('Licences_yeare');
+                $elmonth = $this->input->post('Licences_monthe');
+                $elday = $this->input->post('Licences_daye');
                 $eldate = $elyear."-".$elmonth."-".$elday;
              }            
                
                 
                 //========for passport ====//
                 
-                 if ($_FILES && $_FILES['pfile']['name'] !== "")
+                 if ($_FILES && $_FILES['Passportfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('pfile'))
+                 if (!$this->upload->do_upload('Passportfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('pfile'));
+                  $data = array('error' => $this->upload->display_errors('Passportfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -777,20 +787,20 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('pfile'));
+                     $data = array('upload_data' => $this->upload->data('Passportfile'));
                
                 $pimage = $data['upload_data']['file_name'];
             
-                $typepassport = $this->input->post('iem');
-                $pid = $this->input->post('idc');
-                $pplace = $this->input->post('idg');
-                $pyear = $this->input->post('ido');
-                $pmonth = $this->input->post('idp');
-                $pday = $this->input->post('idq');
+                 $typepassport = $this->input->post('Passport');
+                $pid = $this->input->post('Passport_id');
+                $pplace = $this->input->post('Passport_place');
+                $pyear = $this->input->post('Passport_year');
+                $pmonth = $this->input->post('Passport_month');
+                $pday = $this->input->post('Passport_day');
                 $pdate = $pyear."-".$pmonth."-".$pday;
-                $epyear = $this->input->post('iea');
-                $epmonth = $this->input->post('ieb');
-                $epday = $this->input->post('iec');
+                $epyear = $this->input->post('Passport_yeare');
+                $epmonth = $this->input->post('Passport_monthe');
+                $epday = $this->input->post('Passport_daye');
                 $epdate = $epyear."-".$epmonth."-".$epday;
                 
                  }
@@ -798,28 +808,28 @@ class view extends CI_Controller {
              else
              {
                  
-                $pimage = $this->input->post('iei');
-                $typepassport = $this->input->post('iem');
-                $pid = $this->input->post('idc');
-                $pplace = $this->input->post('idg');
-                $pyear = $this->input->post('ido');
-                $pmonth = $this->input->post('idp');
-                $pday = $this->input->post('idq');
+                $pimage = $this->input->post('Passportimage');
+                $typepassport = $this->input->post('Passport');
+                $pid = $this->input->post('Passport_id');
+                $pplace = $this->input->post('Passport_place');
+                $pyear = $this->input->post('Passport_year');
+                $pmonth = $this->input->post('Passport_month');
+                $pday = $this->input->post('Passport_day');
                 $pdate = $pyear."-".$pmonth."-".$pday;
-                $epyear = $this->input->post('iea');
-                $epmonth = $this->input->post('ieb');
-                $epday = $this->input->post('iec');
+                $epyear = $this->input->post('Passport_yeare');
+                $epmonth = $this->input->post('Passport_monthe');
+                $epday = $this->input->post('Passport_daye');
                 $epdate = $epyear."-".$epmonth."-".$epday;
              }
                       
                 
                 // =====for others =======//
                 
-                 if ($_FILES && $_FILES['ofile']['name'] !== "")
+                 if ($_FILES && $_FILES['Otherfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('ofile'))
+                 if (!$this->upload->do_upload('Otherfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('ofile'));
+                  $data = array('error' => $this->upload->display_errors('Otherfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -827,20 +837,20 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('ofile'));
+                     $data = array('upload_data' => $this->upload->data('Otherfile'));
                
                 $oimage = $data['upload_data']['file_name'];
             
-                $typeother = $this->input->post('ien');
-                $oid = $this->input->post('idd');
-                $oplace = $this->input->post('idh');
-                $oyear = $this->input->post('idr');
-                $omonth = $this->input->post('ids');
-                $oday = $this->input->post('idt');
+                $typeother = $this->input->post('Other');
+                $oid = $this->input->post('Other_id');
+                $oplace = $this->input->post('Other_place');
+                $oyear = $this->input->post('Other_year');
+                $omonth = $this->input->post('Other_month');
+                $oday = $this->input->post('Other_day');
                 $odate = $oyear."-".$omonth."-".$oday;
-                $eoyear = $this->input->post('ied');
-                $eomonth = $this->input->post('iee');
-                $eoday = $this->input->post('ief');
+                $eoyear = $this->input->post('Other_yeare');
+                $eomonth = $this->input->post('Other_monthe');
+                $eoday = $this->input->post('Other_daye');
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
                
                  }
@@ -848,22 +858,22 @@ class view extends CI_Controller {
              else
              {
                  
-                $oimage = $this->input->post('iej');
-                $typeother = $this->input->post('ien');
-                $oid = $this->input->post('idd');
-                $oplace = $this->input->post('idh');
-                $oyear = $this->input->post('idr');
-                $omonth = $this->input->post('ids');
-                $oday = $this->input->post('idt');
+                $oimage = $this->input->post('Otherimage');
+                $oid = $this->input->post('Other_id');
+                $oplace = $this->input->post('Other_place');
+                $oyear = $this->input->post('Other_year');
+                $omonth = $this->input->post('Other_month');
+                $oday = $this->input->post('Other_day');
                 $odate = $oyear."-".$omonth."-".$oday;
-                $eoyear = $this->input->post('ied');
-                $eomonth = $this->input->post('iee');
-                $eoday = $this->input->post('ief');
+                $eoyear = $this->input->post('Other_yeare');
+                $eomonth = $this->input->post('Other_monthe');
+                $eoday = $this->input->post('Other_daye');
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
+             
              }
                 
                 $this->dbmodel->update_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$mname);
-                $this->dbmodel->update_id_ctzn($cid,$ctznid,$ctznplace,$ctzndate,$ctznimage,$ectzndate,$typectzn);
+                $this->dbmodel->update_id_ctzn($cid,$ctznid,$ctznplace,$ctzndate,$ctznimage,$typectzn);
                  $this->dbmodel->update_id_license($cid,$lid,$lplace,$ldate,$limage,$eldate,$typelicense);
                  $this->dbmodel->update_id_passport($cid,$pid,$pplace,$pdate,$pimage,$epdate,$typepassport);
                  $this->dbmodel->update_id_other($cid,$oid,$oplace,$odate,$oimage,$eodate,$typeother);
@@ -903,12 +913,13 @@ class view extends CI_Controller {
                 
                 
                  //===========customer id detail ================//
-                //
-                if ($_FILES && $_FILES['ctznfile']['name'] !== "")
+                //=======for ctzn =====//
+                          
+            if ($_FILES && $_FILES['Citizenshipfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('ctznfile'))
+                 if (!$this->upload->do_upload('Citizenshipfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('ctznfile'));
+                  $data = array('error' => $this->upload->display_errors('Citizenshipfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -916,46 +927,50 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('ctznfile'));
+                     $data = array('upload_data' => $this->upload->data('Citizenshipfile'));
                
                 $ctznimage = $data['upload_data']['file_name'];
             
-               $typectzn = $this->input->post('iek');
-                $ctznid = $this->input->post('ida');
-                $ctznplace = $this->input->post('ide');
-                $year = $this->input->post('idi');
-                $month = $this->input->post('idj');
-                $day = $this->input->post('idk');
+                $typectzn = $this->input->post('Citizenship');
+                $ctznid = $this->input->post('Citizenship_id');
+                $ctznplace = $this->input->post('Citizenship_place');
+                $year = $this->input->post('Citizenship_year');
+                $month = $this->input->post('Citizenship_month');
+               
+                $day = $this->input->post('Citizenship_day');
                 $ctzndate = $year."-".$month."-".$day;
-                $eyear = $this->input->post('idu');
-                $emonth = $this->input->post('idv');
-                $eday = $this->input->post('idw');
-                $ectzndate = $eyear."-".$emonth."-".$eday;
+               // $eyear = $this->input->post('ctznyeare');
+               // $emonth = $this->input->post('ctznmonthe');
+               // $eday = $this->input->post('ctzndaye');
+               // $ectzndate = $eyear."-".$emonth."-".$eday;
+               
                  }
                  }
              else
              {
                  
-                $ctznimage = $this->input->post('ieg');
-               $typectzn = $this->input->post('iek');
-                $ctznid = $this->input->post('ida');
-                $ctznplace = $this->input->post('ide');
-                $year = $this->input->post('idi');
-                $month = $this->input->post('idj');
-                $day = $this->input->post('idk');
+                $ctznimage = $this->input->post('Citizenshipimage');
+               $typectzn = $this->input->post('Citizenship');
+                $ctznid = $this->input->post('Citizenship_id');
+                $ctznplace = $this->input->post('Citizenship_place');
+                $year = $this->input->post('Citizenship_year');
+                $month = $this->input->post('Citizenship_month');
+                $day = $this->input->post('Citizenship_day');
                 $ctzndate = $year."-".$month."-".$day;
-                $eyear = $this->input->post('idu');
-                $emonth = $this->input->post('idv');
-                $eday = $this->input->post('idw');
-                $ectzndate = $eyear."-".$emonth."-".$eday;
+               //  $eyear = $this->input->post('ctznyeare');
+               // $emonth = $this->input->post('ctznmonthe');
+              //  $eday = $this->input->post('ctzndaye');
+               // $ectzndate = $eyear."-".$emonth."-".$eday;
              }
                 
+                
                 //=====for license =======//
-              if ($_FILES && $_FILES['lfile']['name'] !== "")
+             
+              if ($_FILES && $_FILES['Licencesfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('lfile'))
+                 if (!$this->upload->do_upload('Licencesfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('lfile'));
+                  $data = array('error' => $this->upload->display_errors('Licencesfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -963,47 +978,50 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('lfile'));
+                     $data = array('upload_data' => $this->upload->data('Licencesfile'));
                
                 $limage = $data['upload_data']['file_name'];
             
-               $typelicense = $this->input->post('iel');
-                 $lid = $this->input->post('idb');
-                $lplace = $this->input->post('idf');
-               $lyear = $this->input->post('idl');
-                $lmonth = $this->input->post('idm');
-                $lday = $this->input->post('idn');
+                $typelicense = $this->input->post('Licences');
+                $lid = $this->input->post('Licences_id');
+                $lplace = $this->input->post('Licences_place');
+               $lyear = $this->input->post('Licences_year');
+                $lmonth = $this->input->post('Licences_month');
+                $lday = $this->input->post('Licences_day');
                 $ldate = $lyear."-".$lmonth."-".$lday;
-                $elyear = $this->input->post('idx');
-                $elmonth = $this->input->post('idy');
-                $elday = $this->input->post('idz');
+                
+                $elyear = $this->input->post('Licences_yeare');
+                $elmonth = $this->input->post('Licences_monthe');
+                $elday = $this->input->post('Licences_daye');
                 $eldate = $elyear."-".$elmonth."-".$elday;
+                
                  }
                  }
              else
              {
                  
-                $limage = $this->input->post('ieh');
-                $typelicense = $this->input->post('iel');
-                 $lid = $this->input->post('idb');
-                $lplace = $this->input->post('idf');
-               $lyear = $this->input->post('idl');
-                $lmonth = $this->input->post('idm');
-                $lday = $this->input->post('idn');
+                $limage = $this->input->post('Licencesimage');
+                $typelicense = $this->input->post('Licences');
+                $lid = $this->input->post('Licences_id');
+                $lplace = $this->input->post('Licences_place');
+               $lyear = $this->input->post('Licences_year');
+                $lmonth = $this->input->post('Licences_month');
+                $lday = $this->input->post('Licences_day');
                 $ldate = $lyear."-".$lmonth."-".$lday;
-                $elyear = $this->input->post('idx');
-                $elmonth = $this->input->post('idy');
-                $elday = $this->input->post('idz');
+                $elyear = $this->input->post('Licences_yeare');
+                $elmonth = $this->input->post('Licences_monthe');
+                $elday = $this->input->post('Licences_daye');
                 $eldate = $elyear."-".$elmonth."-".$elday;
-             }
+             }            
+               
                 
                 //========for passport ====//
                 
-                 if ($_FILES && $_FILES['pfile']['name'] !== "")
+                 if ($_FILES && $_FILES['Passportfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('pfile'))
+                 if (!$this->upload->do_upload('Passportfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('pfile'));
+                  $data = array('error' => $this->upload->display_errors('Passportfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -1011,47 +1029,49 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('pfile'));
+                     $data = array('upload_data' => $this->upload->data('Passportfile'));
                
                 $pimage = $data['upload_data']['file_name'];
             
-               $typepassport = $this->input->post('iem');
-                $pid = $this->input->post('idc');
-                $pplace = $this->input->post('idg');
-                $pyear = $this->input->post('ido');
-                $pmonth = $this->input->post('idp');
-                $pday = $this->input->post('idq');
+                 $typepassport = $this->input->post('Passport');
+                $pid = $this->input->post('Passport_id');
+                $pplace = $this->input->post('Passport_place');
+                $pyear = $this->input->post('Passport_year');
+                $pmonth = $this->input->post('Passport_month');
+                $pday = $this->input->post('Passport_day');
                 $pdate = $pyear."-".$pmonth."-".$pday;
-                $epyear = $this->input->post('iea');
-                $epmonth = $this->input->post('ieb');
-                $epday = $this->input->post('iec');
+                $epyear = $this->input->post('Passport_yeare');
+                $epmonth = $this->input->post('Passport_monthe');
+                $epday = $this->input->post('Passport_daye');
                 $epdate = $epyear."-".$epmonth."-".$epday;
+                
                  }
                  }
              else
              {
                  
-                $pimage = $this->input->post('iei');
-                 $typepassport = $this->input->post('iem');
-                $pid = $this->input->post('idc');
-                $pplace = $this->input->post('idg');
-                $pyear = $this->input->post('ido');
-                $pmonth = $this->input->post('idp');
-                $pday = $this->input->post('idq');
+                $pimage = $this->input->post('Passportimage');
+                $typepassport = $this->input->post('Passport');
+                $pid = $this->input->post('Passport_id');
+                $pplace = $this->input->post('Passport_place');
+                $pyear = $this->input->post('Passport_year');
+                $pmonth = $this->input->post('Passport_month');
+                $pday = $this->input->post('Passport_day');
                 $pdate = $pyear."-".$pmonth."-".$pday;
-                $epyear = $this->input->post('iea');
-                $epmonth = $this->input->post('ieb');
-                $epday = $this->input->post('iec');
+                $epyear = $this->input->post('Passport_yeare');
+                $epmonth = $this->input->post('Passport_monthe');
+                $epday = $this->input->post('Passport_daye');
                 $epdate = $epyear."-".$epmonth."-".$epday;
              }
+                      
                 
                 // =====for others =======//
                 
-                 if ($_FILES && $_FILES['ofile']['name'] !== "")
+                 if ($_FILES && $_FILES['Otherfile']['name'] !== "")
              {
-                 if (!$this->upload->do_upload('ofile'))
+                 if (!$this->upload->do_upload('Otherfile'))
                  {
-                  $data = array('error' => $this->upload->display_errors('ofile'));
+                  $data = array('error' => $this->upload->display_errors('Otherfile'));
                   $data['query'] = $this->dbmodel->customer();
                   $this->load->view('cme/templets/header');
                   $this->load->view('cme/customer/index', $data);
@@ -1059,41 +1079,42 @@ class view extends CI_Controller {
                  }
                  else
                  {
-                     $data = array('upload_data' => $this->upload->data('ofile'));
+                     $data = array('upload_data' => $this->upload->data('Otherfile'));
                
                 $oimage = $data['upload_data']['file_name'];
             
-                $typeother = $this->input->post('ien');
-                $oid = $this->input->post('idd');
-                $oplace = $this->input->post('idh');
-                $oyear = $this->input->post('idr');
-                $omonth = $this->input->post('ids');
-                $oday = $this->input->post('idt');
+                $typeother = $this->input->post('Other');
+                $oid = $this->input->post('Other_id');
+                $oplace = $this->input->post('Other_place');
+                $oyear = $this->input->post('Other_year');
+                $omonth = $this->input->post('Other_month');
+                $oday = $this->input->post('Other_day');
                 $odate = $oyear."-".$omonth."-".$oday;
-                $eoyear = $this->input->post('ied');
-                $eomonth = $this->input->post('iee');
-                $eoday = $this->input->post('ief');
+                $eoyear = $this->input->post('Other_yeare');
+                $eomonth = $this->input->post('Other_monthe');
+                $eoday = $this->input->post('Other_daye');
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
+               
                  }
                  }
              else
              {
                  
-                $oimage = $this->input->post('iej');
-                 $typeother = $this->input->post('ien');
-                $oid = $this->input->post('idd');
-                $oplace = $this->input->post('idh');
-                $oyear = $this->input->post('idr');
-                $omonth = $this->input->post('ids');
-                $oday = $this->input->post('idt');
+                $oimage = $this->input->post('Otherimage');
+                $oid = $this->input->post('Other_id');
+                $oplace = $this->input->post('Other_place');
+                $oyear = $this->input->post('Other_year');
+                $omonth = $this->input->post('Other_month');
+                $oday = $this->input->post('Other_day');
                 $odate = $oyear."-".$omonth."-".$oday;
-                $eoyear = $this->input->post('ied');
-                $eomonth = $this->input->post('iee');
-                $eoday = $this->input->post('ief');
+                $eoyear = $this->input->post('Other_yeare');
+                $eomonth = $this->input->post('Other_monthe');
+                $eoday = $this->input->post('Other_daye');
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
+             
              }
                 $this->dbmodel->update_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$mname);
-                $this->dbmodel->update_id_ctzn($cid,$ctznid,$ctznplace,$ctzndate,$ctznimage,$ectzndate,$typectzn);
+                $this->dbmodel->update_id_ctzn($cid,$ctznid,$ctznplace,$ctzndate,$ctznimage,$typectzn);
                  $this->dbmodel->update_id_license($cid,$lid,$lplace,$ldate,$limage,$eldate,$typelicense);
                  $this->dbmodel->update_id_passport($cid,$pid,$pplace,$pdate,$pimage,$epdate,$typepassport);
                  $this->dbmodel->update_id_other($cid,$oid,$oplace,$odate,$oimage,$eodate,$typeother);
