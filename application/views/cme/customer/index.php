@@ -29,23 +29,18 @@
                 
                 <input type="hidden" name="userid" value="<?php echo $user_id; ?>"/>
                 <input type="hidden" name="brid" value="<?php echo $bid; ?>"/>
-                 <input type="text" name="btid" value="<?php echo $btid; ?>"/>
-                  <input type="text" name="bcodid" value="<?php echo $bcodid; ?>"/>
+                 <input type="hidden" name="btid" value="<?php echo $btid; ?>"/>
+                  <input type="hidden" name="bcodid" value="<?php echo $bcodid; ?>"/>
                 
                 
                 <table >
-                    <tr>
-                        <td > <b> Customer ID </b>   </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" > <input class="intext"  type="text" name="cid" value="<?php echo $cid; ?>" readonly /> </td>
-                    </tr>
+                   
                     <tr>
                          <td> <b>Title </b> </td>
                     </tr>
                     <tr>
                        
-                        <td><input type="radio" name="title" value="Mr." /> <b> Mr.</b> &nbsp; <input type="radio" name="title" value="Mrs." /><b> Mrs.</b> &nbsp; <input type="radio" name="title" value="Miss." /><b> Miss.</b> &nbsp; <input type="radio" name="title" value="Ms." /><b> Ms.</b></td>
+                        <td><input type="radio" name="title" value="Mr." /> <b> Mr.</b> &nbsp; <input type="radio" name="title" value="Mrs." /><b> Mrs.</b> &nbsp; <input type="radio" name="title" value="Miss." /><b> Miss.</b> &nbsp; <input type="radio" name="title" value="Ms." /><b> Ms.</b> &nbsp; *</td>
                         
                        
                     </tr>
@@ -56,7 +51,7 @@
                          <td colspan="2"> <input class="intexna"   type="text" name="fname" placeholder="First Name" /> 
                          
                           <input class="intexna"  type="text" name="mname" placeholder="Middle Name" /> 
-                         <input class="intexna"  type="text" name="lname" placeholder="Last Name" /> </td>
+                         <input class="intexna"  type="text" name="lname" placeholder="Last Name" /> * </td>
                     </tr>
                     <tr>
                         <td> <b>Gender </b></td>
@@ -64,7 +59,7 @@
                     <tr>
                         <td><input type="radio" name="sex" value="male" /> <b> Male</b> &nbsp;
                         <input type="radio" name="sex" value="female" /><b> Female</b> &nbsp;
-                        <input type="radio" name="sex" value="other" /><b> Other</b> &nbsp;</td>
+                        <input type="radio" name="sex" value="other" /><b> Other</b> &nbsp; *</td>
                     </tr>
                     <tr>
                        <td> <b> Date Of Birth </b></td>
@@ -93,7 +88,7 @@
                            <td> <b>Address </b> </td>
                     </tr>
                     <tr>
-                            <td colspan="2"> <input class="intext"  type="text" name="address" placeholder="Adderss" /> </td>
+                            <td colspan="2"> <input class="intext"  type="text" name="address" placeholder="Adderss" /> *</td>
                     </tr>
                     <tr>                         
                              <td> <input class="intexth"   type="text" name="vdc" placeholder="VDC / Municipality"/> </td>
@@ -102,7 +97,7 @@
                     
                    <tr> 
                               <td> <input class="intexth" type="text" name="distric" placeholder="Distric"/> </td>
-                               <td> <input class="intexth" type="text" name="zone" placeholder="Zone" /> </td>
+                               <td> <input class="intexth" type="text" name="zone" placeholder="Zone" /> * </td>
                     </tr>
                    
                     <tr>

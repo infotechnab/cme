@@ -10,15 +10,15 @@
             <div class="form">                
                 <?php echo form_open('view/adduser');?>
                     <label> <b>Add new user</b></label> <br/> <br/>
-                    <input class="intexth" type="text" name="uname" placeholder="User Name" /> <br/><br/>
-                    <input class="intexth" type="password" name="pass" placeholder="Password" /> <br/><br/>
-                    <select class="intexth" name="role"  style="width:460px;">
+                    <input class="intexth" type="text" name="uname" placeholder="User Name" /> * <br/><br/>
+                    <input class="intexth" type="password" name="pass" placeholder="Password" /> * <br/><br/>
+                    <select class="intexth" name="role"  style="width:450px;">
                         <option value=""> Select role...</option>
                         <option value="ad"> Admin </option>
                         <option value="us"> User </option>
-                    </select> <br/> <br/>
+                    </select> * <br/> <br/>
                     
-                    <select class="intexth" name="branch" style="width:460px;">
+                    <select class="intexth" name="branch" style="width:450px;">
                         <?php foreach ($branch as $data)
                         { ?>
                              <option value="<?php echo $data->id; ?>"><?php echo $data->b_name; ?> </option>

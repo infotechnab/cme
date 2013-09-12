@@ -1559,7 +1559,7 @@ class view extends CI_Controller {
                 $check = $this->dbmodel->check_data($user);
    if($check > 0) //if the data exists show error message
    {
-    $data['mess'] = 'User name alredy exists. Please type new user name.'; 
+    $data['mess'] = 'User name already exists. Please type new user name.'; 
    $this->load->view('cme/templets/header'); 
     $data['branch']=  $this->dbmodel->branch();
               $this->load->view('cme/user/user',$data);
@@ -1915,7 +1915,7 @@ class view extends CI_Controller {
             $this->form_validation->set_rules('bcode', 'Branch Code', 'required|xss_clean');
             $this->form_validation->set_rules('bperson', 'Branch Person', 'required|xss_clean');
              $this->form_validation->set_rules('bphnumber', 'Phone Number', 'required|xss_clean');
-              $this->form_validation->set_rules('bmbnumber', 'Mobile Number', 'required|xss_clean');
+             // $this->form_validation->set_rules('bmbnumber', 'Mobile Number', 'required|xss_clean');
               $this->form_validation->set_rules('baddress', 'Address', 'required|xss_clean');
             
         
