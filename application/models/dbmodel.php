@@ -534,6 +534,12 @@ class Dbmodel extends CI_Model {
          $this->db->delete('branch', array('id' => $id));
     }
     
+    function check_data($user)
+ {
+  $this->db->where('uname',$user);
+  $query = $this->db->get('user');
+  return $query->num_rows();
+ } 
     
      public function adduser($user,$pass,$role,$branch)
     {

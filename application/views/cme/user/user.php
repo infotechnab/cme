@@ -1,4 +1,12 @@
-            <div class="cus_search">
+       <div class="cme">   <p id="sucessmsg">
+  <?php if(isset($mess))
+  {
+      echo $mess;
+  }
+  ?>
+    </p> 
+       </div>            
+<div class="cus_search">
             <div class="form">                
                 <?php echo form_open('view/adduser');?>
                     <label> <b>Add new user</b></label> <br/> <br/>

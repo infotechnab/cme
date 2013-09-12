@@ -1523,6 +1523,7 @@ class view extends CI_Controller {
                 public function user() {
          
          if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+             
              $this->load->view('cme/templets/header');
              $data['branch']=  $this->dbmodel->branch();
           $this->load->view('cme/user/user',$data);
@@ -1548,10 +1549,26 @@ class view extends CI_Controller {
             if (($this->form_validation->run() == FALSE)) {
                
                 $this->load->view('cme/templets/header'); 
-               $this->load->view('cme/user/user');
+                $data['branch']=  $this->dbmodel->branch();
+          $this->load->view('cme/user/user',$data);
+              
                $this->load->view('cme/templets/footer');
               
             } else {
+                 $user = $this->input->post('uname');
+                $check = $this->dbmodel->check_data($user);
+   if($check > 0) //if the data exists show error message
+   {
+    $data['mess'] = 'User name alredy exists. Please type new user name.'; 
+   $this->load->view('cme/templets/header'); 
+    $data['branch']=  $this->dbmodel->branch();
+              $this->load->view('cme/user/user',$data);
+              $this->load->view('cme/templets/footer');
+              
+      
+   }
+   else 
+   {
  
                 //if valid
                 $user = $this->input->post('uname');
@@ -1562,6 +1579,7 @@ class view extends CI_Controller {
                 $this->dbmodel->adduser($user,$pass,$role,$branch);
                 $this->session->set_flashdata('message', 'User added sucessfully');
                 redirect('view/userlist');
+            }
             }
            
         } else
