@@ -7,7 +7,7 @@
 </head>
     <style>
         @media print{
-            #pageprint{
+            .pageprint{
                 display: none;
             }
             .officestamp{
