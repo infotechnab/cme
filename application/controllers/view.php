@@ -657,10 +657,18 @@ class view extends CI_Controller {
                 $country = $this->input->post('country');
                 $email = $this->input->post('email');
                 $gender = $this->input->post('sex');
+                
                  $year = $this->input->post('dobyear');
                 $month = $this->input->post('dobmonth');
                 $day = $this->input->post('dobday');
+                if((!isset($year)) || ($year ==""))
+                {
+                $dob =null;
+                }
+                else                    
+                {
                 $dob = $year."-".$month."-".$day;
+                }
                // $dob = date("y-m-d");
                 $conpersonal = $this->input->post('contactpersonal');
                 $conhome = $this->input->post('contacthome');
@@ -719,9 +727,7 @@ class view extends CI_Controller {
                // $emonth = $this->input->post('ctznmonthe');
               //  $eday = $this->input->post('ctzndaye');
                // $ectzndate = $eyear."-".$emonth."-".$eday;
-             }
-                
-                
+             }  
                 //=====for license =======//
              
               if ($_FILES && $_FILES['Licencesfile']['name'] !== "")
@@ -770,9 +776,7 @@ class view extends CI_Controller {
                 $elmonth = $this->input->post('Licences_monthe');
                 $elday = $this->input->post('Licences_daye');
                 $eldate = $elyear."-".$elmonth."-".$elday;
-             }            
-               
-                
+             }   
                 //========for passport ====//
                 
                  if ($_FILES && $_FILES['Passportfile']['name'] !== "")
@@ -902,7 +906,14 @@ class view extends CI_Controller {
                  $year = $this->input->post('dobyear');
                 $month = $this->input->post('dobmonth');
                 $day = $this->input->post('dobday');
+                if((!isset($year)) || ($year ==""))
+                {
+                $dob =null;
+                }
+                else                    
+                {
                 $dob = $year."-".$month."-".$day;
+                }
                 
                 $conpersonal = $this->input->post('contactpersonal');
                 $conhome = $this->input->post('contacthome');

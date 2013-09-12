@@ -48,7 +48,7 @@
              <!--   <input type="text" name="userid" value="<?php // echo $user_id; ?>"/>
                 <input type="text" name="brid" value="<?php // echo $bid; ?>"/> -->
             
-                
+                 
                 <table >
                     <tr>
                         <td > <b> Customer ID </b>   </td>
@@ -87,8 +87,31 @@
                     </tr>
                     <tr>
                        
-                        <td colspan="2"><input class="intextd"  type="text" name="dobyear" placeholder="Year" value=" <?php echo date('Y',  strtotime($dob)); ?>" />
+                        <td colspan="2">
+                            
+                            <input class="intextd"  type="text" name="dobyear" placeholder="Year" value=" <?php if($dob == 0000-00-00){echo "Year"; } else echo date('Y',  strtotime($dob)); ?>" />
                             <select class="intextd" name="dobmonth">
+                                
+                                <?php if($dob == 0000-00-00)
+                                {
+                                    
+                                ?>
+                                    <option value="0"  Selected="Selected">Month</option>
+                                    <option value="1" >January</option>
+                                    <option value="2">February </option>
+                                <option value="3" >March</option>
+                                <option value="4" >April</option>
+                                <option value="5" >May</option>
+                                <option value="6" >June</option>
+                                <option value="7" >July</option>
+                                <option value="8" >August</option>
+                                <option value="9" >September</option>
+                                <option value="10" >October</option>
+                                <option value="11" >November</option>
+                                <option value="12" >December</option>
+       
+                                    
+                                   <?php } else { ?>
                                 <option>Month</option>
                                 <option value="1" <?php if((date('m',  strtotime($dob)))=='1') { echo 'Selected="Selected"'; } ?> >January</option>
                                 <option value="2" <?php if((date('m',  strtotime($dob)))=='2') { echo 'Selected="Selected"'; } ?>>February</option>
@@ -102,8 +125,10 @@
                                 <option value="10" <?php if((date('m',  strtotime($dob)))=='10') { echo 'Selected="Selected"'; } ?>>October</option>
                                 <option value="11" <?php if((date('m',  strtotime($dob)))=='11') { echo 'Selected="Selected"'; } ?>>November</option>
                                 <option value="12" <?php if((date('m',  strtotime($dob)))=='12') { echo 'Selected="Selected"'; } ?>>December</option>
+                                <?php } ?>
+                                
                             </select>
-                            <input class="intextd" type="text" name="dobday" placeholder="Day" value=" <?php echo date('d',  strtotime($dob)); ?>" /> </td>
+                            <input class="intextd" type="text" name="dobday" placeholder="Day" value=" <?php if($dob == 0000-00-00){echo "Day"; } else echo date('d',  strtotime($dob)); ?>" /> </td>
                     </tr>
                     
                     <tr>
