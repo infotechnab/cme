@@ -4,7 +4,31 @@
         <title> Chitwan Money Express</title>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>content/styles/cme.css" />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"> </script>
+          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+          <script type="text/javascript" src="<?php echo base_url(); ?>/content/script/jquery.min.js"></script>
+
+ 
+    <script type="text/javascript">
+	window.onload = function(){
+		new JsDatePick({
+			useMode:2,
+			target:"inputField",
+			dateFormat:"%d-%M-%Y"
+			/*selectedDate:{				This is an example of what the full configuration offers.
+				day:5,						For full documentation about these settings please see the full version of the code.
+				month:9,
+				year:2006
+			},
+			yearsRange:[1978,2020],
+			limitToToday:false,
+			cellColorScheme:"beige",
+			dateFormat:"%m-%d-%Y",
+			imgPath:"img/",
+			weekStartDay:1*/
+		});
+	};
+</script>
+    
     </head>
     <body>
         <div class="full">
@@ -30,3 +54,5 @@
      { echo  anchor('view/index','Home')." /".anchor('view/get_useragent','Remittance Company')." /".anchor('view/addcustomer','Add New Customer')."/".anchor('view/tranzaction',' Remitance Claim');
      
  }?> </div>
+            
+                    
