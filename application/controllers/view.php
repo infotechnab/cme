@@ -863,6 +863,7 @@ class view extends CI_Controller {
              {
                  
                 $oimage = $this->input->post('Otherimage');
+                 $typeother = $this->input->post('Other');
                 $oid = $this->input->post('Other_id');
                 $oplace = $this->input->post('Other_place');
                 $oyear = $this->input->post('Other_year');
@@ -1112,6 +1113,7 @@ class view extends CI_Controller {
              {
                  
                 $oimage = $this->input->post('Otherimage');
+                 $typeother = $this->input->post('Other');
                 $oid = $this->input->post('Other_id');
                 $oplace = $this->input->post('Other_place');
                 $oyear = $this->input->post('Other_year');
@@ -1743,9 +1745,6 @@ class view extends CI_Controller {
         }
         
     }
-            
-    
-    
     public function addtranzaction_get()
     {
         if ($this->session->userdata('logged_in')) {
@@ -2021,5 +2020,75 @@ class view extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
-     
+    
+    
+     public function tranlist()
+        {
+            
+         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+             
+              $config = array();
+            $config["base_url"] = base_url() . "index.php/view/tranlist";
+            $config["total_rows"] = $this->dbmodel->record_count_tran();
+            $config["per_page"] = 6;
+            //$config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+            $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+            $data["tranlist"] = $this->dbmodel->tranlist($config["per_page"], $user);
+            $data["links"] = $this->pagination->create_links();
+            
+             //$data['userlist'] = $this->dbmodel->userlist();
+            $data['branch'] = $this->dbmodel->branch();
+            $data['query'] = $this->dbmodel->get_agent();
+            $data['user'] = $this->dbmodel->get_user();
+              $this->load->view('cme/templets/header');  
+        $this->load->view('cme/tranzaction/tranlist',$data);
+        $this->load->view('cme/templets/footer');
+             
+         } else {
+            redirect('login', 'refresh');
+        } 
+            
+        }
+        
+        public function searchtran()
+        {
+             if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+             // $config = array();
+           // $config["base_url"] = base_url() . "index.php/view/searchtran";
+           // $config["total_rows"] = $this->dbmodel->record_count_tran();
+           // $config["per_page"] = 6;
+            //$config["uri_segment"] = 3;
+
+           // $this->pagination->initialize($config);
+
+           // $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+            //$data["tranlist"] = $this->dbmodel->tranlist($config["per_page"], $user);
+           // $data["links"] = $this->pagination->create_links();
+            
+            // $data['userlist'] = $this->dbmodel->userlist();
+            $data['branch'] = $this->dbmodel->branch();
+            $data['query'] = $this->dbmodel->get_agent();
+            $data['user'] = $this->dbmodel->get_user();
+            
+           $fromdate =  $this->input->post('dfrom');
+           $todate =  $this->input->post('dto');
+           $user =  $this->input->post('user');
+           $branch =  $this->input->post('branch');
+           $agent =  $this->input->post('agent');
+           
+           $data['tranlist'] = $this->dbmodel->searchtran($fromdate,$todate,$user,$branch,$agent);
+            
+              $this->load->view('cme/templets/header');  
+        $this->load->view('cme/tranzaction/tranlist',$data);
+        $this->load->view('cme/templets/footer');
+             
+         } else {
+            redirect('login', 'refresh');
+        } 
+        }
 }

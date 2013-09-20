@@ -23,13 +23,13 @@
                     <input type="hidden" name="id" value="<?php echo $id; ?>" />
                     <input class="intexth" type="text" name="uname" placeholder="User Name" value="<?php echo $uname; ?>" /> <br/><br/>
                    <!-- <input class="intexth" type="password" name="pass" placeholder="Password" value="<?php // echo $pass; ?>"/> <br/><br/> -->
-                    <select class="intexth" name="role" style="width:460px;">
+                    <select class="intexth" name="role" style="width:420px;">
                         <option <?php if($roel=='') { echo 'Selected="Selected"'; } ?> value=""> Select role...</option>
                         <option  <?php if($roel=='ad') { echo 'Selected="Selected"'; } ?> value="ad"  selected > Admin </option>
                         <option  <?php if($roel=='us') { echo 'Selected="Selected"'; } ?> value="us"> User </option>
                     </select> <br/> <br/>
                     
-                    <select class="intexth" name="branch" style="width:460px;">
+                    <select class="intexth" name="branch" style="width:420px;">
                         <?php foreach ($branch as $data)
                         { ?>
                         <option  <?php if($data->id==$branchid) { echo 'Selected="Selected"'; } ?> 

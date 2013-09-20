@@ -65,8 +65,8 @@
                        <td> <b> Date Of Birth </b></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input class="intextd"  type="text" name="dobyear" placeholder="Year" />
-                            <select class="intextd" name="dobmonth">
+                        <td colspan="2"><input class="intextd"  type="text" name="dobyear" placeholder="Year" id="db_y" />
+                            <select class="intextd" id="db_m" name="dobmonth">
                                 <option>Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
@@ -81,7 +81,9 @@
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
-                            <input class="intextd" type="text" name="dobday" placeholder="Day" /> </td>
+                            <input class="intextd" type="text" name="dobday" placeholder="Day" id="db_d" /> </td>
+                        <td> <img src="<?php echo base_url()."content/images/calender.png"?>" id="db" /> </td>
+                        
                     </tr>
                     
                     <tr>
@@ -158,8 +160,8 @@
 <td colspan="3"> <input type="text" style="width:265px; padding:5px;" name="<?php echo $data."_place"; ?>" placeholder="Issued Place" /></td>
 </tr>
 <tr>
-<td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_year"; ?>" /> </td> 
-<td> <select style=" padding:3px;" name="<?php echo $data."_month"; ?>" >
+<td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_year"; ?>" id="<?php echo $data."_issue_date_y"; ?>" /> </td> 
+<td> <select style=" padding:3px;" name="<?php echo $data."_month"; ?>" id="<?php echo $data."_issue_date_m"; ?>" >
        <option>Month</option>
                                 <option value="01">January</option>
                                 <option value="02">February</option>
@@ -174,7 +176,8 @@
                                 <option value="11">November</option>
                                 <option value="12">December</option>
     </select> </td>
-<td> <input type="text" style="width:80px; padding:3px;" placeholder="Day" name="<?php echo $data."_day"; ?>" /></td>
+<td> <input type="text" style="width:80px; padding:3px;" placeholder="Day" name="<?php echo $data."_day"; ?>" id="<?php echo $data."_issue_date_d"; ?>" /></td>
+<td><img src="<?php echo base_url()."content/images/calender.png"?>" id="<?php echo $data."_issue_date" ;?>" /> </td>
 </tr>
 <?php if($data == 'Citizenship')
 {?>
@@ -183,8 +186,8 @@
 </tr> <?php } 
 else { ?>
 <tr>
-<td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_yeare"; ?>" /> </td>
-<td> <select style=" padding:3px;" name="<?php echo $data."_monthe"; ?>" ><option>Month</option>
+<td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_yeare"; ?>" id="<?php echo $data."_ex_date_y" ;?>" /> </td>
+<td> <select style=" padding:3px;" name="<?php echo $data."_monthe"; ?>" id="<?php echo $data."_ex_date_m" ;?>" ><option>Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
                                 <option value="3">March</option>
@@ -197,7 +200,8 @@ else { ?>
                                 <option value="10">October</option>
                                 <option value="11">November</option>
                                 <option value="12">December</option> </select> </td>
-<td> <input type="text" style="width:80px; padding:3px;" placeholder="Day" name="<?php echo $data."_daye"; ?>" /></td>
+<td> <input type="text" style="width:80px; padding:3px;" placeholder="Day" name="<?php echo $data."_daye"; ?>" id="<?php echo $data."_ex_date_d" ;?>"/></td>
+<td><img src="<?php echo base_url()."content/images/calender.png"?>" id="<?php echo $data."_ex_date" ;?>" /> </td>
 </tr> <?php } ?>
 <tr>
     <td colspan="3"><input type="file" name="<?php echo $data."file" ?>" /></td>
@@ -217,4 +221,47 @@ else { ?>
            <input type="submit" name="submit" value="Add Details" />
            <?php echo form_close(); ?>
             </div>
-        </div>            
+        </div>  
+
+
+
+
+
+<!-- calender -->
+        <div class="calendars-month-header" id="c-m-h" style="display: none; position: fixed; top: 400px; left: 950px; background-color: #003399; width: 220px; ">
+            <select title="Change the year" class="calendars-month-year" id="yearInput">
+                <?php
+                for ($i = 2020; $i <= 2080; $i++) {
+                    ?>
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option> 
+
+                    <?php
+                }
+                ?>
+
+
+            </select>
+            <select title="Change the month" class="calendars-month-year" id="monthInput">
+                <?php
+                $monthlist = array(1 => "Baisakh", 2 => "Jestha", 3 => "Ashadh", 4 => "Shrawn", 5 => "Bhadra", 6 => "Ashwin", 7 => "Kartik", 8 => "Mangsir", 9 => "Paush", 10 => "Mangh", 11 => "Falgun", 12 => "Chaitra");
+                foreach ($monthlist as $monthid => $month) {
+                    ?>
+                    <option value="<?php echo $monthid ?>"><?php echo $month . '(' . $monthid . ')'; ?> </option>
+                    <?php
+                }
+                ?>
+
+            </select> 
+            <select title="Change the  day" class="calendars-month-year" id="dayInput">
+                <?php
+                for ($i = 1; $i <= 32; $i++) {
+                    echo '<option value=' . $i . '>' . $i . '</option>';
+                }
+                ?>
+            </select>
+            <br/>
+            <button id="okbutton">Ok</button>
+            <button id="closebutton">Close</button>
+            <input type="text" id="datapass" value=""/>
+           
+        </div>

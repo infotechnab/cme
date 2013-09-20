@@ -252,7 +252,7 @@ class Dbmodel extends CI_Model {
             'id_number'=>$ctznid,
             'issue_place'=>$ctznplace,
             'issue_date'=>$ctzndate,
-            'expire_date'=>$ectzndate,
+            //'expire_date'=>$ectzndate,
                 'image' =>$image );
         $this->db->where('c_id',$cid);
         $this->db->where('type',$typectzn);
@@ -395,7 +395,13 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-     public function record_count_user() {
+    public function get_user()
+    {
+        $user = $this->db->get('user');
+        return $user->result();
+    }
+
+        public function record_count_user() {
         return $this->db->count_all('user');
     }
     
@@ -404,6 +410,18 @@ class Dbmodel extends CI_Model {
         $this->db->limit($limit, $start);
         $userlist = $this->db->get('user');
         return $userlist->result();
+    }
+    
+     public function record_count_tran() {
+        return $this->db->count_all('cme_tranzaction');
+    }
+    
+    
+     public function tranlist($limit,$start)
+    {
+        $this->db->limit($limit, $start);
+        $tranlist = $this->db->get('cme_tranzaction');
+        return $tranlist->result();
     }
     
    
@@ -480,6 +498,8 @@ class Dbmodel extends CI_Model {
         $blist = $this->db->get('branch');
         return $blist->result();
     }
+    
+   
     
     public function addbranch($bname,$bperson,$bphnumber,$bmbnumber,$address,$btitle,$bcode)
     {
@@ -581,6 +601,21 @@ class Dbmodel extends CI_Model {
          $this->db->delete('user', array('u_id' => $id));
     }
     
-    
+    public function searchtran($fromdate,$todate,$user,$branch,$agent){
+        
+        //$this->db->where('date between'.$fromdate.'AND'.$todate);
+        //$this->db->or_where('date BETWEEN ' . $fromdate . ' AND ' . $todate);
+        $this->db->where('date <=',$todate);
+        $this->db->where('date >',$fromdate);
+        
+        
+        $this->db->or_where('u_id',$user);
+         $this->db->or_where('branch',$branch);
+          $this->db->or_where('agent',$agent);
+          
+          $tranlist = $this->db->get('cme_tranzaction');
+        return $tranlist->result();
+        
+    }
     
     }

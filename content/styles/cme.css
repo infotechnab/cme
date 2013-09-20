@@ -69,21 +69,21 @@ h2{
     text-align: center;
 }
 .intext{
-    padding:2%;
+    padding:1%;
     width: 92%;
     
 }
 .intexth{
-    padding: 4%;
+    padding: 2%;
     width: 86%;
 }
 
 .intextd{
-    padding: 2%;
+    padding: 1%;
     width: 29.5%;
 }
 .intexna{
-    padding: 2%;
+    padding: 1%;
     width: 25%;
 }
 .cidentitytran{
@@ -96,7 +96,7 @@ h2{
 }
 
 .cidentity{
-    width: 75%;
+    width: 81%;
     border: solid 1px #002166;
     margin: 1%;
     padding: 1%;
@@ -257,17 +257,18 @@ padding: 6px;
     float: right;
 }
 .intexthc{
-     padding: 4%;
-    width: 98%;
+     padding: 2%;
+    width: 90%;
 }
 .intids{
-    padding: 4%;
-    width: 40%;
+    padding: 2%;
+    width: 38%;
     float: left;
-    margin-right: 1%;
+    margin-left:  5%;
 }
 .a_name{
     padding: 4%;
+    width: 90%;
 }
 .tra_dis{
     text-align: center;

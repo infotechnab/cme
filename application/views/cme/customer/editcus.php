@@ -3,8 +3,6 @@
        $bid = $this->session->userdata('bid');
        $user_id = $this->session->userdata('id');
        
-       
-     
             foreach ($query as $data)
             {
                 $cid = $data->c_id;
@@ -25,17 +23,10 @@
                 $image = $data->image;
                 $email = $data->email; 
             } 
-            
-            
-           
-           
-                   
-           
 ?>
             <div class="cme">   <p id="sucessmsg">
-  <?php echo validation_errors();?>
-            
-         <?php  if(isset($error))
+  <?php echo validation_errors();
+         if(isset($error))
          {echo $error;} ?>
     </p></div> 
            
@@ -44,11 +35,6 @@
             <hr/>
             <div class="form">  
             <?php echo form_open_multipart('view/updatecus'); ?>
-                
-             <!--   <input type="text" name="userid" value="<?php // echo $user_id; ?>"/>
-                <input type="text" name="brid" value="<?php // echo $bid; ?>"/> -->
-            
-                 
                 <table >
                     <tr>
                         <td > <b> Customer ID </b>   </td>
@@ -60,10 +46,8 @@
                          <td> <b>Title </b> </td>
                     </tr>
                     <tr>
-                       
                         <td><input type="radio" name="title" value="Mr." <?php if($title=='Mr.') { ?> checked <?php } ?> /> <b> Mr.</b> &nbsp; <input type="radio" name="title" value="Mrs."<?php if($title=='Mrs.') { ?> checked <?php } ?> /><b> Mrs.</b> &nbsp; <input type="radio" name="title" value="Miss."<?php if($title=='Miss.') { ?> checked <?php } ?> /><b> Miss.</b> &nbsp; <input type="radio" name="title" value="Ms."<?php if($title=='Ms.') { ?> checked <?php } ?> /><b> Ms.</b></td>
                         
-                       
                     </tr>
                     <tr>
                          <td> <b> Name </b>  </td>
@@ -214,7 +198,7 @@
     </select> </td>
 <td> <input type="text" style="width:80px; padding:3px;" placeholder="Day" name="<?php echo $data->type."_day"; ?>" value="<?php echo  date('d',  strtotime($date)); ?>" /></td>
 </tr>
-<?php if($data == 'Citizenship')
+<?php if($data->type == 'Citizenship')
 {?>
 <tr>
 <td></td>
@@ -249,4 +233,4 @@ else { ?>
            <input type="submit" name="submit" value="Update" />
            <?php echo form_close(); ?>
             </div>
-        </div>            
+        </div>         
