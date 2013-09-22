@@ -266,8 +266,7 @@
     <td><?php echo $income; ?></td>
      <td><strong>Issued Date: </strong></td>
     <td><?php echo $iddate; ?></td>
-    
-    
+        
   </tr>
   <tr>
     <td><strong>Amount: </strong></td>
