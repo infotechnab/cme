@@ -2077,11 +2077,23 @@ class view extends CI_Controller {
             
            $fromdate =  $this->input->post('dfrom');
            $todate =  $this->input->post('dto');
-           $user =  $this->input->post('user');
+           $userdata =  $this->input->post('user');
            $branch =  $this->input->post('branch');
            $agent =  $this->input->post('agent');
            
-           $data['tranlist'] = $this->dbmodel->searchtran($fromdate,$todate,$user,$branch,$agent);
+           $data['tranlist'] = $this->dbmodel->searchtrandata($fromdate,$todate,$userdata,$branch,$agent);
+            $config = array();
+           $config["base_url"] = base_url() . "index.php/view/searchtran";
+            $config["total_rows"] =  count($data['tranlist']);
+            $config["per_page"] = 6;
+           $config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+           $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+           $data["tranlist"] = $this->dbmodel->searchtran($config["per_page"],$user,$fromdate,$todate,$userdata,$branch,$agent);
+          $data["links"] = $this->pagination->create_links();
             
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/tranzaction/tranlist',$data);

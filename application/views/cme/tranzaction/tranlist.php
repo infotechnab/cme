@@ -19,8 +19,8 @@
                 
                 <lable>Search Tranzaction</lable> 
                 <?php echo form_open('view/searchtran');?>
-                    <input type="text" name="dfrom" placeholder="From" />
-                    <input type="text" name="dto" placeholder="To" />
+                    <input type="text" name="dfrom" id="datepicker1" placeholder="From" />
+                    <input type="text" name="dto" id="datepicker2" placeholder="To" />
                     
                     <select name="user">                        
                     <option value="">User...</option>
@@ -76,7 +76,7 @@
                 </table>             
                
                 <br/>
-                 <?php // echo $links; ?>
+                 <?php  echo $links; ?>
                 
             </div>
         </div> 

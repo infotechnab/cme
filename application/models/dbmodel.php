@@ -601,21 +601,123 @@ class Dbmodel extends CI_Model {
          $this->db->delete('user', array('u_id' => $id));
     }
     
-    public function searchtran($fromdate,$todate,$user,$branch,$agent){
+    public function searchtran($limit,$start,$fromdate,$todate,$userdata,$branch,$agent){
+       
+                $this->db->limit($limit, $start); 
+ 
+       $a = array();
+       $b = array();
+       $c = array();
+       $d  = array();
+        if((isset($userdata))&& $userdata ==!""){
+            
+          $a =array("u_id"=>$userdata); 
+        }
+        
+      if((isset($branch))&& $branch ==!""){
+         $b = array("branch"=>$branch);
+        //$b = array($a,array("branch"=>$branch));
+        $a = array_merge($a,$b);
+      }
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >'=>$fromdate,'date <='=>$todate);
+         $a = array_merge($a,$b,$c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($a,$b,$c,$d);
+        }
+       //echo($a);
+     // foreach($b as $data)
+     // {
+       //   echo $data;
+     // }
+   // print_r($a);
+      
+    // die();
+      
+     
         
         //$this->db->where('date between'.$fromdate.'AND'.$todate);
         //$this->db->or_where('date BETWEEN ' . $fromdate . ' AND ' . $todate);
-        $this->db->where('date <=',$todate);
-        $this->db->where('date >',$fromdate);
+       // $this->db->where('date <=',$todate);
+       // $this->db->where('date >',$fromdate);
         
         
-        $this->db->or_where('u_id',$user);
-         $this->db->or_where('branch',$branch);
-          $this->db->or_where('agent',$agent);
-          
+       // $this->db->or_where('u_id',$user);
+        // $this->db->or_where('branch',$branch);
+        //  $this->db->or_where('agent',$agent);
+    if(isset($a))
+    {
+        $this->db->where($a);
+    }
           $tranlist = $this->db->get('cme_tranzaction');
-        return $tranlist->result();
-        
+      
+         return $tranlist->result();
+         
     }
     
+    public function searchtranpagi(){
+         return $this->db->count_all(searchtran());
+    }
+    
+     public function searchtrandata($fromdate,$todate,$userdata,$branch,$agent){
+       
+              //  $this->db->limit($limit, $start); 
+ 
+       $a = array();
+       $b = array();
+       $c = array();
+       $d  = array();
+        if((isset($userdata))&& $userdata ==!""){
+            
+          $a =array("u_id"=>$userdata); 
+        }
+        
+      if((isset($branch))&& $branch ==!""){
+         $b = array("branch"=>$branch);
+        //$b = array($a,array("branch"=>$branch));
+        $a = array_merge($a,$b);
+      }
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >'=>$fromdate,'date <='=>$todate);
+         $a = array_merge($a,$b,$c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($a,$b,$c,$d);
+        }
+       //echo($a);
+     // foreach($b as $data)
+     // {
+       //   echo $data;
+     // }
+   // print_r($a);
+      
+    // die();
+      
+     
+        
+        //$this->db->where('date between'.$fromdate.'AND'.$todate);
+        //$this->db->or_where('date BETWEEN ' . $fromdate . ' AND ' . $todate);
+       // $this->db->where('date <=',$todate);
+       // $this->db->where('date >',$fromdate);
+        
+        
+       // $this->db->or_where('u_id',$user);
+        // $this->db->or_where('branch',$branch);
+        //  $this->db->or_where('agent',$agent);
+    if(isset($a))
+    {
+        $this->db->where($a);
+    }
+          $tranlist = $this->db->get('cme_tranzaction');
+      
+         return $tranlist->result();
+         
+    }
     }
