@@ -2156,11 +2156,55 @@ class view extends CI_Controller {
         public function useredit_self(){
              if ($this->session->userdata('logged_in')) {
              $id =$this->session->userdata('id');    
-        $data['query']= $this->dbmodel->getedituser($id);
+       
+           
+            $this->form_validation->set_rules('uname', 'User Name', 'required|xss_clean|max_length[200]');
+            //$this->form_validation->set_rules('pass', 'Password', 'required|xss_clean');
+             $this->form_validation->set_rules('role', 'Role', 'required|xss_clean');
+              $this->form_validation->set_rules('branch', 'Branch', 'required|xss_clean');
+            
+             if (($this->form_validation->run() == FALSE)) {
+              // $id = $this->input->post('id');
+                  $data['query']= $this->dbmodel->getedituser($id);
         $data['branch']=  $this->dbmodel->branch();
          $this->load->view('cme/templets/header');
          $this->load->view('cme/user/edit',$data);
           $this->load->view('cme/templets/footer');
+            } else {
+ 
+                //if valid
+                $user = $this->input->post('uname');
+                $fullname = $this->input->post('fullname');
+                $address = $this->input->post('address');
+                $phone = $this->input->post('phone');
+                $email = $this->input->post('email');
+                $newpass = $this->input->post('newpass');
+                
+                $pass = $this->input->post('pass');
+                $role = $this->input->post('role');
+                $branch = $this->input->post('branch');
+                
+                
+                if($newpass==$pass)
+                {
+                     $this->dbmodel->update_user($id,$user,$role,$branch,$fullname,$address,$phone,$email,$pass);
+                $this->session->set_flashdata('message', 'Update sucessfully');
+                redirect('view/userlist');
+                    
+                }
+                else
+                {
+                     //$id = $this->input->post('id');
+                  $data['query'] = $this->dbmodel->getedituser($id);
+                  $data['branch']=  $this->dbmodel->branch();
+                   $data['mess']  = 'Confirm Password Not Matched.';
+                $this->load->view('cme/templets/header'); 
+               $this->load->view('cme/user/edit',$data);
+               $this->load->view('cme/templets/footer');
+                    
+                }
+               
+            }
         
          } else {
             redirect('login', 'refresh');
@@ -2178,6 +2222,29 @@ class view extends CI_Controller {
          } else {
             redirect('login', 'refresh');
         }
+        }
+        
+        public function searchcus()
+        {
+             if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
+                 
+            $cusid =  $this->input->post('id');
+           $name =  $this->input->post('cusname');
+           $address =  $this->input->post('address');
+           $branch =  $this->input->post('branch');
+           $phone =  $this->input->post('phone');
+           
+           $data['cuslist'] = $this->dbmodel->searchcus($cusid,$name,$address,$branch,$phone);
+           
+            $this->load->view('cme/templets/header');  
+        $this->load->view('cme/customer/cuslist',$data);
+        $this->load->view('cme/templets/footer');
+             
+         } else {
+            redirect('login', 'refresh');
+        } 
+           
+            
         }
         
 }

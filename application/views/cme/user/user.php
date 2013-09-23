@@ -19,8 +19,8 @@
                     <input class="intexth" type="password" name="pass" placeholder="Confirm Password" /> * <br/><br/>
                     <select class="intexth" name="role"  style="width:420px;">
                         <option value=""> Select role...</option>
-                        <option value="ad"> Admin </option>
-                        <option value="us"> User </option>
+                        <option value="admin"> Admin </option>
+                        <option value="user"> User </option>
                     </select> * <br/> <br/>
                     
                     <select class="intexth" name="branch" style="width:420px;">

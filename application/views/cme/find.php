@@ -14,10 +14,7 @@
                 <?php echo form_open('view/detail');?>
                     <label>Customer ID :</label>
                     <input type="text" name="fcid" placeholder="Customer ID" />
-                    <select>
-                        <option>Name</option>
-                        <option>ID</option>
-                    </select><br/><br/>
+                   <br/><br/>
                     <input type="submit" name="submit" value="Search" /> 
                 </form>
                 <br/>

@@ -58,9 +58,9 @@
                         </tr>
                    
                          </table>
-                    <div class="id_details">
+                    <div class="customer_id_details">
                         <b> ID Dtails </b> <hr/>
-                        <table>
+                        <table class="tbllist">
                             <tr>
                             <th>ID type</th>
                             <th>ID Number </th>
@@ -73,40 +73,62 @@
                                           { ?>
                          <tr>
                             
-                             <td> <b> <?php echo $data->type; ?> </b></td>
-                            <td> <b> <?php echo $data->id_number; ?></b></td>
-                            <td> <b> <?php echo $data->issue_place; ?></b></td>
-                            <td> <b> <?php echo $data->issue_date; ?></b></td>
-                            <td> <b> <?php echo $data->expire_date; ?></b></td>
+                             <td class="tdlist"> <b> <?php echo $data->type; ?> </b></td>
+                            <td class="tdlist"> <b> <?php echo $data->id_number; ?></b></td>
+                            <td class="tdlist"> <b> <?php echo $data->issue_place; ?></b></td>
+                            <td class="tdlist"> <b> <?php echo $data->issue_date; ?></b></td>
+                            <td class="tdlist"> <b> <?php echo $data->expire_date; ?></b></td>
                         </tr> <?php
                                           }
 ?>                  </table>
+                       
                     </div>  
-                    
-                    <table>   
-                        
-                        <tr>
-                            <td class="det_info" colspan="2">
-                                 <?php echo form_open('view/get_tran'); ?>
-                                <input type="hidden" value="<?php echo $id ?>" name="id" />
-                 <input class="frminp" type="submit" name="conform" value="Conform">
-                <?php echo form_close(); ?>
-                            
-              
-                <?php echo form_open('view/index'); ?>
-                <input class="frminp" type="submit" name="cancel" value="Cancel">
-                <?php echo form_close(); ?>
-                 
-                            </td>
-                        </tr>
-                        
-                    </table>
-                </div>
+                          </div>
                 <div class="userdetailimg">
                    <img class="userdetailimg" src="<?php echo base_url()."custmr_detail_image/". $image; ?>" width="150px" height="160px" />
                 </div>
+                
                 <div class="clear" > </div>
                 
+                <br/>
+                <hr/>
+                
+                
+                
+               <table class="tbllist">
+                    <tr class="trlist">
+                        <td class="tdlist"> S.N </td>
+                        <td class="tdlist"> Remittance Company</td>
+                        <td class="tdlist"> Branch</td>
+                        <td class="tdlist"> Sender Name </td>
+                         <td class="tdlist"> Amount </td>
+                          <td class="tdlist"> Receiver Name </td>
+                           <td class="tdlist"> Contact Number </td>
+                            <td class="tdlist"> Tranzaction Date </td>
+                      
+                     <!--   <td class="tdlist"> Action </td> -->
+                    </tr>
+                    <?php //$tranlist = $this->dbmodel->get_user_tran($id);  
+                    foreach ($tranlist as $data) { ?>
+                    <tr class="trlist">
+                        <td class="tdlist"> <?php echo $data->t_id; ?></td>
+                        <td class="tdlist"> <?php echo $data->agent; ?></td>
+                        <td class="tdlist"> <?php echo $data->branch; ?></td>
+                        <td class="tdlist"> <?php echo $data->s_name; ?></td>
+                         <td class="tdlist"> <?php echo $data->amount; ?></td>
+                          <td class="tdlist"> <?php echo $data->r_name; ?></td>
+                           <td class="tdlist"> <?php echo $data->contact; ?></td>
+                            <td class="tdlist"> <?php echo $data->date; ?></td>
+                      <!--  <td class="tdlist"><?php //echo anchor('view/getedituser/'.$data->u_id,'Edit'); ?> / <?php //echo anchor('view/deleteuser/'.$data->u_id,'Delete'); ?> </td> -->
+                        <?php } ?>                   
+                        
+                    </tr>
+                </table>
+                
+                
+                  <?php echo form_open('view/index'); ?>
+                <input class="frminp" type="submit" name="cancel" value="Cancel">
+                <?php echo form_close(); ?>
                </div>
              <?php 
              }

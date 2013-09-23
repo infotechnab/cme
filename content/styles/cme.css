@@ -63,8 +63,12 @@ body {
     border: solid 1px #002166;
     padding: 2%;
   
-    
-    
+}
+.customer_id_details{
+     margin: 0 auto 0 auto;
+    width: 150%;
+    border: solid 1px #002166;
+    padding: 2%;
 }
 .rolelogout{
     float: right;

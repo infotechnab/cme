@@ -718,26 +718,7 @@ class Dbmodel extends CI_Model {
           $d =array("agent"=>$agent); 
           $a = array_merge($a,$b,$c,$d);
         }
-       //echo($a);
-     // foreach($b as $data)
-     // {
-       //   echo $data;
-     // }
-   // print_r($a);
       
-    // die();
-      
-     
-        
-        //$this->db->where('date between'.$fromdate.'AND'.$todate);
-        //$this->db->or_where('date BETWEEN ' . $fromdate . ' AND ' . $todate);
-       // $this->db->where('date <=',$todate);
-       // $this->db->where('date >',$fromdate);
-        
-        
-       // $this->db->or_where('u_id',$user);
-        // $this->db->or_where('branch',$branch);
-        //  $this->db->or_where('agent',$agent);
     if(isset($a))
     {
         $this->db->where($a);
@@ -746,5 +727,51 @@ class Dbmodel extends CI_Model {
       
          return $tranlist->result();
          
+    }
+    public function get_user_tran($id){
+        $this->db->where('c_id',$id);
+    }
+    
+    public function searchcus($cusid,$name,$address,$branch,$phone)
+    {
+        $a = array();
+       $b = array();
+       $c = array();
+       $d  = array();
+       $e = array();
+        if((isset($cusid))&& $cusid ==!""){
+            
+          $a =array("cus_id"=>$cusid); 
+        }
+        
+        
+      if((isset($branch))&& $branch ==!""){
+         $b = array("branch"=>$branch);
+        //$b = array($a,array("branch"=>$branch));
+        $a = array_merge($a,$b);
+      }
+       if((isset($phone)&& $phone == !"")) {
+         $c = array('conpersonal'=>$phone);
+         $a = array_merge($a,$b,$c);
+         
+      }
+       if((isset($name))&& $name ==!""){
+            
+          $d =array("fname"=>$name); 
+          $a = array_merge($a,$b,$c,$d);
+        }
+      
+        if((isset($address))&& $address ==!""){
+            
+          $e =array("address"=>$address); 
+          $a = array_merge($a,$b,$c,$d,$e);
+        }
+    if(isset($a))
+    {
+        $this->db->where($a);
+    }
+          $cuslist = $this->db->get('customer_info');
+      
+         return $cuslist->result();
     }
     }
