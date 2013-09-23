@@ -36,7 +36,7 @@ class Dbmodel extends CI_Model {
 
         public function role()
     {
-         $this->db->select('role,u_id,id');
+         $this->db->select('role,u_id,id,uname');
         $this->db->where('uname', $this->input->post('username'));
         $this->db->where('upass', md5($this->input->post('password')));
         $query = $this->db->get('user');
@@ -405,10 +405,13 @@ class Dbmodel extends CI_Model {
         return $this->db->count_all('user');
     }
     
-    public function userlist($limit,$start)
+    public function userlist($limit,$start,$id)
     {
+       // die($id);
         $this->db->limit($limit, $start);
-        $userlist = $this->db->get('user');
+        $this->db->select('u_id,uname,role,id');        
+        $this->db->where('u_id <>', $id);        
+        $userlist = $this->db->get('user');       
         return $userlist->result();
     }
     
@@ -561,11 +564,15 @@ class Dbmodel extends CI_Model {
   return $query->num_rows();
  } 
     
-     public function adduser($user,$pass,$role,$branch)
+     public function adduser($user,$pass,$role,$branch,$fullname,$address,$phone,$email)
     {
          $this->load->database();
                    $data = array(
             'uname' => $user,
+             'full_name'=>$fullname,
+              'address'=>$address,
+               'phone_number'=>$phone,
+                'email'=>$email,       
             'upass' => md5($pass),
             'role'=> $role,
             'id' => $branch);
@@ -581,15 +588,35 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-     public function update_user($id,$user,$role,$branch)
+     public function update_user($id,$user,$role,$branch,$fullname,$address,$phone,$email,$pass)
     {
        
         $this->load->database();
+        
+        if(isset($pass) && $pass ==!"")
+        {
                    $data = array(
             'uname' => $user,
+             'full_name'=>$fullname,
+                       'address'=>$address,
+                       'phone_number'=>$phone,
+                       'email'=>$email,
+            'upass' => md5($pass),
+            'role'=> $role,
+            'id' => $branch);
+        }
+        else{
+               $data = array(
+            'uname' => $user,
+             'full_name'=>$fullname,
+                       'address'=>$address,
+                       'phone_number'=>$phone,
+                       'email'=>$email,
             //'upass' => md5($pass),
             'role'=> $role,
             'id' => $branch);
+            
+        }
         
         
         $this->db->where('u_id', $id);
@@ -682,7 +709,7 @@ class Dbmodel extends CI_Model {
         $a = array_merge($a,$b);
       }
        if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
-         $c = array('date >'=>$fromdate,'date <='=>$todate);
+         $c = array('date >='=>$fromdate,'date <='=>$todate);
          $a = array_merge($a,$b,$c);
          
       }

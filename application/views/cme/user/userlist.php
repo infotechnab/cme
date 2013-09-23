@@ -25,7 +25,9 @@
                       
                         <td class="tdlist"> Action </td>
                     </tr>
-                    <?php foreach ($userlist as $data) { ?>
+                    
+                    <?php  
+                    foreach ($userlist as $data) { ?>
                     <tr class="trlist">
                         <td class="tdlist"> <?php echo $data->u_id; ?></td>
                         <td class="tdlist"> <?php echo $data->uname; ?></td>

@@ -94,14 +94,15 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
             <div class="rolelogout">
        <?php 
        $role = $this->session->userdata('username');
-       echo $role;
+       $uname = $this->session->userdata('name');
+          echo anchor('view/useredit_self',$uname,'id=sessionuser');
         $bid = $this->session->userdata('bid');
         $user_id = $this->session->userdata('id');?>
             <?php echo anchor('view/logout','Log Out') ?> </div>
              <div class="cus_search_menu">
            <?php
-           $admin = "ad";
-           $user = "us";
+           $admin = "admin";
+           $user = "user";
            if($role==$admin)
            {
                echo anchor('view/index','Home')." /".anchor('view/get_agent','Remittance Company')." /"." ".  anchor('view/userlist','Users')." / ". anchor('view/cuslist','Customers')."/"

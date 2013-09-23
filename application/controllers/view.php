@@ -589,7 +589,7 @@ class view extends CI_Controller {
     
       public function editcus($id)
     {
-         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
         $data['query']= $this->dbmodel->get_edit_cus($id);
         $data['identy'] = $this->dbmodel->get_iddetail($id);
         //$data['branch']=  $this->dbmodel->branch();
@@ -603,7 +603,7 @@ class view extends CI_Controller {
     } 
     
     public function updatecus() {
-        if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+        if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
 
             
             $config['upload_path'] = './custmr_detail_image/';
@@ -1157,7 +1157,7 @@ class view extends CI_Controller {
     
      public function deletecus($id)
     {
-         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
         $this->dbmodel->delete_ctzn($id);
         $this->dbmodel->delete_lis($id);
         $this->dbmodel->delete_pas($id);
@@ -1229,7 +1229,7 @@ class view extends CI_Controller {
    //===============agent =====================//
     public function agent()
     {
-         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
              $this->load->view('cme/templets/header');
         $this->load->view('cme/remittance/agent');
         $this->load->view('cme/templets/footer');
@@ -1242,7 +1242,7 @@ class view extends CI_Controller {
     {
         
        
-         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
 
             $config['upload_path'] = './agentimg/';
             $config['allowed_types'] = 'gif|jpg|png';
@@ -1295,7 +1295,7 @@ class view extends CI_Controller {
     
     public function geteditagent($id)
     {
-         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
         $data['query']= $this->dbmodel->geteditagent($id);
         
          $this->load->view('cme/templets/header');
@@ -1313,7 +1313,7 @@ class view extends CI_Controller {
 
 
     public function updatea() {
-        if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+        if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
 
             $config['upload_path'] = './agentimg/';
             $config['allowed_types'] = 'gif|jpg|png';
@@ -1393,7 +1393,7 @@ class view extends CI_Controller {
 
     public function deleteagent($id)
     {
-         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
         $this->dbmodel->delete_agent($id);
         $this->session->set_flashdata('message', 'Data Delete Sucessfully');
         redirect('view/get_agent');
@@ -1438,7 +1438,7 @@ class view extends CI_Controller {
         
         public function get_agent()
         {
-             if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+             if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
                  
                   $config = array();
             $config["base_url"] = base_url() . "index.php/view/get_agent";
@@ -1496,22 +1496,23 @@ class view extends CI_Controller {
         public function userlist()
         {
             
-         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
              
-              $config = array();
+             $id = $this->session->userdata('id');
+             $config = array();
             $config["base_url"] = base_url() . "index.php/view/userlist";
             $config["total_rows"] = $this->dbmodel->record_count_user();
             $config["per_page"] = 6;
-            //$config["uri_segment"] = 3;
+            $config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
 
-            $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+           $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             
-            $data["userlist"] = $this->dbmodel->userlist($config["per_page"], $user);
-            $data["links"] = $this->pagination->create_links();
+           $data["userlist"] = $this->dbmodel->userlist($config["per_page"], $user, $id);
+           $data["links"] = $this->pagination->create_links();
             
-             //$data['userlist'] = $this->dbmodel->userlist();
+             //$data['userlist'] = $this->dbmodel->userlist($id);
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/user/userlist',$data);
         $this->load->view('cme/templets/footer');
@@ -1524,7 +1525,7 @@ class view extends CI_Controller {
 
                 public function user() {
          
-         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
              
              $this->load->view('cme/templets/header');
              $data['branch']=  $this->dbmodel->branch();
@@ -1537,15 +1538,22 @@ class view extends CI_Controller {
     
     public function adduser()
     {
-         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
 
                        
             $this->load->library(array('form_validation', 'session'));
             
             $this->form_validation->set_rules('uname', 'User Name', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('pass', 'Password', 'required|xss_clean');
+            $this->form_validation->set_rules('pass', 'Confirm Password', 'required|xss_clean');
              $this->form_validation->set_rules('role', 'Role', 'required|xss_clean');
               $this->form_validation->set_rules('branch', 'Branch', 'required|xss_clean');
+              
+              $this->form_validation->set_rules('fullname', 'Name', 'required|xss_clean');
+             $this->form_validation->set_rules('address', 'Address', 'required|xss_clean');
+              $this->form_validation->set_rules('phone', 'Phone Number', 'required|xss_clean');
+              
+              $this->form_validation->set_rules('newpass', 'Password', 'required|xss_clean');
+            
                          
         
             if (($this->form_validation->run() == FALSE)) {
@@ -1570,17 +1578,35 @@ class view extends CI_Controller {
       
    }
    else 
-   {
+   {       
  
                 //if valid
                 $user = $this->input->post('uname');
+                $fullname = $this->input->post('fullname');
+                $address = $this->input->post('address');
+                $phone = $this->input->post('phone');
+                $email = $this->input->post('email');
+                $newpass = $this->input->post('newpass');
+                
                 $pass = $this->input->post('pass');
                 $role = $this->input->post('role');
                 $branch = $this->input->post('branch');
+                
+                
+                if($newpass==$pass)
+                {
                                 
-                $this->dbmodel->adduser($user,$pass,$role,$branch);
+                $this->dbmodel->adduser($user,$pass,$role,$branch,$fullname,$address,$phone,$email);
                 $this->session->set_flashdata('message', 'User added sucessfully');
                 redirect('view/userlist');
+                }
+                else{
+                    $data['mess'] = 'Confirm Password Not Matched.'; 
+   $this->load->view('cme/templets/header'); 
+   $data['branch']=  $this->dbmodel->branch();
+              $this->load->view('cme/user/user',$data);
+              $this->load->view('cme/templets/footer');
+                }
             }
             }
            
@@ -1593,7 +1619,7 @@ class view extends CI_Controller {
     }
     
      public function updateuser() {
-        if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+        if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
 
                       
              $this->load->helper('form');
@@ -1610,6 +1636,7 @@ class view extends CI_Controller {
                $id = $this->input->post('id');
                   $data['query'] = $this->dbmodel->finduser($id);
                   $data['branch']=  $this->dbmodel->branch();
+                 
                 $this->load->view('cme/templets/header'); 
                $this->load->view('cme/user/edit',$data);
                $this->load->view('cme/templets/footer');
@@ -1618,14 +1645,36 @@ class view extends CI_Controller {
  
                 //if valid
                 $user = $this->input->post('uname');
-                //$pass = $this->input->post('pass');
+                $fullname = $this->input->post('fullname');
+                $address = $this->input->post('address');
+                $phone = $this->input->post('phone');
+                $email = $this->input->post('email');
+                $newpass = $this->input->post('newpass');
+                
+                $pass = $this->input->post('pass');
                 $role = $this->input->post('role');
                 $branch = $this->input->post('branch');
-               
                 
-                $this->dbmodel->update_user($id,$user,$role,$branch);
+                
+                if($newpass==$pass)
+                {
+                     $this->dbmodel->update_user($id,$user,$role,$branch,$fullname,$address,$phone,$email,$pass);
                 $this->session->set_flashdata('message', 'Update sucessfully');
                 redirect('view/userlist');
+                    
+                }
+                else
+                {
+                     $id = $this->input->post('id');
+                  $data['query'] = $this->dbmodel->finduser($id);
+                  $data['branch']=  $this->dbmodel->branch();
+                   $data['mess']  = 'Confirm Password Not Matched.';
+                $this->load->view('cme/templets/header'); 
+               $this->load->view('cme/user/edit',$data);
+               $this->load->view('cme/templets/footer');
+                    
+                }
+               
             }
            
         } else
@@ -1638,7 +1687,7 @@ class view extends CI_Controller {
     
      public function deleteuser($id)
     {
-         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
         $this->dbmodel->delete_user($id);
         $this->session->set_flashdata('message', 'Data Delete Sucessfully');
         redirect('view/userlist');
@@ -1650,7 +1699,7 @@ class view extends CI_Controller {
 
         public function getedituser($id)
     {
-         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
         $data['query']= $this->dbmodel->getedituser($id);
         $data['branch']=  $this->dbmodel->branch();
          $this->load->view('cme/templets/header');
@@ -1827,7 +1876,7 @@ class view extends CI_Controller {
     public function cuslist()
     {
          if ($this->session->userdata('logged_in')) {
-            if($this->session->userdata('username')=="ad"){
+            if($this->session->userdata('username')=="admin"){
                 
                  $config = array();
             $config["base_url"] = base_url() . "index.php/view/cuslist";
@@ -1864,7 +1913,7 @@ class view extends CI_Controller {
     
      public function branchlist()
     {
-         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
              
               $config = array();
             $config["base_url"] = base_url() . "index.php/view/get_agent";
@@ -1891,7 +1940,7 @@ class view extends CI_Controller {
       
       public function branch()
       {
-           if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+           if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
              $this->load->view('cme/templets/header');
             // $data['branch']=  $this->dbmodel->branch();
           $this->load->view('cme/branch/branch');
@@ -1904,7 +1953,7 @@ class view extends CI_Controller {
       
       public function addbranch()
       {
-           if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+           if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
 
                        
             $this->load->library(array('form_validation', 'session'));
@@ -1949,7 +1998,7 @@ class view extends CI_Controller {
     
     public function editbranch($id)
     {
-         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
         $data['query']= $this->dbmodel->get_edit_branch($id);
         //$data['branch']=  $this->dbmodel->branch();
          $this->load->view('cme/templets/header');
@@ -1962,7 +2011,7 @@ class view extends CI_Controller {
     } 
     
      public function updatebranch() {
-        if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+        if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
 
                       
              $this->load->helper('form');
@@ -2011,7 +2060,7 @@ class view extends CI_Controller {
     
      public function deletebranch($id)
     {
-         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in')&& ($this->session->userdata('username')=="admin")) {
         $this->dbmodel->delete_branch($id);
         $this->session->set_flashdata('message', 'Data Delete Sucessfully');
         redirect('view/branchlist');
@@ -2025,7 +2074,7 @@ class view extends CI_Controller {
      public function tranlist()
         {
             
-         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
              
               $config = array();
             $config["base_url"] = base_url() . "index.php/view/tranlist";
@@ -2056,7 +2105,7 @@ class view extends CI_Controller {
         
         public function searchtran()
         {
-             if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="ad")) {
+             if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
              // $config = array();
            // $config["base_url"] = base_url() . "index.php/view/searchtran";
            // $config["total_rows"] = $this->dbmodel->record_count_tran();
@@ -2103,4 +2152,32 @@ class view extends CI_Controller {
             redirect('login', 'refresh');
         } 
         }
+        
+        public function useredit_self(){
+             if ($this->session->userdata('logged_in')) {
+             $id =$this->session->userdata('id');    
+        $data['query']= $this->dbmodel->getedituser($id);
+        $data['branch']=  $this->dbmodel->branch();
+         $this->load->view('cme/templets/header');
+         $this->load->view('cme/user/edit',$data);
+          $this->load->view('cme/templets/footer');
+        
+         } else {
+            redirect('login', 'refresh');
+        }
+            
+        }
+        
+        public function cusdetail($id){
+            if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
+                $data['query'] = $this->dbmodel->customer_detail($id);
+                $this->load->view('cme/templets/header');
+         $this->load->view('cme/customer/cusdetail',$data);
+          $this->load->view('cme/templets/footer');
+        
+         } else {
+            redirect('login', 'refresh');
+        }
+        }
+        
 }

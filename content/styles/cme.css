@@ -291,6 +291,10 @@ padding: 6px;
     float: left;
     margin-right: 3%;
 }
+#sessionuser{
+    color: #000;
+    text-decoration: none;
+}
 
 #footer
 {

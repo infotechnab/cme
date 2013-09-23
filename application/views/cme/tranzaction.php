@@ -32,7 +32,7 @@
                  <input type="hidden" name="branch" value="<?php echo $bname; ?>" />
                 <table >
                     <tr>
-                         <td> <input class="intexth"   type="text" name="ref_number" placeholder="refrence number" /> </td>
+                         <td> <input class="intexth"   type="text" name="ref_number" placeholder="Refrence Number" /> </td>
                     </tr>
                     <tr>
                         <td> <b> Rmittance Company </b> </td>
@@ -48,7 +48,7 @@
                             </select> </td>
                     </tr>
                     <tr>
-                         <td><input class="intexth" type="text" name="auth_code" placeholder="authentication code" /></td>
+                         <td><input class="intexth" type="text" name="auth_code" placeholder="Authentication Code" /></td>
                     </tr>
                    
                     
@@ -66,7 +66,7 @@
                     </td>
                 </tr>
             </table>
-            <input class="intexth" type="text" name="s_name" placeholder="sender name" /> <br/> <br/>
+            <input class="intexth" type="text" name="s_name" placeholder="Sender Name" /> <br/> <br/>
             
             <select class="intexthc" name="country">
 <option value="">Country...</option>
@@ -320,7 +320,7 @@
 </select> <br/> <br/>
  
             
-          <input class="intexth" type="text" name="s_amount" placeholder="amount" /> <br/> <br/>
+          <input class="intexth" type="text" name="s_amount" placeholder="Amount" /> <br/> <br/>
           
           <select class="intexthc" name="income">
 <option value="">Income Source</option>

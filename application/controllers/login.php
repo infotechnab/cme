@@ -44,8 +44,11 @@ class Login extends CI_Controller {
                     $role = $data->role;
                     $uid = $data->u_id;
                     $id = $data->id;
+                    $uname = $data->uname;
+                    
                    // $branch = $data->branch;
                 }
+                               
                 $branch = $this->dbmodel->get_branch($id); 
                 foreach ($branch as $data)
                 {
@@ -60,6 +63,7 @@ class Login extends CI_Controller {
                             'bid'=>$id,
                             'btitle'=>$btitle,
                             'bcode'=>$bcode,
+                            'name'=>$uname,
                             //'branch'=>$branch,
 				'logged_in' => true
 			);
