@@ -6,8 +6,8 @@
       echo $error;
   }
   ?>
-    </p>     </div>       
-<div class="cus_search">
+    </p> </div>       
+<div class="cus_search_list">
             <div class="form">  
                 <?php foreach ($query as $data)
                 {
@@ -24,7 +24,7 @@
                 }
 ?>
                 <?php echo form_open('view/updatebranch');?>
-                    <label> <b>Add new Branch</b></label> <br/> <br/>
+                    <label> <b>Edit Branch</b></label> <hr/>
                     <input type="hidden" name="id" value="<?php echo $id; ?>" />
                     <input class="intexth" type="text" name="bname" placeholder="Branch Name" value="<?php echo $bname; ?>" /> <br/><br/>
                     <input class="intexth" type="text" name="btitle" placeholder="Branch Title" value="<?php echo $btitle; ?>" /> <br/><br/>

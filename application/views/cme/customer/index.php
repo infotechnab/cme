@@ -21,8 +21,8 @@
          {echo $error;} ?>
     </p></div> 
            
-        <div class="cus_detail">
-            <h2>Customer Entry </h2>
+        <div class="cus_search_list">
+            <b>Customer Entry </b>
             <hr/>
             <div class="form">  
             <?php echo form_open_multipart('view/addcustomerdetail'); ?>
@@ -163,15 +163,15 @@
 <td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_year"; ?>" id="<?php echo $data."_issue_date_y"; ?>" /> </td> 
 <td> <select style=" padding:3px;" name="<?php echo $data."_month"; ?>" id="<?php echo $data."_issue_date_m"; ?>" >
        <option>Month</option>
-                                <option value="01">January</option>
-                                <option value="02">February</option>
-                                <option value="03">March</option>
-                                <option value="04">April</option>
-                                <option value="05">May</option>
-                                <option value="06">June</option>
-                                <option value="07">July</option>
-                                <option value="08">August</option>
-                                <option value="09">September</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
                                 <option value="10">October</option>
                                 <option value="11">November</option>
                                 <option value="12">December</option>
@@ -261,7 +261,7 @@ else { ?>
             </select>
             <br/>
             <button id="okbutton">Ok</button>
-            <button id="closebutton">Close</button>
-            <input type="text" id="datapass" value=""/>
+           <!-- <button id="closebutton">Close</button> -->
+            <input type="hidden" id="datapass" value=""/>
            
         </div>

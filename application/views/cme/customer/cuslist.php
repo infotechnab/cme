@@ -10,13 +10,13 @@
        </div>        
         
         <div class="cus_search_list">
-           <label> <b>Customer List</b></label> <br/>
+            <label> <b>Customer List</b></label> &nbsp; <?php echo anchor('view/addcustomer','Add New Customer');?> 
          
             <hr/>
              <lable>Search Customer</lable> 
                 <?php echo form_open('view/searchcus');?>
                     <input type="text" name="id"  placeholder="ID" />
-                    <input type="text" name="cusname"  placeholder="Name" />
+                    <input type="text" name="cusname"  placeholder="First Name" />
                     
                    <input type="text" name="address"  placeholder="Address" />
                     <input type="text" name="phone"  placeholder="Phone Number" />
@@ -24,15 +24,17 @@
                     <select name="branch">
                         <option value="">Branch...</option>
                         <?php foreach ($branch as $data)
-                        {?><option value="<?php echo $data->b_name; ?>"><?php echo $data->b_name; ?></option> <?php } ?>
+                        {?><option value="<?php echo $data->id; ?>"><?php echo $data->b_name; ?></option> <?php } ?>
                         
                     </select>
                    
                     <input type="submit" name="search" value="Search" />
                     
                <?php echo form_close(); ?>
+                  
+                    <br/>
                     
-             <?php echo anchor('view/addcustomer','Add New Customer');?> <br/> <br/>
+            
             <div class="form">
                 <table class="tbllist">
                     <tr class="trlist">

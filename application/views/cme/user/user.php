@@ -6,10 +6,10 @@
   ?>
     </p> 
        </div>            
-<div class="cus_search">
+<div class="cus_search_list">
             <div class="form">                
                 <?php echo form_open('view/adduser');?>
-                    <label> <b>Add new user</b></label> <br/> <br/>
+                    <label> <b>Add new user</b></label> <hr/>
                     <input class="intexth" type="text" name="uname" placeholder="User Name" /> * <br/><br/>
                     <input class="intexth" type="text" name="fullname" placeholder="Full Name" /> * <br/><br/>
                     <input class="intexth" type="text" name="address" placeholder="Address" /> * <br/><br/>

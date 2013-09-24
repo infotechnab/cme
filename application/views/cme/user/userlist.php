@@ -10,11 +10,11 @@
        </div>        
         
         <div class="cus_search_list">
-           <label> <b>User List</b></label> <br/>
+            <label> <b>User List</b></label> &nbsp;  <?php echo anchor('view/user','Add New User');?> 
          
             <hr/>
             
-             <?php echo anchor('view/user','Add New User');?>  <br/> <br/>
+            
             <div class="form">
                 <table class="tbllist">
                     <tr class="trlist">

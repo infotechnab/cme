@@ -171,6 +171,9 @@
                         var ydate = passeddata+"_y";
                         var mdate = passeddata+"_m";
                         var ddate = passeddata+"_d";
+                       
+                       alert(mdate);
+                       
                          document.getElementById(ydate).value=xyz;
 			document.getElementById(mdate).value=mymonth;
 			document.getElementById(ddate).value=mydate;

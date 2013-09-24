@@ -11,7 +11,7 @@
   }
   ?>
     </p>     </div>         
-<div class="cus_search_list">
+<div class="cus_search">
             <div class="form">  
                 <?php foreach ($query as $data)
                 {
@@ -26,9 +26,9 @@
                     $roel = $data->role;
                     $branchid = $data->id;
                 }
-?>               <label> <b>Edit user</b></label> <hr/>
-                <?php echo form_open('view/updateuser');?>
-                   
+?>
+                <?php echo form_open('view/useredit_self');?>
+                    <label> <b>Edit user</b></label> <hr/>
                     <input type="hidden" name="id" value="<?php echo $id; ?>" />
                     <input class="intexth" type="text" name="uname" placeholder="User Name" value="<?php echo $uname; ?>" readonly/> <br/><br/>
                     <input class="intexth" type="text" name="fullname" placeholder="Full Name" value="<?php echo $fname; ?>" /> * <br/><br/>
@@ -38,13 +38,13 @@
                     <input class="intexth" type="password" name="newpass" placeholder="Password" /> * <br/><br/>
                     <input class="intexth" type="password" name="pass" placeholder="Confirm Password" /> * <br/><br/>
                    <!-- <input class="intexth" type="password" name="pass" placeholder="Password" value="<?php // echo $pass; ?>"/> <br/><br/> -->
-                    <select class="intexth" name="role" >
+                    <select class="intexth" name="role" style="width:420px;">
                         <option <?php if($roel=='') { echo 'Selected="Selected"'; } ?> value=""> Select role...</option>
                         <option  <?php if($roel=='admin') { echo 'Selected="Selected"'; } ?> value="admin"  selected > Admin </option>
                         <option  <?php if($roel=='user') { echo 'Selected="Selected"'; } ?> value="user"> User </option>
                     </select> <br/> <br/>
                     
-                    <select class="intexth" name="branch" >
+                    <select class="intexth" name="branch" style="width:420px;">
                         <?php foreach ($branch as $data)
                         { ?>
                         <option  <?php if($data->id==$branchid) { echo 'Selected="Selected"'; } ?> 

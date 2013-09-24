@@ -6,6 +6,7 @@
             foreach ($query as $data)
             {
                 $cid = $data->c_id;
+                $fullid = $data->full_id;
                 $title = $data->title;
                 $fname = $data->fname;
                 $mname = $data->mname;
@@ -31,7 +32,7 @@
     </p></div> 
            
         <div class="cus_detail">
-            <h2>Edit Customer </h2>
+            <b>Edit Customer </b>
             <hr/>
             <div class="form">  
             <?php echo form_open_multipart('view/updatecus'); ?>
@@ -40,7 +41,7 @@
                         <td > <b> Customer ID </b>   </td>
                     </tr>
                     <tr>
-                        <td colspan="2" > <input class="intext"  type="text" name="cid" value="<?php echo $cid; ?>" readonly /> </td>
+                        <td colspan="2" > <input class="intext"  type="hidden" name="cid" value="<?php echo $cid; ?>" readonly /> <input class="intext"  type="text" name="fullid" value="<?php echo $fullid; ?>" readonly /> </td>
                     </tr>
                     <tr>
                          <td> <b>Title </b> </td>
@@ -230,7 +231,8 @@ else { ?>
  
      <div style="clear: left;"/> 
             </div>
-           <input type="submit" name="submit" value="Update" />
-           <?php echo form_close(); ?>
+          
             </div>
+                 <input type="submit" name="submit" value="Update" />
+           <?php echo form_close(); ?>
         </div>         

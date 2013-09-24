@@ -22,6 +22,7 @@
                  foreach ($query as $data)
                  {
                      $id = $data->c_id;
+                     $cus_id = $data->cus_id;
                      $fname = $data->fname;
                      $lname= $data->lname;
                      $address = $data->address;
@@ -93,7 +94,7 @@
                         <tr>
                             <td class="det_info" colspan="2">
                                  <?php echo form_open('view/get_tran'); ?>
-                                <input type="hidden" value="<?php echo $id ?>" name="id" />
+                                <input type="hidden" value="<?php echo $cus_id ?>" name="id" />
                  <input class="frminp" type="submit" name="conform" value="Conform">
                 <?php echo form_close(); ?>
                             

@@ -66,6 +66,7 @@
                     </td>
                 </tr>
             </table>
+            <br/>
             <input class="intexth" type="text" name="s_name" placeholder="Sender Name" /> <br/> <br/>
             
             <select class="intexthc" name="country">
@@ -362,6 +363,7 @@
                     </td>
                 </tr>
             </table>
+            <br/>
              <input class="intexth" type="text" name="r_name" placeholder="Reciver Name" /> <br/> <br/>
              <input class="intexth" type="text" name="r_add" placeholder="Reciver Address" /> <br/> <br/>
              <input class="intexth" type="text" name="r_city" placeholder="Reciver Tole" /> <br/> <br/>

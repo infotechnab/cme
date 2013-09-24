@@ -1746,6 +1746,7 @@ class view extends CI_Controller {
  
                 //if valid
                 $id = $this->input->post('uid');
+                $cid = "";
                 $rnumber = $this->input->post('ref_number');
                 $compname = $this->input->post('a_name');
                 $auth = $this->input->post('auth_code');
@@ -1782,7 +1783,7 @@ class view extends CI_Controller {
                 $city = $this->input->post('r_city');
                 
                 
-                $this->dbmodel->addtranzaction($rnumber,$compname,$auth,$sname,$country,$amount,$income,$rname,$raddress,$contact,$identity,$idnumber,$issueplace,$issuedate,$issuedate,$expiredate,$id,$date,$source,$relation,$title,$rtitle,$branch,$city);
+                $this->dbmodel->addtranzaction($rnumber,$compname,$auth,$sname,$country,$amount,$income,$rname,$raddress,$contact,$identity,$idnumber,$issueplace,$issuedate,$issuedate,$expiredate,$id,$date,$source,$relation,$title,$rtitle,$branch,$city,$cid);
                 $this->session->set_flashdata('message', 'Tranzaction added sucessfully');
                 redirect('view/comfirm');
             }
@@ -1827,6 +1828,7 @@ class view extends CI_Controller {
  
                 //if valid
                 $id = $this->input->post('uid');
+                $cid = $this->input->post('customerid');
                 $rnumber = $this->input->post('ref_number');
                 $compname = $this->input->post('a_name');
                 $auth = $this->input->post('auth_code');
@@ -1860,7 +1862,7 @@ class view extends CI_Controller {
                  $city = $this->input->post('r_city');
                 
                 
-                $this->dbmodel->addtranzaction($rnumber,$compname,$auth,$sname,$country,$amount,$income,$rname,$raddress,$contact,$identity,$idnumber,$issueplace,$issuedate,$issuedate,$expiredate,$id,$date,$source,$relation,$title,$rtitle,$branch,$city);
+                $this->dbmodel->addtranzaction($rnumber,$compname,$auth,$sname,$country,$amount,$income,$rname,$raddress,$contact,$identity,$idnumber,$issueplace,$issuedate,$issuedate,$expiredate,$id,$date,$source,$relation,$title,$rtitle,$branch,$city,$cid);
                 $this->session->set_flashdata('message', 'Tranzaction added sucessfully');
                 redirect('view/comfirm');
             }
@@ -1894,6 +1896,7 @@ class view extends CI_Controller {
                 
                 
                  //$data['cuslist'] = $this->dbmodel->cuslist();
+            $data['branch']=  $this->dbmodel->branch();
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/customer/cuslist',$data);
         $this->load->view('cme/templets/footer');                
@@ -2106,20 +2109,7 @@ class view extends CI_Controller {
         public function searchtran()
         {
              if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
-             // $config = array();
-           // $config["base_url"] = base_url() . "index.php/view/searchtran";
-           // $config["total_rows"] = $this->dbmodel->record_count_tran();
-           // $config["per_page"] = 6;
-            //$config["uri_segment"] = 3;
-
-           // $this->pagination->initialize($config);
-
-           // $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             
-            //$data["tranlist"] = $this->dbmodel->tranlist($config["per_page"], $user);
-           // $data["links"] = $this->pagination->create_links();
-            
-            // $data['userlist'] = $this->dbmodel->userlist();
             $data['branch'] = $this->dbmodel->branch();
             $data['query'] = $this->dbmodel->get_agent();
             $data['user'] = $this->dbmodel->get_user();
@@ -2129,10 +2119,12 @@ class view extends CI_Controller {
            $userdata =  $this->input->post('user');
            $branch =  $this->input->post('branch');
            $agent =  $this->input->post('agent');
+           $timeperiod = $this->input->post('tranperiod');
            
-           $data['tranlist'] = $this->dbmodel->searchtrandata($fromdate,$todate,$userdata,$branch,$agent);
+           $data['tranlist'] = $this->dbmodel->searchtrandata($fromdate,$todate,$userdata,$branch,$agent,$timeperiod);
             $config = array();
            $config["base_url"] = base_url() . "index.php/view/searchtran";
+           //echo (count($data['tranlist']));
             $config["total_rows"] =  count($data['tranlist']);
             $config["per_page"] = 6;
            $config["uri_segment"] = 3;
@@ -2141,7 +2133,8 @@ class view extends CI_Controller {
 
            $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             
-           $data["tranlist"] = $this->dbmodel->searchtran($config["per_page"],$user,$fromdate,$todate,$userdata,$branch,$agent);
+           $data["tranlist"] = $this->dbmodel->searchtran($config["per_page"],$user,$fromdate,$todate,$userdata,$branch,$agent,$timeperiod);
+           
           $data["links"] = $this->pagination->create_links();
             
               $this->load->view('cme/templets/header');  
@@ -2168,7 +2161,7 @@ class view extends CI_Controller {
                   $data['query']= $this->dbmodel->getedituser($id);
         $data['branch']=  $this->dbmodel->branch();
          $this->load->view('cme/templets/header');
-         $this->load->view('cme/user/edit',$data);
+         $this->load->view('cme/user/selfedit',$data);
           $this->load->view('cme/templets/footer');
             } else {
  
@@ -2188,8 +2181,8 @@ class view extends CI_Controller {
                 if($newpass==$pass)
                 {
                      $this->dbmodel->update_user($id,$user,$role,$branch,$fullname,$address,$phone,$email,$pass);
-                $this->session->set_flashdata('message', 'Update sucessfully');
-                redirect('view/userlist');
+                $this->session->set_flashdata('message', 'Update sucessfully Personal Account');
+                redirect('view/index');
                     
                 }
                 else
@@ -2199,7 +2192,7 @@ class view extends CI_Controller {
                   $data['branch']=  $this->dbmodel->branch();
                    $data['mess']  = 'Confirm Password Not Matched.';
                 $this->load->view('cme/templets/header'); 
-               $this->load->view('cme/user/edit',$data);
+               $this->load->view('cme/user/selfedit',$data);
                $this->load->view('cme/templets/footer');
                     
                 }
@@ -2214,7 +2207,8 @@ class view extends CI_Controller {
         
         public function cusdetail($id){
             if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
-                $data['query'] = $this->dbmodel->customer_detail($id);
+                $data['query'] = $this->dbmodel->cus_detail_tran($id);
+                $data['tranlist'] = $this->dbmodel->get_user_tran($id);
                 $this->load->view('cme/templets/header');
          $this->load->view('cme/customer/cusdetail',$data);
           $this->load->view('cme/templets/footer');
@@ -2235,7 +2229,7 @@ class view extends CI_Controller {
            $phone =  $this->input->post('phone');
            
            $data['cuslist'] = $this->dbmodel->searchcus($cusid,$name,$address,$branch,$phone);
-           
+           $data['branch']=  $this->dbmodel->branch();
             $this->load->view('cme/templets/header');  
         $this->load->view('cme/customer/cuslist',$data);
         $this->load->view('cme/templets/footer');
@@ -2245,6 +2239,75 @@ class view extends CI_Controller {
         } 
            
             
+        }
+        
+        public function usertranlist()
+        {
+            
+         if ($this->session->userdata('logged_in')) {
+             $id = $this->session->userdata('id');
+              $config = array();
+            $config["base_url"] = base_url() . "index.php/view/usertranlist";
+            $data["tranlist"] = $this->dbmodel->usertranlistall($id);
+            $config["total_rows"] = count($data['tranlist']);
+            $config["per_page"] = 6;
+            //$config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+            $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+            $data["tranlist"] = $this->dbmodel->usertranlist($config["per_page"], $user,$id);
+            $data["links"] = $this->pagination->create_links();
+            
+             //$data['userlist'] = $this->dbmodel->userlist();
+            $data['branch'] = $this->dbmodel->branch();
+            $data['query'] = $this->dbmodel->get_agent();
+            $data['user'] = $this->dbmodel->get_user();
+              $this->load->view('cme/templets/header');  
+        $this->load->view('cme/tranzaction/usertranlist',$data);
+        $this->load->view('cme/templets/footer');
+             
+         } else {
+            redirect('login', 'refresh');
+        } 
+            
+        }
+        
+        public function usersearchtran()
+        {
+             if ($this->session->userdata('logged_in')) {
+             $id = $this->session->userdata('id');
+            $data['branch'] = $this->dbmodel->branch();
+            $data['query'] = $this->dbmodel->get_agent();
+            $data['user'] = $this->dbmodel->get_user();
+            
+           $fromdate =  $this->input->post('dfrom');
+           $todate =  $this->input->post('dto');
+           $agent =  $this->input->post('agent');
+           $timeperiod = $this->input->post('tranperiod');
+           
+           $data['tranlist'] = $this->dbmodel->usersearchtrandata($fromdate,$todate,$agent,$id,$timeperiod);
+            $config = array();
+           $config["base_url"] = base_url() . "index.php/view/usersearchtran";
+            $config["total_rows"] =  count($data['tranlist']);
+            $config["per_page"] = 6;
+           $config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+           $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+           $data["tranlist"] = $this->dbmodel->usersearchtran($config["per_page"],$user,$fromdate,$todate,$agent,$id,$timeperiod);
+          $data["links"] = $this->pagination->create_links();
+            
+              $this->load->view('cme/templets/header');  
+        $this->load->view('cme/tranzaction/usertranlist',$data);
+        $this->load->view('cme/templets/footer');
+             
+         } else {
+            redirect('login', 'refresh');
+        } 
         }
         
 }

@@ -83,12 +83,19 @@ class Dbmodel extends CI_Model {
     public function customer_detail($fcid)
     {
         
-         $this->db->where('c_id = '."'".$fcid."'");
+         $this->db->where('cus_id = '."'".$fcid."'");
         $query = $this->db->get('customer_info');
         return $query->result();
         
     }
-     public function get_edit_cus($id)
+    
+    public function cus_detail_tran($id){
+         $this->db->where('c_id = '."'".$id."'");
+        $query = $this->db->get('customer_info');
+        return $query->result();
+    }
+
+    public function get_edit_cus($id)
     {
         $this->db->where('c_id',$id);
         $query = $this->db->get('customer_info');
@@ -354,10 +361,10 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-    public function addtranzaction($rnumber,$compname,$auth,$sname,$country,$amount,$income,$rname,$raddress,$contact,$identity,$idnumber,$issueplace,$issuedate,$issuedate,$expiredate,$id,$date,$source,$relation,$title,$rtitle,$branch,$city)
+    public function addtranzaction($rnumber,$compname,$auth,$sname,$country,$amount,$income,$rname,$raddress,$contact,$identity,$idnumber,$issueplace,$issuedate,$issuedate,$expiredate,$id,$date,$source,$relation,$title,$rtitle,$branch,$city,$cid)
     {
         
-        //die($date);
+        
         $data = array(
             'ref_number'=>$rnumber,
             'agent'=>$compname,
@@ -366,6 +373,7 @@ class Dbmodel extends CI_Model {
             'country'=>$country,
              'amount'=>$amount,
             'u_id'=>$id,
+            'cid'=>$cid,
             //'a_name'=>$income,
             'r_name'=>$rname,
             'address'=>$raddress,
@@ -423,6 +431,22 @@ class Dbmodel extends CI_Model {
      public function tranlist($limit,$start)
     {
         $this->db->limit($limit, $start);
+        $tranlist = $this->db->get('cme_tranzaction');
+        return $tranlist->result();
+    }
+    
+     public function usertranlist($limit,$start,$id)
+    {
+        $this->db->limit($limit, $start);
+        $this->db->where('u_id',$id);
+        $tranlist = $this->db->get('cme_tranzaction');
+        return $tranlist->result();
+    }
+    
+    public function usertranlistall($id)
+    {
+        
+        $this->db->where('u_id',$id);
         $tranlist = $this->db->get('cme_tranzaction');
         return $tranlist->result();
     }
@@ -628,7 +652,7 @@ class Dbmodel extends CI_Model {
          $this->db->delete('user', array('u_id' => $id));
     }
     
-    public function searchtran($limit,$start,$fromdate,$todate,$userdata,$branch,$agent){
+    public function searchtran($limit,$start,$fromdate,$todate,$userdata,$branch,$agent,$timeperiod){
        
                 $this->db->limit($limit, $start); 
  
@@ -636,6 +660,7 @@ class Dbmodel extends CI_Model {
        $b = array();
        $c = array();
        $d  = array();
+       $e = array();
         if((isset($userdata))&& $userdata ==!""){
             
           $a =array("u_id"=>$userdata); 
@@ -656,29 +681,53 @@ class Dbmodel extends CI_Model {
           $d =array("agent"=>$agent); 
           $a = array_merge($a,$b,$c,$d);
         }
-       //echo($a);
-     // foreach($b as $data)
-     // {
-       //   echo $data;
-     // }
-   // print_r($a);
+        
+        if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($a,$b,$c,$d,$e);
+        }
       
-    // die();
-      
-     
-        
-        //$this->db->where('date between'.$fromdate.'AND'.$todate);
-        //$this->db->or_where('date BETWEEN ' . $fromdate . ' AND ' . $todate);
-       // $this->db->where('date <=',$todate);
-       // $this->db->where('date >',$fromdate);
-        
-        
-       // $this->db->or_where('u_id',$user);
-        // $this->db->or_where('branch',$branch);
-        //  $this->db->or_where('agent',$agent);
     if(isset($a))
     {
         $this->db->where($a);
+    }
+          $tranlist = $this->db->get('cme_tranzaction');
+      
+         return $tranlist->result();
+         
+    }
+    
+    public function usersearchtran($limit,$start,$fromdate,$todate,$agent,$id,$timeperiod){
+       
+                $this->db->limit($limit, $start); 
+ 
+      
+       $c = array();
+       $d  = array();
+       $e = array();
+       
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >'=>$fromdate,'date <='=>$todate);
+         $a = array_merge($c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($c,$d);
+        }
+        
+        if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($c,$d,$e);
+        }
+     
+    if(isset($a))
+    {
+        $this->db->where($a);
+        $this->db->where('u_id',$id);
     }
           $tranlist = $this->db->get('cme_tranzaction');
       
@@ -690,7 +739,7 @@ class Dbmodel extends CI_Model {
          return $this->db->count_all(searchtran());
     }
     
-     public function searchtrandata($fromdate,$todate,$userdata,$branch,$agent){
+     public function searchtrandata($fromdate,$todate,$userdata,$branch,$agent,$timeperiod){
        
               //  $this->db->limit($limit, $start); 
  
@@ -698,6 +747,7 @@ class Dbmodel extends CI_Model {
        $b = array();
        $c = array();
        $d  = array();
+       $e = array();
         if((isset($userdata))&& $userdata ==!""){
             
           $a =array("u_id"=>$userdata); 
@@ -718,6 +768,11 @@ class Dbmodel extends CI_Model {
           $d =array("agent"=>$agent); 
           $a = array_merge($a,$b,$c,$d);
         }
+         if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($a,$b,$c,$d,$e);
+        }
       
     if(isset($a))
     {
@@ -728,8 +783,50 @@ class Dbmodel extends CI_Model {
          return $tranlist->result();
          
     }
+    
+    public function usersearchtrandata($fromdate,$todate,$agent,$id,$timeperiod){
+       
+              //  $this->db->limit($limit, $start); 
+ 
+      
+       $c = array();
+       $d  = array();
+       $e  = array();
+        
+        
+     
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >='=>$fromdate,'date <='=>$todate);
+         $a = array_merge($c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($c,$d);
+        }
+        
+         if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($c,$d,$e);
+        }
+      
+    if(isset($a))
+    {
+        $this->db->where($a);
+        $this->db->where('u_id',$id);
+    }
+          $tranlist = $this->db->get('cme_tranzaction');
+      
+         return $tranlist->result();
+         
+    }
     public function get_user_tran($id){
-        $this->db->where('c_id',$id);
+        $this->db->where('cid',$id);
+         $tranlist = $this->db->get('cme_tranzaction');
+      
+         return $tranlist->result();
     }
     
     public function searchcus($cusid,$name,$address,$branch,$phone)
@@ -746,12 +843,13 @@ class Dbmodel extends CI_Model {
         
         
       if((isset($branch))&& $branch ==!""){
-         $b = array("branch"=>$branch);
+         $b = array("id"=>$branch);
         //$b = array($a,array("branch"=>$branch));
         $a = array_merge($a,$b);
       }
        if((isset($phone)&& $phone == !"")) {
          $c = array('conpersonal'=>$phone);
+         $ph = array('conhome'=>$phone);
          $a = array_merge($a,$b,$c);
          
       }
@@ -769,6 +867,10 @@ class Dbmodel extends CI_Model {
     if(isset($a))
     {
         $this->db->where($a);
+        if(isset($ph))
+        {
+        $this->db->or_where($ph);
+    }
     }
           $cuslist = $this->db->get('customer_info');
       

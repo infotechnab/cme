@@ -9,10 +9,10 @@
     </p> 
        </div>
         <div class="cus_search_list">
-           <label> <b>Remittance Company List</b></label> <br/>
+            <label> <b>Remittance Company List</b></label> &nbsp; <?php echo anchor('view/agent','Add New Remittance Company');?> 
          
             <hr/>
-             <?php echo anchor('view/agent','Add New Remittance Company');?> <br/> <br/>
+            
             <div class="form">
                 <table class="tbllist">
                     <tr class="trlist">

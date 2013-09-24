@@ -9,10 +9,10 @@
     </p> 
        </div>
         <div class="cus_search_list">
-           <label> <b>Branch List</b></label> <br/>
+            <label> <b>Branch List</b></label> &nbsp; <?php echo anchor('view/branch','Add New Branch');?>
          
             <hr/>
-             <?php echo anchor('view/branch','Add New Branch');?> <br/> <br/>
+            
             <div class="form">
                 <table class="tbllist">
                     <tr class="trlist">

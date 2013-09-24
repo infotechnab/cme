@@ -16,12 +16,12 @@
     </p></div>
 
         <div class="cus_detail">
-            <h2>Remit Claim Form</h2>
+            <b>Remit Claim Form</b>
             <hr/>
 <?php   foreach ($customer as $data)
                 {
 
-                     $id = $data->c_id;
+                     $cid = $data->c_id;
                      $fname = $data->fname;
                      $lname= $data->lname;
                      $address = $data->address;
@@ -36,7 +36,7 @@
                      $title = $data->title;
 
                 }
-                $identity = $this->dbmodel->get_identity($id);
+                $identity = $this->dbmodel->get_identity($cid);
                
                echo '<script type="text/javascript">'.'var dat='.json_encode($identity).'</script>';
                ?>
@@ -74,7 +74,7 @@
             
                <?php
 
-                $detail = $this->dbmodel->get_identity($id);
+                $detail = $this->dbmodel->get_identity($cid);
                // print_r($detail);
 
                 foreach ($detail as $data)
@@ -92,7 +92,7 @@
             <div class="form">
             <?php echo form_open_multipart('view/addtranzaction_get'); ?>
                 <input type="hidden" name="uid" value="<?php echo $user_id; ?>" />
-                <input type="hidden" name="branch" value="" />
+                <input type="hidden" name="customerid" value="<?php echo $cid;?>" />
                 <table >
                     <tr>
                          <td> <input class="intexth"   type="text" name="ref_number" placeholder="Refrence Number" /> </td>
@@ -122,13 +122,14 @@
 
                 <div class="t_left">
             <label id="clpid"> <b > Sender Info </b></label> <hr/>
-            <table>
+             <table>
                 <tr>
                     <td>
                         <input type="radio" name="title" value="Mr." /> Mr. &nbsp; <input type="radio" name="title" value="Mrs." /> Mrs. &nbsp;<input type="radio" name="title" value="Miss." /> Miss. &nbsp; <input type="radio" name="title" value="Ms." /> Ms.
                     </td>
                 </tr>
             </table>
+            <br/>
             <input class="intexth" type="text" name="s_name" placeholder="Sender Name" /> <br/> <br/>
 
             <select class="intexthc" name="country">
@@ -421,8 +422,15 @@
                 <div class="t_right">
             <label id="clpid"> <b > Receiver Info </b></label> <hr/>
 
-           <!-- <input type="hidden" name="rtitle" value=" <?php echo $title; ?>" /> -->
-            <input type="radio" name="rtitle" value="Mr." <?php if($title=='Mr.') { ?> checked <?php } ?> /> <b> Mr.</b> &nbsp; <input type="radio" name="rtitle" value="Mrs."<?php if($title=='Mrs.') { ?> checked <?php } ?> /><b> Mrs.</b> &nbsp; <input type="radio" name="rtitle" value="Miss."<?php if($title=='Miss.') { ?> checked <?php } ?> /><b> Miss.</b> &nbsp; <input type="radio" name="rtitle" value="Ms."<?php if($title=='Ms.') { ?> checked <?php } ?> /><b> Ms.</b>
+           <!-- <input type="hidden" name="rtitle" value=" <?php //echo $title; ?>" /> -->
+           <table>
+                <tr>
+                    <td>
+            <input type="radio" name="rtitle" value="Mr." <?php if($title=='Mr.') { ?> checked <?php } ?> /> <b> Mr.</b> &nbsp; <input type="radio" name="rtitle" value="Mrs."<?php if($title=='Mrs.') { ?> checked <?php } ?> /><b> Mrs.</b> &nbsp; <input type="radio" name="rtitle" value="Miss."<?php if($title=='Miss.') { ?> checked <?php } ?> /><b> Miss.</b> &nbsp; <input type="radio" name="rtitle" value="Ms."<?php if($title=='Ms.') { ?> checked <?php } ?> /><b> Ms.</b> 
+            </td>
+                </tr>
+            </table>
+            <br/>
             <input class="intexth" type="text" name="r_name" placeholder="Reciver Name" value="<?php echo $fname." ".$lname; ?>" /> <br/>  <br/>
              <input class="intexth" type="text" name="r_add" placeholder="Reciver Address" value="<?php echo $address; ?>" /> <br/> <br/>
              <input class="intexth" type="text" name="r_city" placeholder="Reciver Tole" value="<?php echo $tole; ?>"/> <br/> <br/>

@@ -18,23 +18,11 @@
             <div class="form">
                 
                 <lable>Search Tranzaction</lable> 
-                <?php echo form_open('view/searchtran');?>
+                <?php echo form_open('view/usersearchtran');?>
                     <input type="text" name="dfrom" id="datepicker1" placeholder="From" />
                     <input type="text" name="dto" id="datepicker2" placeholder="To" />
                     
-                    <select name="user">                        
-                    <option value="">User...</option>
-                   <?php foreach ($user as $data)
-                        {?><option value="<?php echo $data->u_id; ?>"><?php echo $data->uname; ?></option> <?php } ?>                                   
-                </select>
-                    
-                    <select name="branch">
-                        <option value="">Branch...</option>
-                        <?php foreach ($branch as $data)
-                        {?><option value="<?php echo $data->b_name; ?>"><?php echo $data->b_name; ?></option> <?php } ?>
-                        
-                    </select>
-                    
+                                       
                     <select name="agent">
                         <option value="">Remittance Company...</option>
                          <?php foreach ($query as $data)

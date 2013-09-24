@@ -1,5 +1,5 @@
-<div class="cus_search">
-            <h2> Customer Details </h2>
+<div class="cus_search_list">
+            <b> Customer Details </b>
             <hr/>
              <?php
              //print_r($query);
@@ -58,6 +58,7 @@
                         </tr>
                    
                          </table>
+                    
                     <div class="customer_id_details">
                         <b> ID Dtails </b> <hr/>
                         <table class="tbllist">

@@ -7,7 +7,7 @@
   }
   ?>
     </p>     </div>
-        <div class="cus_search">
+        <div class="cus_search_list">
            <label> <b>Edit Remittance Company</b></label> <br/>
          
             <hr/>
