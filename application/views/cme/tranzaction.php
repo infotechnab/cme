@@ -20,7 +20,7 @@
 ?>
     </p>
         <div class="cus_detail">
-            <h2>Remit Claim Form</h2>
+            <label><b>Remit Claim Form</b></label>
             <hr/>
             
            
@@ -432,3 +432,4 @@
                  <?php echo form_close(); ?>
             </div> 
         </div>
+</div>

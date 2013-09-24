@@ -11,6 +11,7 @@
 
 }
 
+
 a:link {text-decoration:none;}    /* unvisited link */
 a:visited {text-decoration:none;} /* visited link */
 a:hover {text-decoration:underline;}   /* mouse over link */
@@ -19,7 +20,7 @@ a:active {text-decoration:underline;}
 body {
     margin: 0;
     padding: 0;
-    background-color: coral;
+    background-color: #f4f1f1;
 }
 
 .sign{
@@ -32,22 +33,42 @@ body {
     }
 .full{
     margin: 0 auto 0 auto;
-    padding: 10px;
-    background-color: #D0D0D0;
-    width: 80%
+    padding: 20px;
+    background-color: #ffffff;
+    width: 80%;
+    box-shadow: 0px 0px 10px #888888;
 }
 .title{
     margin: 0 auto 0 auto;
-    text-align: center;
+    
     width: 50%;
     height: auto;
 }
-.form{
-    margin: 0 auto 0 auto;
-    width: 98%;
-   
- 
+
+#menuList a{
+    color:#ffffff;
 }
+#menuList
+{
+    margin: 0;
+    padding: 0;
+    color:#ffffff;
+
+}
+
+#menuList li { 
+    list-style: none;
+    display: inline;
+margin-right: 5px;
+margin-left: 5px;
+
+background-color: #E13300;
+padding: 5px;
+font-size: 16px;
+font-weight: bold;
+
+}
+
 #uname,#pass{
     padding: 3%;
 }
@@ -55,20 +76,17 @@ body {
     font-size: 150%;
 }
 .cme{
-    text-align: center;
+    //text-align: center;
 }
 .cus_detail{
-    margin: 0 auto 0 auto;
-    width: 90%;
-    border: solid 1px #002166;
+    
     padding: 2%;
   
 }
 .customer_id_details{
      margin: 0 auto 0 auto;
     width: 150%;
-    border: solid 1px #002166;
-    padding: 2%;
+  
 }
 .rolelogout{
     float: right;
@@ -78,33 +96,13 @@ body {
 h2{
     margin: 0;
     padding: 0;
-    text-align: center;
-}
-.intext{
-    padding:1%;
-    width: 92%;
-    
-}
-.intexth{
-    padding: 2%;
-    width: 86%;
-}
-
-.intextd{
-    padding: 1%;
-    width: 29.5%;
-}
-.intexna{
-    padding: 1%;
-    width: 25%;
+  
 }
 .cidentitytran{
-     width: 98%;
-    border: solid 1px #002166;
-    margin: 1%;
+     
+    border: solid 1px #002166;   
     padding: 1%;
-    text-align: center;
-    
+      
 }
 
 .cidentity{
@@ -115,29 +113,17 @@ h2{
     text-align: center;
 }
 #clpid{
-    text-align: center;
+    //text-align: center;
 }
-.cus_search{
-    width: 50%;
-    border: solid 1px #000;
-    text-align: center;
-    margin: 0 auto 0 auto;
-    padding: 2%;
-}
-.cus_search_menu{
-    width: 50%;
-    border: solid 1px #000;
-    text-align: center;
-    margin: 0 auto 0 auto;
+.cus_search_find{   
+    //border: solid 1px #000;
     padding: 2%;
 }
 
+
 .cus_search_list{
    
-    
-    text-align: center;
-    margin: 0 auto 0 auto;
-    padding: 2%;
+      padding: 2%;
 }
 .listimg{
     width: 60%;
@@ -255,8 +241,7 @@ padding: 6px;
     
 }
 .cme_a_add{
-    padding: 2%;
-    width: 56%;
+   
 }
 .t_left{
     float: left;
@@ -296,17 +281,22 @@ padding: 6px;
     margin-right: 3%;
 }
 #sessionuser{
-    color: #000;
+  
+    color:#E13300;
     text-decoration: none;
+}
+#sessionuser img
+{
+    margin-right:  5px;
 }
 
 #footer
 {
-    margin-top: 10px;
+    margin: 10px 0 5px 0;
      background-color: #D0D0D0;
      text-align: center;
      font-size: 12px;
      color:#ffffff;
-     padding: 5px;
+     padding: 1px;
 }
 

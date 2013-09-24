@@ -1,5 +1,19 @@
-<div class="cus_search">
-            <h2> Customer Details </h2>
+<div class="cus_search_detail">
+    <div class="cme">   <p id="sucessmsg">
+  <?php echo validation_errors();?>
+            
+         <?php  if(isset($error))
+         {echo $error;}
+         
+         if(isset($mess))
+         {
+             echo $mess;
+         }
+       
+?>
+    </p>
+    <div class="cus_detail">
+    <label> <b>Customer Details</b> </label>
             <hr/>
              <?php
              //print_r($query);
@@ -104,3 +118,5 @@
                  else{?>
                  file not found <?php } ?>
         </div>
+    </div>
+</div>

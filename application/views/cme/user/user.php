@@ -17,13 +17,13 @@
                     <input class="intexth" type="email" name="email" placeholder="Email" />  <br/><br/>
                     <input class="intexth" type="password" name="newpass" placeholder="Password" /> * <br/><br/>
                     <input class="intexth" type="password" name="pass" placeholder="Confirm Password" /> * <br/><br/>
-                    <select class="intexth" name="role"  style="width:420px;">
+                    <select class="intexth" name="role">
                         <option value=""> Select role...</option>
                         <option value="admin"> Admin </option>
                         <option value="user"> User </option>
                     </select> * <br/> <br/>
                     
-                    <select class="intexth" name="branch" style="width:420px;">
+                    <select class="intexth" name="branch" >
                         <?php foreach ($branch as $data)
                         { ?>
                              <option value="<?php echo $data->id; ?>"><?php echo $data->b_name; ?> </option>

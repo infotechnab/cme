@@ -1,4 +1,6 @@
-            <div class="cus_search">
+           
+<div class="cus_search">
+                
             <div class="form">                
                 <?php echo form_open('view/addbranch');?>
                     <label> <b>Add new Branch</b></label> <br/> <br/>

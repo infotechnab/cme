@@ -95,7 +95,11 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
        <?php 
        $role = $this->session->userdata('username');
        $uname = $this->session->userdata('name');
-          echo anchor('view/useredit_self',$uname,'id=sessionuser');
+         ?>
+                <a href="<?php echo base_url()."index.php/view/useredit_self"; ?>" id ="sessionuser">
+                    <img src="<?php echo base_url().'content/images/profile.png'; ?>" alt="prifileImage" /><?php echo $uname; ?></a>
+                <?php 
+          
         $bid = $this->session->userdata('bid');
         $user_id = $this->session->userdata('id');?>
             <?php echo anchor('view/logout','Log Out') ?> </div>
@@ -103,14 +107,36 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
            <?php
            $admin = "admin";
            $user = "user";
+           $adminMenuList = array("Home"=>"view/index", "Remittance Company"=>"view/get_agent",
+               "User"=>"view/userlist","Customers"=>"view/cuslist","Remitance Claim"=>"view/tranzaction",
+               "Branch"=>"view/branchlist","Transaction"=>"view/tranlist");
+           $userMenuList = array("Home"=>"view/index","Remitance Company"=>"view/get_useragent","Add New Customer"=>"view/addcustomer","Remitance Claim"=>"view/tranzaction");
+          
            if($role==$admin)
            {
-               echo anchor('view/index','Home')." /".anchor('view/get_agent','Remittance Company')." /"." ".  anchor('view/userlist','Users')." / ". anchor('view/cuslist','Customers')."/"
-                   .  anchor('view/tranzaction',' Remitance Claim')." /"." ".anchor('view/branchlist','Branch')." /"." ".anchor('view/tranlist','Tranzaction');
+               $arrayPass = $adminMenuList;
            }
- else 
-     { echo  anchor('view/index','Home')." /".anchor('view/get_useragent','Remittance Company')." /".anchor('view/addcustomer','Add New Customer')."/".anchor('view/tranzaction',' Remitance Claim');
-     
- }?> </div>
+           else
+           {
+               $arrayPass = $userMenuList;
+           }
+               ?>
+                 <ul id="menuList">
+                 <?php 
+                 
+               foreach($arrayPass as $adminItemKey=>$adminItemLink)
+               {
+               ?>
+              <li>
+                     <a href="<?php echo base_url()."index.php/".$adminItemLink; ?>">
+                         <?php echo $adminItemKey;?>
+                     </a> 
+                </li>
+          <?php
+               }
+               ?> </ul>
+                
+           
+</div>
             
                     

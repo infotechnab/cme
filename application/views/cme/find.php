@@ -8,14 +8,13 @@
   ?>
     </p> 
        </div> 
-<div class="cus_search">
+<div class="cus_search_find">
              <div class="form">
                 
                 <?php echo form_open('view/detail');?>
-                    <label>Customer ID :</label>
+                    <label>Customer:</label>
                     <input type="text" name="fcid" placeholder="Customer ID" />
-                   <br/><br/>
-                    <input type="submit" name="submit" value="Search" /> 
+                    <input type="submit" name="submit" value="Find" /> 
                 </form>
                 <br/>
                 
