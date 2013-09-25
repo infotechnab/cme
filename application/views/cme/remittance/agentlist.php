@@ -28,9 +28,10 @@
                         <th class="tdlist"> Principal Agent</th>
                         <th class="tdlist"> Action </th>
                     </tr>
-                    <?php foreach ($query as $data) { ?>
+                    <?php $sn=1;
+                    foreach ($query as $data) { ?>
                     <tr class="trlist">
-                        <td class="tdlist"> <?php echo $data->id; ?></td>
+                        <td class="tdlist"> <?php echo $sn++; //$data->id; ?></td>
                         <td class="tdlist"> <?php echo $data->a_name; ?></td>
                         <td class="tdlist"> <?php echo $data->n_name; ?></td>
                         <td class="tdlist"> <?php echo $data->a_address; ?></td>

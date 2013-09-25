@@ -141,7 +141,7 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-    public function add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid)
+    public function add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid,$ward,$city)
     {
       
         $data=array(
@@ -155,6 +155,8 @@ class Dbmodel extends CI_Model {
             'distric'=>$distric,
             'vdc'=>$vdc,
             'tole'=>$tole,
+            'ward'=>$ward,
+            'city'=>$city,
             'zone'=>$zone,
             'country'=>$country,
             'email'=>$email,

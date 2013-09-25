@@ -88,25 +88,19 @@
                                           }
 ?>                  </table>
                     </div>  
-                    
-                    <table>   
-                        
-                        <tr>
-                            <td class="det_info" colspan="2">
+                    <br/>
+                   
                                  <?php echo form_open('view/get_tran'); ?>
                                 <input type="hidden" value="<?php echo $cus_id ?>" name="id" />
-                 <input class="frminp" type="submit" name="conform" value="Conform">
+                 <input class="frminp" type="submit" name="conform" value="Recive Remittance">
                 <?php echo form_close(); ?>
-                            
-              
-                <?php echo form_open('view/index'); ?>
-                <input class="frminp" type="submit" name="cancel" value="Cancel">
+                           
+                 <?php echo form_open('view/send_tran'); ?>
+                                <input type="hidden" value="<?php echo $cus_id ?>" name="id" />
+                 <input class="frminp" type="submit" name="conform" value="Send Remittance">
                 <?php echo form_close(); ?>
+            
                  
-                            </td>
-                        </tr>
-                        
-                    </table>
                 </div>
                 <div class="userdetailimg">
                    <img class="userdetailimg" src="<?php echo base_url()."custmr_detail_image/". $image; ?>" width="150px" height="160px" />

@@ -94,7 +94,12 @@
                     </tr>
                     <tr>                         
                              <td> <input class="intexth"   type="text" name="vdc" placeholder="VDC / Municipality"/> </td>
-                             <td> <input class="intexth"  type="text" name="tole" placeholder="Tole"/> </td>
+                             <td> <input class="intexth"  type="text" name="ward" placeholder="Ward No."/> </td>
+                    </tr>
+                    
+                     <tr> 
+                              <td> <input class="intexth" type="text" name="tole" placeholder="Tole"/> </td>
+                               <td> <input class="intexth" type="text" name="city" placeholder="City" /> * </td>
                     </tr>
                     
                    <tr> 
@@ -177,7 +182,7 @@
                                 <option value="12">December</option>
     </select> </td>
 <td> <input type="text" style="width:80px; padding:3px;" placeholder="Day" name="<?php echo $data."_day"; ?>" id="<?php echo $data."_issue_date_d"; ?>" /></td>
-<td><img src="<?php echo base_url()."content/images/calender.png"?>" id="<?php echo $data."_issue_date" ;?>" /> </td>
+<td><img class="dateConverterImage"src="<?php echo base_url()."content/images/calender.png"?>" id="<?php echo $data."_issue_date" ;?>" /> </td>
 </tr>
 <?php if($data == 'Citizenship')
 {?>
@@ -228,7 +233,7 @@ else { ?>
 
 
 <!-- calender -->
-        <div class="calendars-month-header" id="c-m-h" style="display: none; position: fixed; top: 400px; left: 950px; background-color: #003399; width: 220px; ">
+        <div class="calendars-month-header" id="c-m-h" >
             <select title="Change the year" class="calendars-month-year" id="yearInput">
                 <?php
                 for ($i = 2020; $i <= 2080; $i++) {

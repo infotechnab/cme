@@ -46,9 +46,10 @@
                          <th class="tdlist">Image</th>
                         <th class="tdlist"> Action </th>
                     </tr>
-                    <?php foreach ($cuslist as $data) { ?>
+                    <?php $sn=1;
+                    foreach ($cuslist as $data) { ?>
                     <tr class="trlist">
-                        <td class="tdlist"> <?php echo $data->c_id; ?></td>
+                        <td class="tdlist"> <?php echo $sn++; //$data->c_id; ?></td>
                          <td class="tdlist"> <?php echo $data->full_id; ?></td>
                         <td class="tdlist"> <?php echo $data->title." ".$data->fname." ".$data->mname." ".$data->lname; ?></td>
                        

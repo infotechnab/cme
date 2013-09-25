@@ -21,6 +21,8 @@
              click:function()
              {
                  $("#c-m-h").toggle();
+                  // $("#c-m-h").css("position","relative");
+                  // $("#c-m-h").css("top","-150px");
                  var imgid = $(this).attr("id");
                 
                  //calculate(imgid);
@@ -109,7 +111,7 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
            $user = "user";
            $adminMenuList = array("Home"=>"view/index", "Remittance Company"=>"view/get_agent",
                "User"=>"view/userlist","Customers"=>"view/cuslist","Remitance Claim"=>"view/tranzaction",
-               "Branch"=>"view/branchlist","Transaction"=>"view/tranlist");
+               "Branch"=>"view/branchlist","Transaction"=>"view/tranlist","Remittance Send"=>'view/sendremit');
            $userMenuList = array("Home"=>"view/index","Remitance Company"=>"view/get_useragent","Customers"=>"view/usercuslist","Add New Customer"=>"view/addcustomer","Remitance Claim"=>"view/tranzaction",
                "Transaction"=>"view/usertranlist");
           

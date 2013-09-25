@@ -91,6 +91,8 @@ class view extends CI_Controller {
                 $distric = $this->input->post('distric');
                 $vdc = $this->input->post('vdc');
                 $tole = $this->input->post('tole');
+                 $ward = $this->input->post('ward');
+                $city = $this->input->post('city');
                 $zone = $this->input->post('zone');
                 $country = $this->input->post('country');
                 $email = $this->input->post('email');
@@ -310,7 +312,7 @@ class view extends CI_Controller {
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
              }
                 
-                $this->dbmodel->add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid);
+                $this->dbmodel->add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid,$ward,$city);
                 $this->dbmodel->add_id_ctzn($cid,$typectzn,$ctznid,$ctznplace,$ctzndate,$ctznimage);
                  $this->dbmodel->add_id_license($cid,$typelicense,$lid,$lplace,$ldate,$limage,$eldate);
                  $this->dbmodel->add_id_passport($cid,$typepassport,$pid,$pplace,$pdate,$pimage,$epdate);
@@ -351,6 +353,8 @@ class view extends CI_Controller {
                 $distric = $this->input->post('distric');
                 $vdc = $this->input->post('vdc');
                 $tole = $this->input->post('tole');
+                $ward = $this->input->post('ward');
+                $city = $this->input->post('city');
                 $zone = $this->input->post('zone');
                 $country = $this->input->post('country');
                 $email = $this->input->post('email');
@@ -564,7 +568,7 @@ class view extends CI_Controller {
                 $eoday = $this->input->post('Other_daye');
                 $eodate = $eoyear."-".$eomonth."-".$eoday;
              }
-                $this->dbmodel->add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid);
+                $this->dbmodel->add_details($cid,$fname, $lname, $address, $distric,$vdc,$tole,$zone,$country,$email,$cusimage,$gender,$dob,$conpersonal,$conhome,$title,$userid,$branchid,$mname,$cusid,$fullid,$ward,$city);
                 $this->dbmodel->add_id_ctzn($cid,$typectzn,$ctznid,$ctznplace,$ctzndate,$ctznimage);
                  $this->dbmodel->add_id_license($cid,$typelicense,$lid,$lplace,$ldate,$limage,$eldate);
                  $this->dbmodel->add_id_passport($cid,$typepassport,$pid,$pplace,$pdate,$pimage,$epdate);
@@ -1417,6 +1421,19 @@ class view extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
+    
+    public function sendremit()
+    {
+         if ($this->session->userdata('logged_in')) {
+            $this->load->view('cme/templets/header');  
+         $data['query']= $this->dbmodel->get_agent();
+          
+        $this->load->view('cme/sendTran',$data);
+        $this->load->view('cme/templets/footer');
+         } else {
+            redirect('login', 'refresh');
+        }
+    }
         
         public function get_tran()
         {
@@ -1428,6 +1445,24 @@ class view extends CI_Controller {
          $data['customer'] = $this->dbmodel->customer_detail($fcid);
         
         $this->load->view('cme/get_tran',$data);
+        $this->load->view('cme/templets/footer');
+         } else {
+            redirect('login', 'refresh');
+        }
+            
+        
+        }
+        
+          public function send_tran()
+        {
+             if ($this->session->userdata('logged_in')) {
+          $this->load->view('cme/templets/header');
+          
+                 $data['query']= $this->dbmodel->get_agent();
+                     $fcid = $this->input->post('id');
+         $data['customer'] = $this->dbmodel->customer_detail($fcid);
+        
+        $this->load->view('cme/get_sendTran',$data);
         $this->load->view('cme/templets/footer');
          } else {
             redirect('login', 'refresh');
