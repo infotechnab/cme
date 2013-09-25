@@ -74,6 +74,7 @@
                 foreach ($agentimg as $data)
                 {
                     $img = $data->image;
+                    $nepali = $data->n_name;
                 }
          ?> 
     <div id="officecopy" style="float: left; font-size: 11px;">
@@ -160,7 +161,8 @@
     <td colspan="8"><strong>Transaction Disclaimer</strong></td>
   </tr>
   <tr>
-    <td colspan="8"><p>I hereby declare that the information furnished above is true and   correct and guarantee to indemnify the <b> <?php echo $agent; ?> </b> in the event of the third party claim or any loss   arising out of the above transaction.माथि उल्लेख गरिएको विवरण साँचो छ । अन्यथा भएमा / अरु व्यक्तिले दाबि गरेमा मैले बुझिलिएको रकम चितवन मनी एक्सप्रेसलाई तिरी बुझाउने छु । साथै झुठो ठहरिएमा कानुन बमोजिम सहुँला बुझाउँला ।</p>
+    <td colspan="8"><p>I hereby declare that the information furnished above is true and   correct and guarantee to indemnify the <b> <?php echo $agent; ?> </b> in the event of the third party claim or any loss   arising out of the above transaction.
+            माथि उल्लेख गरिएको विवरण साँचो छ । अन्यथा भएमा / अरु व्यक्तिले दाबि गरेमा मैले बुझिलिएको रकम <b> <?php echo $nepali; ?> </b>लाई तिरी बुझाउने छु । साथै झुठो ठहरिएमा कानुन बमोजिम सहुँला बुझाउँला ।</p>
 
   
     <p>&nbsp;</p>

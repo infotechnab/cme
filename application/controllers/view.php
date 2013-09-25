@@ -1443,7 +1443,7 @@ class view extends CI_Controller {
                   $config = array();
             $config["base_url"] = base_url() . "index.php/view/get_agent";
             $config["total_rows"] = $this->dbmodel->record_count_agent();
-            $config["per_page"] = 6;
+            $config["per_page"] = 10;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -1471,7 +1471,7 @@ class view extends CI_Controller {
                   $config = array();
             $config["base_url"] = base_url() . "index.php/view/get_useragent";
             $config["total_rows"] = $this->dbmodel->record_count_agent();
-            $config["per_page"] = 6;
+            $config["per_page"] = 10;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -1502,7 +1502,7 @@ class view extends CI_Controller {
              $config = array();
             $config["base_url"] = base_url() . "index.php/view/userlist";
             $config["total_rows"] = $this->dbmodel->record_count_user();
-            $config["per_page"] = 6;
+            $config["per_page"] = 10;
             $config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -1883,7 +1883,7 @@ class view extends CI_Controller {
                  $config = array();
             $config["base_url"] = base_url() . "index.php/view/cuslist";
             $config["total_rows"] = $this->dbmodel->record_count_cuslist();
-            $config["per_page"] = 6;
+            $config["per_page"] = 10;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -1920,7 +1920,7 @@ class view extends CI_Controller {
                  $config = array();
             $config["base_url"] = base_url() . "index.php/view/usercuslist";
             $config["total_rows"] = $this->dbmodel->record_count_cuslist();
-            $config["per_page"] = 6;
+            $config["per_page"] = 10;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -1952,7 +1952,7 @@ class view extends CI_Controller {
               $config = array();
             $config["base_url"] = base_url() . "index.php/view/get_agent";
             $config["total_rows"] = $this->dbmodel->record_count_branch();
-            $config["per_page"] = 6;
+            $config["per_page"] = 10;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2113,7 +2113,7 @@ class view extends CI_Controller {
               $config = array();
             $config["base_url"] = base_url() . "index.php/view/tranlist";
             $config["total_rows"] = $this->dbmodel->record_count_tran();
-            $config["per_page"] = 6;
+            $config["per_page"] = 10;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2160,7 +2160,7 @@ class view extends CI_Controller {
            $config["base_url"] = base_url() . "index.php/view/searchtran";
            //echo (count($data['tranlist']));
             $config["total_rows"] =  count($data['tranlist']);
-            $config["per_page"] = 6;
+            $config["per_page"] = 10;
            $config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2307,7 +2307,7 @@ class view extends CI_Controller {
             $config["base_url"] = base_url() . "index.php/view/usertranlist";
             $data["tranlist"] = $this->dbmodel->usertranlistall($id);
             $config["total_rows"] = count($data['tranlist']);
-            $config["per_page"] = 6;
+            $config["per_page"] = 10;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2348,7 +2348,7 @@ class view extends CI_Controller {
             $config = array();
            $config["base_url"] = base_url() . "index.php/view/usersearchtran";
             $config["total_rows"] =  count($data['tranlist']);
-            $config["per_page"] = 6;
+            $config["per_page"] = 10;
            $config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);

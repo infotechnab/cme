@@ -337,7 +337,7 @@ class Dbmodel extends CI_Model {
     }
     public function get_agentimg($agent)
     {
-        $this->db->select('image');
+        $this->db->select('image,n_name');
         $this->db->where('a_name',$agent);
          $agentimg = $this->db->get('cme_agent');
          return $agentimg->result();

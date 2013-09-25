@@ -22,12 +22,12 @@
            {
                foreach ($previousRecord as $preData)
                {
-               $fromDate = $preData->fromDate;
-               $toDate = $preData->toDate;
-               $userData = $preData->userData;
-               $branchPre = $preData->branch;
-               $agent = $preData->agent;
-               $timePeriod = $preData->timePeriod;
+              // $fromDate = $preData->fromDate;
+              // $toDate = $preData->toDate;
+              // $userData = $preData->userData;
+              // $branchPre = $preData->branch;
+               //$agent = $preData->agent;
+              // $timePeriod = $preData->timePeriod;
                }
                
            }
@@ -109,9 +109,9 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                     <select name="tranperiod">
                         <option value="">Transaction by..</option>
                         <option <?php if($timePeriod==date("Y-m-d")) { echo 'Selected="Selected"'; } ?> value="<?php echo date("Y-m-d"); ?>">Today</option>
-                        <option <?php if($timePeriod==$dateWeek) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateWeek; ?> ">Weekly</option>
-                        <option <?php if($timePeriod==$dateMonth) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateMonth; ?> ">Monthly</option>
-                        <option <?php if($timePeriod==$dateYear) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateYear; ?>">Yearly</option>
+                        <option <?php if($timePeriod==$dateWeek) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateWeek; ?> ">This Weekly</option>
+                        <option <?php if($timePeriod==$dateMonth) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateMonth; ?> ">This Monthly</option>
+                        <option <?php if($timePeriod==$dateYear) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateYear; ?>">This Yearly</option>
                     </select>
                     <input type="submit" name="search" value="Search" />
                     

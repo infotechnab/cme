@@ -80,7 +80,7 @@
                             <td class="tdlist"> <b> <?php echo $data->issue_place; ?></b></td>
                             <td class="tdlist"> <b> <?php echo $data->issue_date; ?></b></td>
                             <td class="tdlist"> <b> <?php echo $data->expire_date; ?></b></td>
-                            <td class="tdlist"> <img src="<?php echo base_url()."custmr_detail_image/".$data->image;?>" width="30px" height="30px" /></td>
+                            <td class="tdlist"> <img id="idCardImage" src="<?php echo base_url()."custmr_detail_image/".$data->image;?>" width="25px" height="25px" /></td>
                         </tr> <?php
                                           }
 ?>                  </table>
