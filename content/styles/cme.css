@@ -35,17 +35,17 @@ border-collapse:collapse;
 
 #cmeTable td, #cmeTable th 
 {
-font-size:1em;
+font-size:12px;
 border:1px solid #000;
-padding:3px 7px 2px 7px;
+padding:1px 7px 1px 7px;
 }
 
 #cmeTable th 
 {
-font-size:1.1em;
+font-size:12px;
 text-align:left;
-padding-top:5px;
-padding-bottom:4px;
+padding-top:3px;
+padding-bottom:3px;
 //background-color: #1b043d;
 background-color:#013c6f;
 color:#ffffff;
@@ -54,7 +54,7 @@ color:#ffffff;
 
 
 
-tr:nth-child(even) {background: #CCC}
+tr:nth-child(even) {background: #e2e2e2}
 tr:nth-child(odd) {background: #FFF}
 
 .sign{
