@@ -60,14 +60,14 @@
                          </table>
                     
                     <div class="customer_id_details">
-                        <b> ID Dtails </b> <hr/>
+                        <b> ID Dtails </b> 
                         <table class="tbllist">
                             <tr>
-                            <th>ID type</th>
-                            <th>ID Number </th>
-                            <th>Issued Place</th>
-                            <th>Issued Date</th>
-                            <th>Expiry Date</th>
+                            <th class="tdlist">ID type</th>
+                            <th class="tdlist">ID Number </th>
+                            <th class="tdlist">Issued Place</th>
+                            <th class="tdlist">Issued Date</th>
+                            <th class="tdlist">Expiry Date</th>
                             </tr>              
                             <?php $detail = $this->dbmodel->get_identity($id);
                                           foreach ($detail as $data)

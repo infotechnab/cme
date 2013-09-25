@@ -38,13 +38,13 @@
                     <input class="intexth" type="password" name="newpass" placeholder="Password" /> * <br/><br/>
                     <input class="intexth" type="password" name="pass" placeholder="Confirm Password" /> * <br/><br/>
                    <!-- <input class="intexth" type="password" name="pass" placeholder="Password" value="<?php // echo $pass; ?>"/> <br/><br/> -->
-                    <select class="intexth" name="role" style="width:420px;">
+                    <select class="intexth" name="role" >
                         <option <?php if($roel=='') { echo 'Selected="Selected"'; } ?> value=""> Select role...</option>
                         <option  <?php if($roel=='admin') { echo 'Selected="Selected"'; } ?> value="admin"  selected > Admin </option>
                         <option  <?php if($roel=='user') { echo 'Selected="Selected"'; } ?> value="user"> User </option>
                     </select> <br/> <br/>
                     
-                    <select class="intexth" name="branch" style="width:420px;">
+                    <select class="intexth" name="branch">
                         <?php foreach ($branch as $data)
                         { ?>
                         <option  <?php if($data->id==$branchid) { echo 'Selected="Selected"'; } ?> 
