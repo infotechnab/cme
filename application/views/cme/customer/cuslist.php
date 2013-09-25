@@ -36,15 +36,15 @@
                     
             
             <div class="form">
-                <table class="tbllist">
+                <table id="cmeTable" class="tbllist">
                     <tr class="trlist">
-                        <td class="tdlist"> S.N </td>
-                        <td class="tdlist">ID</td>
-                        <td class="tdlist">Name</td>
-                        <td class="tdlist"> Address</td>
-                        <td class="tdlist"> Contact </td>
-                         <td class="tdlist">Image</td>
-                        <td class="tdlist"> Action </td>
+                        <th class="tdlist"> S.N </th>
+                        <th class="tdlist">ID</th>
+                        <th class="tdlist">Name</th>
+                        <th class="tdlist"> Address</th>
+                        <th class="tdlist"> Contact </th>
+                         <th class="tdlist">Image</th>
+                        <th class="tdlist"> Action </th>
                     </tr>
                     <?php foreach ($cuslist as $data) { ?>
                     <tr class="trlist">

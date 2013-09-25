@@ -14,17 +14,17 @@
             <hr/>
             
             <div class="form">
-                <table class="tbllist">
+                <table id="cmeTable" class="tbllist">
                     <tr class="trlist">
-                        <td class="tdlist"> S.N </td>
-                        <td class="tdlist"> Branch Name</td>
-                        <td class="tdlist"> Branch Title</td>
-                        <td class="tdlist"> Branch Code</td>
-                        <td class="tdlist"> Contact Person</td>
-                        <td class="tdlist"> Contact Number </td>
+                        <th class="tdlist"> S.N </th>
+                        <th class="tdlist"> Branch Name</th>
+                        <th class="tdlist"> Branch Title</th>
+                        <th class="tdlist"> Branch Code</th>
+                        <th class="tdlist"> Contact Person</th>
+                        <th class="tdlist"> Contact Number </th>
                         
-                        <td class="tdlist"> Address</td>
-                        <td class="tdlist"> Action </td>
+                        <th class="tdlist"> Address</th>
+                        <th class="tdlist"> Action </th>
                     </tr>
                     <?php foreach ($blist as $data) { ?>
                     <tr class="trlist">

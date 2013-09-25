@@ -47,18 +47,18 @@
                 
                 <br/>
                  <br/>
-                <table class="tbllist">
+                <table id="cmeTable" class="tbllist">
                     <tr class="trlist">
-                        <td class="tdlist"> S.N </td>
-                        <td class="tdlist"> Remittance Company</td>
-                        <td class="tdlist"> Branch</td>
-                        <td class="tdlist"> Sender Name </td>
-                         <td class="tdlist"> Amount </td>
-                          <td class="tdlist"> Receiver Name </td>
-                           <td class="tdlist"> Contact Number </td>
-                            <td class="tdlist"> Tranzaction Date </td>
+                        <th class="tdlist"> S.N </th>
+                        <th class="tdlist"> Remittance Company</th>
+                        <th class="tdlist"> Branch</th>
+                        <th class="tdlist"> Sender Name </th>
+                         <th class="tdlist"> Amount </th>
+                          <th class="tdlist"> Receiver Name </th>
+                           <th class="tdlist"> Contact Number </th>
+                            <th class="tdlist"> Tranzaction Date </th>
                       
-                     <!--   <td class="tdlist"> Action </td> -->
+                     <!--   <th class="tdlist"> Action </th> -->
                     </tr>
                     <?php foreach ($tranlist as $data) { ?>
                     <tr class="trlist">

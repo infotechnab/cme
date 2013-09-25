@@ -16,14 +16,14 @@
             
             
             <div class="form">
-                <table class="tbllist">
+                <table id="cmeTable" class="tbllist">
                     <tr class="trlist">
-                        <td class="tdlist"> S.N </td>
-                        <td class="tdlist"> User Name</td>
-                        <td class="tdlist"> Role</td>
-                        <td class="tdlist"> Branch ID </td>
+                        <th class="tdlist"> S.N </th>
+                        <th class="tdlist"> User Name</th>
+                        <th class="tdlist"> Role</th>
+                        <th class="tdlist"> Branch ID </th>
                       
-                        <td class="tdlist"> Action </td>
+                        <th class="tdlist"> Action </th>
                     </tr>
                     
                     <?php  

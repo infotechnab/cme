@@ -14,19 +14,19 @@
             <hr/>
             
             <div class="form">
-                <table class="tbllist">
+                <table id="cmeTable" class="tbllist">
                     <tr class="trlist">
-                        <td class="tdlist"> S.N </td>
-                        <td class="tdlist"> Company Name</td>
-                        <td class="tdlist"> Nepali Name</td>
-                        <td class="tdlist"> Address</td>
-                        <td class="tdlist"> Contact </td>
-                        <td class="tdlist"> Toll Free Number </td>
+                        <th class="tdlist"> S.N </th>
+                        <th class="tdlist"> Company Name</th>
+                        <th class="tdlist"> Nepali Name</th>
+                        <th class="tdlist"> Address</th>
+                        <th class="tdlist"> Contact </th>
+                        <th class="tdlist"> Toll Free Number </th>
                         
-                        <td class="tdlist">Email</td>
-                        <td class="tdlist">Image</td>
-                        <td class="tdlist"> Principal Agent</td>
-                        <td class="tdlist"> Action </td>
+                        <th class="tdlist">Email</th>
+                        <th class="tdlist">Image</th>
+                        <th class="tdlist"> Principal Agent</th>
+                        <th class="tdlist"> Action </th>
                     </tr>
                     <?php foreach ($query as $data) { ?>
                     <tr class="trlist">
