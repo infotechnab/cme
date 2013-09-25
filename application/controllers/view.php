@@ -2121,6 +2121,9 @@ class view extends CI_Controller {
            $agent =  $this->input->post('agent');
            $timeperiod = $this->input->post('tranperiod');
            
+           $data['previousRecord'] = array("fromDate"=>$fromdate, "toDate"=>$todate,"userData"=>$userdata,
+               "branch"=>$branch, "agent"=>$agent, "timePeriod"=>$timeperiod);
+           
            $data['tranlist'] = $this->dbmodel->searchtrandata($fromdate,$todate,$userdata,$branch,$agent,$timeperiod);
             $config = array();
            $config["base_url"] = base_url() . "index.php/view/searchtran";

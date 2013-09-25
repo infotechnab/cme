@@ -15,12 +15,24 @@
             <hr/>
             
            <br/> 
+           <?php
+           //fetching previous data 
+           if(!empty($previousRecord))
+           {
+               foreach ($previousRecord as $preData)
+               {
+               $fromDate = $preData->fromDate;
+               $toDate = $preData->toDate;
+               }
+               
+           }
+           ?>
             <div class="form">
                 
                 <lable>Search Tranzaction</lable> 
                 <?php echo form_open('view/searchtran');?>
-                    <input type="text" name="dfrom" id="datepicker1" placeholder="From" />
-                    <input type="text" name="dto" id="datepicker2" placeholder="To" />
+                    <input type="text" name="dfrom" id="datepicker1" placeholder="From" value="" />
+                    <input type="text" name="dto" id="datepicker2" placeholder="To" value=""/>
                     
                     <select name="user">                        
                     <option value="">User...</option>
