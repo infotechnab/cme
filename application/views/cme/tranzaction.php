@@ -336,6 +336,9 @@ $user_id = $this->session->userdata('id');
                         <option value="Sister" > Sister </option>
                         <option value="Daughter" > Daughter </option>
                         <option value="Son" > Son </option>
+                        <option value="Friend" > Friend </option>
+                        <option value="Husband" > Husband </option>
+                        <option value="Wife" > Wife </option>
                         <option value="Aunt" > Aunt </option>
                         <option value="Uncle" > Uncle </option>
                         <option value="Nephew" > Nephew </option>
@@ -379,7 +382,7 @@ $user_id = $this->session->userdata('id');
                     <input type="hidden" value="<?php echo "  $mydate[year]- $mydate[mon]- $mydate[mday]"; ?>" name="date">
                     <input class="intids" type="text" name="r_idnumber" placeholder="Id Number" /> 
                     <input class="intids" type="text" name="r_issueplace" placeholder="Issue Place" /> <br/> <br/> <br/>
-                    <label style="width:24%;">Isseu Date </label>
+                    <label style="width:24%;">Issued Date </label>
 
                     <input type="text" pattern="\d*" class="issued" name="r_year" placeholder="Year" style="width:24%;" />
 
@@ -402,7 +405,7 @@ $user_id = $this->session->userdata('id');
 
                     <input type="text" pattern="\d*" class="issued" name="r_day" placeholder="Day" style="width:23%;" /> <br/> <br/>
 
-                    <label style="width:24%;" >Expire Date </label>
+                    <label style="width:24%;" >Expiry Date </label>
                     <input type="text" pattern="\d*" class="tran" name="e_year" placeholder="Year" style="width:24%;" /> 
                     <select class="tran" name="e_month" style="width:24%;">
                         <option value="">Month</option>

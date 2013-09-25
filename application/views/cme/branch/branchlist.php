@@ -26,9 +26,10 @@
                         <th class="tdlist"> Address</th>
                         <th class="tdlist"> Action </th>
                     </tr>
-                    <?php foreach ($blist as $data) { ?>
+                    <?php $sn = 1;
+                    foreach ($blist as $data) { ?>
                     <tr class="trlist">
-                        <td class="tdlist"> <?php echo $data->id; ?></td>
+                        <td class="tdlist"> <?php echo $sn++; //$data->id; ?></td>
                         <td class="tdlist"> <?php echo $data->b_name; ?></td>
                         <td class="tdlist"> <?php echo $data->b_title; ?></td>
                         <td class="tdlist"> <?php echo $data->b_code; ?></td>

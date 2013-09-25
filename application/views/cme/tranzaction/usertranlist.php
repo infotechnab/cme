@@ -30,12 +30,17 @@
                     </select>
                     
                     <select name="tranperiod">
-                        <option value="">Transaction Period..</option>
+                        <option value="">Transaction By..</option>
                         <option value="<?php echo date("Y-m-d"); ?>">Today</option>
                         <option value=" <?php 
  $tdate = date("Y-m-d");
  echo $date = date('Y-m-d',strtotime($tdate."- 1 weeks"));
  ?>">Weekly</option>
+                        
+                        <option value=" <?php 
+ $tdate = date("Y-m-d");
+ echo $date = date('Y-m-d',strtotime($tdate."- 4 weeks"));
+ ?>">Monthly</option>
                         <option value="<?php 
  $tdate = date("Y-m-d");
  echo $date = date('Y-m-d',strtotime($tdate."- 52 weeks"));
@@ -56,17 +61,18 @@
                          <th class="tdlist"> Amount </th>
                           <th class="tdlist"> Receiver Name </th>
                            <th class="tdlist"> Contact Number </th>
-                            <th class="tdlist"> Tranzaction Date </th>
+                            <th class="tdlist"> Transaction Date </th>
                       
                      <!--   <th class="tdlist"> Action </th> -->
                     </tr>
-                    <?php foreach ($tranlist as $data) { ?>
+                    <?php $sn = 1; 
+                    foreach ($tranlist as $data) { ?>
                     <tr class="trlist">
-                        <td class="tdlist"> <?php echo $data->t_id; ?></td>
+                        <td class="tdlist"> <?php echo $sn++; //$data->t_id; ?></td>
                         <td class="tdlist"> <?php echo $data->agent; ?></td>
                         <td class="tdlist"> <?php echo $data->branch; ?></td>
                         <td class="tdlist"> <?php echo $data->s_name; ?></td>
-                         <td class="tdlist"> <?php echo $data->amount; ?></td>
+                         <td class="tdlist"> Rs. <?php echo $data->amount; ?></td>
                           <td class="tdlist"> <?php echo $data->r_name; ?></td>
                            <td class="tdlist"> <?php echo $data->contact; ?></td>
                             <td class="tdlist"> <?php echo $data->date; ?></td>

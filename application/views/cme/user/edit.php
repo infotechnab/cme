@@ -40,7 +40,7 @@
                    <!-- <input class="intexth" type="password" name="pass" placeholder="Password" value="<?php // echo $pass; ?>"/> <br/><br/> -->
                     <select class="intexth" name="role" >
                         <option <?php if($roel=='') { echo 'Selected="Selected"'; } ?> value=""> Select role...</option>
-                        <option  <?php if($roel=='admin') { echo 'Selected="Selected"'; } ?> value="admin"  selected > Admin </option>
+                        <option  <?php if($roel=='admin') { echo 'Selected="Selected"'; } ?> value="admin"  > Admin </option>
                         <option  <?php if($roel=='user') { echo 'Selected="Selected"'; } ?> value="user"> User </option>
                     </select> <br/> <br/>
                     

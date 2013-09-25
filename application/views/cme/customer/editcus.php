@@ -147,8 +147,8 @@
                                  <td> <b> Contact Number (98********) </b> </td>
                      </tr>
                      <tr>
-                                 <td><input class="intexth" type="text" name="contactpersonal" placeholder="Personal" value="<?php echo $conpersonal; ?>" /> </td>
-                                 <td><input class="intexth" type="text" name="contacthome" placeholder="Home" value="<?php echo $conhome; ?>" /> </td>
+                                 <td><input class="intexth" type="text" name="contactpersonal" placeholder="Mobile" value="<?php echo $conpersonal; ?>" /> </td>
+                                 <td><input class="intexth" type="text" name="contacthome" placeholder="Land Line" value="<?php echo $conhome; ?>" /> </td>
                                  
                     </tr>
                     <tr>
@@ -181,7 +181,7 @@
 <td colspan="3"> <input type="text" style="width:265px; padding:5px;" name="<?php echo $data->type."_place"; ?>" placeholder="Issued Place" value="<?php echo $data->issue_place; ?>" /></td>
 </tr>
 <tr>
-<td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data->type."_year"; ?>" value="<?php $date=$data->issue_date; echo  date('Y',  strtotime($date));  ?>" /> </td> 
+<td>Issued Date <input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data->type."_year"; ?>" value="<?php $date=$data->issue_date; echo  date('Y',  strtotime($date));  ?>" /> </td> 
 <td> <select style=" padding:3px;" name="<?php echo $data->type."_month"; ?>" >
        <option>Month</option>
                                 <option value="01" <?php if((date('m',  strtotime($date)))=='1') { echo 'Selected="Selected"'; } ?> >January</option>
@@ -206,7 +206,7 @@
 </tr> <?php } 
 else { ?>
 <tr>
-<td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data->type."_yeare"; ?>" value="<?php $edate=$data->expire_date; echo  date('Y',  strtotime($edate));  ?>" /> </td>
+<td> Expiry Date <input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data->type."_yeare"; ?>" value="<?php $edate=$data->expire_date; echo  date('Y',  strtotime($edate));  ?>" /> </td>
 <td> <select style=" padding:3px;" name="<?php echo $data->type."_monthe"; ?>" ><option>Month</option>
                                 <option value="1" <?php if((date('m',  strtotime($edate)))=='1') { echo 'Selected="Selected"'; } ?>>January</option>
                                 <option value="2"  <?php if((date('m',  strtotime($edate)))=='2') { echo 'Selected="Selected"'; } ?>>February</option>

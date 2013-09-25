@@ -26,10 +26,10 @@
                         <th class="tdlist"> Action </th>
                     </tr>
                     
-                    <?php  
+                    <?php  $sn = 1;
                     foreach ($userlist as $data) { ?>
                     <tr class="trlist">
-                        <td class="tdlist"> <?php echo $data->u_id; ?></td>
+                        <td class="tdlist"> <?php echo $sn++; //$data->u_id; ?></td>
                         <td class="tdlist"> <?php echo $data->uname; ?></td>
                         <td class="tdlist"> <?php echo $data->role; ?></td>
                         <td class="tdlist"> <?php echo $data->id; ?></td>

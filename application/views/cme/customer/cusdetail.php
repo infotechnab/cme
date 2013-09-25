@@ -68,6 +68,7 @@
                             <th class="tdlist">Issued Place</th>
                             <th class="tdlist">Issued Date</th>
                             <th class="tdlist">Expiry Date</th>
+                            <th class="tdlist">ID Image</th>
                             </tr>              
                             <?php $detail = $this->dbmodel->get_identity($id);
                                           foreach ($detail as $data)
@@ -79,6 +80,7 @@
                             <td class="tdlist"> <b> <?php echo $data->issue_place; ?></b></td>
                             <td class="tdlist"> <b> <?php echo $data->issue_date; ?></b></td>
                             <td class="tdlist"> <b> <?php echo $data->expire_date; ?></b></td>
+                            <td class="tdlist"> <img src="<?php echo base_url()."custmr_detail_image/".$data->image;?>" width="30px" height="30px" /></td>
                         </tr> <?php
                                           }
 ?>                  </table>
@@ -102,7 +104,7 @@
                         <td class="tdlist"> Remittance Company</td>
                         <td class="tdlist"> Branch</td>
                         <td class="tdlist"> Sender Name </td>
-                         <td class="tdlist"> Amount </td>
+                         <td class="tdlist"> Amount (Rs.) </td>
                           <td class="tdlist"> Receiver Name </td>
                            <td class="tdlist"> Contact Number </td>
                             <td class="tdlist"> Tranzaction Date </td>

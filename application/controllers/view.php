@@ -1913,6 +1913,37 @@ class view extends CI_Controller {
         
     }
     
+    public function usercuslist()
+    {
+         if ($this->session->userdata('logged_in')) {
+                           
+                 $config = array();
+            $config["base_url"] = base_url() . "index.php/view/usercuslist";
+            $config["total_rows"] = $this->dbmodel->record_count_cuslist();
+            $config["per_page"] = 6;
+            //$config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+            $cuslist = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+            $data["cuslist"] = $this->dbmodel->cuslist($config["per_page"], $cuslist);
+            $data["links"] = $this->pagination->create_links();
+                
+                
+                
+                 //$data['cuslist'] = $this->dbmodel->cuslist();
+            $data['branch']=  $this->dbmodel->branch();
+              $this->load->view('cme/templets/header');  
+        $this->load->view('cme/customer/usercuslist',$data);
+        $this->load->view('cme/templets/footer');                
+            }
+          else {
+            redirect('login', 'refresh');
+        }
+        
+    }
+    
     
      public function branchlist()
     {
@@ -2235,6 +2266,29 @@ class view extends CI_Controller {
            $data['branch']=  $this->dbmodel->branch();
             $this->load->view('cme/templets/header');  
         $this->load->view('cme/customer/cuslist',$data);
+        $this->load->view('cme/templets/footer');
+             
+         } else {
+            redirect('login', 'refresh');
+        } 
+           
+            
+        }
+        
+        public function usersearchcus()
+        {
+             if ($this->session->userdata('logged_in')) {
+                 
+            $cusid =  $this->input->post('id');
+           $name =  $this->input->post('cusname');
+           $address =  $this->input->post('address');
+           $branch =  $this->input->post('branch');
+           $phone =  $this->input->post('phone');
+           
+           $data['cuslist'] = $this->dbmodel->searchcus($cusid,$name,$address,$branch,$phone);
+           $data['branch']=  $this->dbmodel->branch();
+            $this->load->view('cme/templets/header');  
+        $this->load->view('cme/customer/usercuslist',$data);
         $this->load->view('cme/templets/footer');
              
          } else {

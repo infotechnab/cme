@@ -153,7 +153,7 @@
     <td><strong>Expiry Date: </strong></td>
     <td><?php echo $idexpire; ?></td>
      <td><strong>Amount: </strong></td>
-    <td colspan="3"> <b><?php echo $amount; ?></b></td>
+    <td colspan="3"> <b> Rs. <?php echo $amount; ?></b></td>
   </tr>
  
   <tr>

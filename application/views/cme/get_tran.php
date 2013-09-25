@@ -401,6 +401,9 @@
               <option value="Sister" > Sister </option>
               <option value="Daughter" > Daughter </option>
               <option value="Son" > Son </option>
+              <option value="Friend" > Friend </option>
+              <option value="Husband" > Husband </option>
+              <option value="Wife" > Wife </option>
               <option value="Aunt" > Aunt </option>
               <option value="Uncle" > Uncle </option>
               <option value="Nephew" > Nephew </option>

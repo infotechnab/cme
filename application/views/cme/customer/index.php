@@ -117,8 +117,8 @@
                                  <td> <b> Contact Number (98********) </b> </td>
                      </tr>
                      <tr>
-                                 <td><input class="intexth" type="text" name="contactpersonal" placeholder="Personal" /> </td>
-                                 <td><input class="intexth" type="text" name="contacthome" placeholder="Home" /> </td>
+                                 <td><input class="intexth" type="text" name="contactpersonal" placeholder="Mobile" /> </td>
+                                 <td><input class="intexth" type="text" name="contacthome" placeholder="Land Line" /> </td>
                                  
                     </tr>
                     <tr>
@@ -160,7 +160,7 @@
 <td colspan="3"> <input type="text" style="width:265px; padding:5px;" name="<?php echo $data."_place"; ?>" placeholder="Issued Place" /></td>
 </tr>
 <tr>
-<td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_year"; ?>" id="<?php echo $data."_issue_date_y"; ?>" /> </td> 
+<td>Issued Date <input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_year"; ?>" id="<?php echo $data."_issue_date_y"; ?>" /> </td> 
 <td> <select style=" padding:3px;" name="<?php echo $data."_month"; ?>" id="<?php echo $data."_issue_date_m"; ?>" >
        <option>Month</option>
                                 <option value="1">January</option>
@@ -186,7 +186,7 @@
 </tr> <?php } 
 else { ?>
 <tr>
-<td><input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_yeare"; ?>" id="<?php echo $data."_ex_date_y" ;?>" /> </td>
+<td> Expiry Date <input type="text" style="width:80px; padding:3px;" placeholder="Year" name="<?php echo $data."_yeare"; ?>" id="<?php echo $data."_ex_date_y" ;?>" /> </td>
 <td> <select style=" padding:3px;" name="<?php echo $data."_monthe"; ?>" id="<?php echo $data."_ex_date_m" ;?>" ><option>Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>

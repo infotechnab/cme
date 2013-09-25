@@ -10,11 +10,11 @@
        </div>        
         
         <div class="cus_search_list">
-            <label> <b>Customer List</b></label> &nbsp; <?php echo anchor('view/addcustomer','Add New Customer');?> 
+            <label> <b>Customer List</b></label>
          
             <hr/>
              <lable>Search Customer</lable> 
-                <?php echo form_open('view/searchcus');?>
+                <?php echo form_open('view/usersearchcus');?>
                     <input type="text" name="id"  placeholder="ID" />
                     <input type="text" name="cusname"  placeholder="First Name" />
                     
@@ -44,7 +44,7 @@
                         <th class="tdlist"> Address</th>
                         <th class="tdlist"> Contact </th>
                          <th class="tdlist">Image</th>
-                        <th class="tdlist"> Action </th>
+                        
                     </tr>
                     <?php foreach ($cuslist as $data) { ?>
                     <tr class="trlist">
@@ -59,13 +59,13 @@
                          
                         <td class="tdlist"> <img class="listimg" src="<?php echo base_url()."custmr_detail_image/".$data->image; ?>" /></td>
                         
-                        <td class="tdlist"><?php echo anchor('view/cusdetail/'.$data->c_id,'View'); ?> /<?php echo anchor('view/editcus/'.$data->c_id,'Edit'); ?> / <?php echo anchor('view/deletecus/'.$data->c_id,'Delete'); ?> </td>
+                       
                         <?php } ?>                   
                         
                     </tr>
                 </table>             
                
                 <br/>
-                <?php //echo $links; ?> 
+                <?php  //echo $links; ?> 
             </div>
         </div>     
