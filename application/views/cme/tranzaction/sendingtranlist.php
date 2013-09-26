@@ -161,7 +161,7 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                echo $total;
                  ?>
                 <br/>
-                 <lable> <b>Collected Amount Rs.</b></lable>
+                 <lable> <b>Service Charge Rs.</b></lable>
                  <?php
                      $tran = $this->dbmodel->sendlistCAmount();
                foreach ($tran as $data)
