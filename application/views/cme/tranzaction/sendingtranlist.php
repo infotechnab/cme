@@ -126,6 +126,7 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                         <th class="tdlist"> Branch</th>
                         <th class="tdlist"> Sender Name </th>
                          <th class="tdlist"> Amount </th>
+                         <th class="tdlist"> Collected Amount </th>
                           <th class="tdlist"> Receiver Name </th>
                            <th class="tdlist"> Contact Number </th>
                             <th class="tdlist"> Transaction Date </th>
@@ -140,6 +141,7 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                         <td class="tdlist"> <?php echo $data->branch; ?></td>
                         <td class="tdlist"> <?php echo $data->s_name; ?></td>
                          <td class="tdlist"> Rs.  <?php echo $data->amount; ?></td>
+                         <td class="tdlist"> Rs.  <?php echo $data->c_amount; ?></td>
                           <td class="tdlist"> <?php echo $data->r_name; ?></td>
                            <td class="tdlist"> <?php echo $data->s_contact; ?></td>
                             <td class="tdlist"> <?php echo $data->date; ?></td>
@@ -155,6 +157,16 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                foreach ($tran as $data)
                {
                    $total = $data->amount;
+               }
+               echo $total;
+                 ?>
+                <br/>
+                 <lable> <b>Collected Amount Rs.</b></lable>
+                 <?php
+                     $tran = $this->dbmodel->sendlistCAmount();
+               foreach ($tran as $data)
+               {
+                   $total = $data->c_amount;
                }
                echo $total;
                  ?>

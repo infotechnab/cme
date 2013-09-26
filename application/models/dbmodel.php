@@ -456,6 +456,15 @@ class Dbmodel extends CI_Model {
         return $tran->result();
     }
     
+    public function sendlistCAmount()
+    {
+        //$this->db->order_by('t_id','DESC');
+       // $this->db->limit(1);
+       $this->db->select_sum('c_amount');
+        $tran = $this->db->get('send_transaction');
+        return $tran->result();
+    }
+    
      public function usertranlist($limit,$start,$id)
     {
         $this->db->limit($limit, $start);
