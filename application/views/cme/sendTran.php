@@ -28,7 +28,7 @@ $user_id = $this->session->userdata('id');
 
 
         <div class="form">  
-<?php echo form_open_multipart('view/'); ?>
+<?php echo form_open_multipart('view/addSendTransaction'); ?>
             <input type="hidden" name="uid" value="<?php echo $user_id; ?>" />
             <input type="hidden" name="branch" value="<?php echo $bname; ?>" />
             <table >
@@ -67,6 +67,7 @@ $user_id = $this->session->userdata('id');
             </table>
             <br/>
             <input class="intexth" type="text" name="s_name" placeholder="Sender Name" /> <br/> <br/>
+            <input type="text" name="senderContact" placeholder="Contact Number"  /> <br/> <br/>
             <lable><b>Address</b></lable> <br/> <br/>
             
             <input type="text" name="village" placeholder="Village / Municipality" />
@@ -109,7 +110,7 @@ $user_id = $this->session->userdata('id');
               <option value="Son-in-law" > Son-in-law </option>
               <option value="Other">Other</option>
           </select> <br/> <br/>
- <input type="text" name="senderContact" placeholder="Contact Number"  />
+ 
             </div>
                 <div class="t_right">
                     <label id="clpid"> <b > Receiver Info </b></label> <hr/> 
@@ -135,8 +136,8 @@ $user_id = $this->session->userdata('id');
                     <input class="intexth" type="text" name="r_idnumber" placeholder="Id Number" /> 
                     <br/> <br/>
                      <input class="intexth" type="text" name="r_amount" placeholder="Amount" /> <br/> <br/>
-                    <input class="intexth" type="text" name="r_coll_amount" placeholder="Collected Amount" /> <br/> <br/>
-                    <input class="intexth" type="text"  name="r_amt_word" placeholder="Amount In Figure" /> <br/> <br/>
+                    <input class="intexth" type="text" name="r_coll_amount" placeholder="Service Charge" /> <br/> <br/>
+                    <input class="amountFigure" type="text"  name="r_amt_word" placeholder="Amount In Figure" /> <br/> <br/>
                      </div>
                 <div class="clear"> </div>
  <?php $mydate = getdate(date("U")); ?> 
@@ -144,10 +145,11 @@ $user_id = $this->session->userdata('id');
 
 
             </div>
-            <input type="submit" name="submit" value="Add Details" />
-            <?php echo form_close(); ?> <br/>
+            <br/>
+            <input class="frminp" type="submit" name="submit" value="Add Details" />
+            <?php echo form_close(); ?> 
             <?php echo form_open('view/index'); ?>
-            <input type="submit" name="submit" value="Cancel" />
+            <input class="frminp" type="submit" name="submit" value="Cancel" />
 <?php echo form_close(); ?>
         </div> 
     </div>

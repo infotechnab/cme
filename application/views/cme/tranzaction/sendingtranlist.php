@@ -10,7 +10,7 @@
        </div>        
         
         <div class="cus_search_list">
-           <label> <b>Tranzaction List</b></label> <br/>
+           <label> <b>Send Tranzaction List</b></label> <br/>
          
             <hr/>
             
@@ -35,7 +35,7 @@
             <div class="form">
                 
                 <lable>Search Tranzaction</lable> 
-                <?php echo form_open('view/searchtran');?>
+                <?php echo form_open('view/sendsearchtran');?>
                     <input type="text" name="dfrom" id="datepicker1" placeholder="From" value="<?php if(isset($fromDate)){ echo $fromDate; } else { echo "";} ?>" />
                     <input type="text" name="dto" id="datepicker2" placeholder="To" value="<?php if(isset($toDate)){ echo $toDate;} else{ echo "";} ?>"/>
                     
@@ -141,24 +141,23 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                         <td class="tdlist"> <?php echo $data->s_name; ?></td>
                          <td class="tdlist"> Rs.  <?php echo $data->amount; ?></td>
                           <td class="tdlist"> <?php echo $data->r_name; ?></td>
-                           <td class="tdlist"> <?php echo $data->contact; ?></td>
+                           <td class="tdlist"> <?php echo $data->s_contact; ?></td>
                             <td class="tdlist"> <?php echo $data->date; ?></td>
                       <!--  <td class="tdlist"><?php //echo anchor('view/getedituser/'.$data->u_id,'Edit'); ?> / <?php //echo anchor('view/deleteuser/'.$data->u_id,'Delete'); ?> </td> -->
                         <?php } ?>                   
                         
                     </tr>
-                </table>     
-                 <lable> <b>Total Amount Rs. &nbsp;
+                </table>  
+                 
+                  <lable> <b>Total Amount Rs.</b></lable>
                  <?php
-                        $tran = $this->dbmodel->tranlistAmount();
+                     $tran = $this->dbmodel->sendlistAmount();
                foreach ($tran as $data)
                {
-                  echo $data->amount;
+                   $total = $data->amount;
                }
-              
+               echo $total;
                  ?>
-                         </b></lable>
-                 
                 <br/>
                  <?php  echo $links; ?>
                 

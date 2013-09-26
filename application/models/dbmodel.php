@@ -391,7 +391,8 @@ class Dbmodel extends CI_Model {
             's_title'=>$title,
             'r_title'=>$rtitle,
             'branch'=>$branch,
-            'city' => $city
+            'city' => $city,
+           // 'total_amount'=>$totalAmount
         );
          $this->db->insert('cme_tranzaction', $data);
         
@@ -435,6 +436,24 @@ class Dbmodel extends CI_Model {
         $this->db->limit($limit, $start);
         $tranlist = $this->db->get('cme_tranzaction');
         return $tranlist->result();
+    }
+    
+     public function tranlistAmount()
+    {
+        //$this->db->order_by('t_id','DESC');
+       // $this->db->limit(1);
+       $this->db->select_sum('amount');
+        $tran = $this->db->get('cme_tranzaction');
+        return $tran->result();
+    }
+    
+     public function sendlistAmount()
+    {
+        //$this->db->order_by('t_id','DESC');
+       // $this->db->limit(1);
+       $this->db->select_sum('amount');
+        $tran = $this->db->get('send_transaction');
+        return $tran->result();
     }
     
      public function usertranlist($limit,$start,$id)
@@ -878,4 +897,241 @@ class Dbmodel extends CI_Model {
       
          return $cuslist->result();
     }
+    
+     public function addSendTranzaction($id,$cid,$rnumber,$compname,$auth,$sname,$country,$amount,
+                        $rname,$raddress,$contact,$identity,$idnumber,$date,$relation,$title,$rtitle,$branch,
+                        $village,$ward,$tole,$city,$distric,$zone,$senderContact,$collectedAmount,$figureAmount)
+    {
+        
+        
+        $data = array(
+            's_village'=>$village,
+            's_ward'=>$ward,
+            's_tole'=>$tole,
+            's_city'=>$city,
+            's_distric'=>$distric,
+            's_zone'=>$zone,
+            's_contact'=>$senderContact,
+            'c_amount'=>$collectedAmount,
+            'amt_figure'=>$figureAmount,
+            'ref_number'=>$rnumber,
+            'agent'=>$compname,
+            'auth_code'=>$auth,
+            's_name'=>$sname,
+            's_country'=>$country,
+             'amount'=>$amount,
+            'u_id'=>$id,
+            'cid'=>$cid,
+            //'a_name'=>$income,
+            'r_name'=>$rname,
+            'r_address'=>$raddress,
+            'r_contact'=>$contact,
+             'r_id_type'=>$identity,
+            'r_id_number'=>$idnumber,
+            'date'=>$date,
+            
+            's_relation'=>$relation,
+            's_title'=>$title,
+            'r_title'=>$rtitle,
+            'branch'=>$branch,
+           
+        );
+         $this->db->insert('send_transaction', $data);
+       
+    }
+    
+     public function record_count_send() {
+        return $this->db->count_all('send_transaction');
+    }
+    
+      public function sendtranlist($limit,$start)
+    {
+        $this->db->limit($limit, $start);
+        $tranlist = $this->db->get('send_transaction');
+        return $tranlist->result();
+    }
+    
+     public function searchSendData($fromdate,$todate,$userdata,$branch,$agent,$timeperiod){
+       
+              //  $this->db->limit($limit, $start); 
+ 
+       $a = array();
+       $b = array();
+       $c = array();
+       $d  = array();
+       $e = array();
+        if((isset($userdata))&& $userdata ==!""){
+            
+          $a =array("u_id"=>$userdata); 
+        }
+        
+      if((isset($branch))&& $branch ==!""){
+         $b = array("branch"=>$branch);
+        //$b = array($a,array("branch"=>$branch));
+        $a = array_merge($a,$b);
+      }
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >='=>$fromdate,'date <='=>$todate);
+         $a = array_merge($a,$b,$c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($a,$b,$c,$d);
+        }
+         if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($a,$b,$c,$d,$e);
+        }
+      
+    if(isset($a))
+    {
+        $this->db->where($a);
+    }
+          $tranlist = $this->db->get('send_transaction');
+      
+         return $tranlist->result();
+         
+    }
+    
+    public function searchSend($limit,$start,$fromdate,$todate,$userdata,$branch,$agent,$timeperiod){
+       
+                $this->db->limit($limit, $start); 
+ 
+       $a = array();
+       $b = array();
+       $c = array();
+       $d  = array();
+       $e = array();
+        if((isset($userdata))&& $userdata ==!""){
+            
+          $a =array("u_id"=>$userdata); 
+        }
+        
+      if((isset($branch))&& $branch ==!""){
+         $b = array("branch"=>$branch);
+        //$b = array($a,array("branch"=>$branch));
+        $a = array_merge($a,$b);
+      }
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >'=>$fromdate,'date <='=>$todate);
+         $a = array_merge($a,$b,$c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($a,$b,$c,$d);
+        }
+        
+        if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($a,$b,$c,$d,$e);
+        }
+      
+    if(isset($a))
+    {
+        $this->db->where($a);
+    }
+          $tranlist = $this->db->get('send_transaction');
+      
+         return $tranlist->result();
+         
+    }
+    
+     public function userSendListAll($id)
+    {
+        
+        $this->db->where('u_id',$id);
+        $tranlist = $this->db->get('send_transaction');
+        return $tranlist->result();
+    }
+    
+      public function userSendList($limit,$start,$id)
+    {
+        $this->db->limit($limit, $start);
+        $this->db->where('u_id',$id);
+        $tranlist = $this->db->get('send_transaction');
+        return $tranlist->result();
+    }
+    
+     public function usersearchsenddata($fromdate,$todate,$agent,$id,$timeperiod){
+       
+              //  $this->db->limit($limit, $start); 
+ 
+      
+       $c = array();
+       $d  = array();
+       $e  = array();
+        
+        
+     
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >='=>$fromdate,'date <='=>$todate);
+         $a = array_merge($c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($c,$d);
+        }
+        
+         if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($c,$d,$e);
+        }
+      
+    if(isset($a))
+    {
+        $this->db->where($a);
+        $this->db->where('u_id',$id);
+    }
+          $tranlist = $this->db->get('send_transaction');
+      
+         return $tranlist->result();
+         
+    }
+    
+     public function usersearchsend($limit,$start,$fromdate,$todate,$agent,$id,$timeperiod){
+       
+                $this->db->limit($limit, $start); 
+ 
+      
+       $c = array();
+       $d  = array();
+       $e = array();
+       
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >'=>$fromdate,'date <='=>$todate);
+         $a = array_merge($c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($c,$d);
+        }
+        
+        if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($c,$d,$e);
+        }
+     
+    if(isset($a))
+    {
+        $this->db->where($a);
+        $this->db->where('u_id',$id);
+    }
+          $tranlist = $this->db->get('send_transaction');
+      
+         return $tranlist->result();
+         
+    }
+    
     }

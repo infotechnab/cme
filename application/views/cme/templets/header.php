@@ -111,9 +111,9 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
            $user = "user";
            $adminMenuList = array("Home"=>"view/index", "Remittance Company"=>"view/get_agent",
                "User"=>"view/userlist","Customers"=>"view/cuslist","Remitance Claim"=>"view/tranzaction",
-               "Branch"=>"view/branchlist","Transaction"=>"view/tranlist","Remittance Send"=>'view/sendremit');
+               "Branch"=>"view/branchlist","Transaction"=>"view/tranlist","Remittance Send"=>'view/sendremit',"Send Transaction List"=>"view/sendingTransaction");
            $userMenuList = array("Home"=>"view/index","Remitance Company"=>"view/get_useragent","Customers"=>"view/usercuslist","Add New Customer"=>"view/addcustomer","Remitance Claim"=>"view/tranzaction",
-               "Transaction"=>"view/usertranlist");
+               "Transaction"=>"view/usertranlist","Remittance Send"=>'view/sendremit',"Send Transaction List"=>"view/sendUserTransaction");
           
            if($role==$admin)
            {

@@ -49,7 +49,6 @@ $user_id = $this->session->userdata('id');
                     <td><input class="intexth" type="text" name="auth_code" placeholder="Authentication Code" /></td>
                 </tr>
 
-
             </table>
             <br/>
 
@@ -68,7 +67,7 @@ $user_id = $this->session->userdata('id');
                     <br/>
                     <input class="intexth" type="text" name="s_name" placeholder="Sender Name" /> <br/> <br/>
 
-                    <select class="intexthc" name="country">
+                    <select class="" name="country">
                         <option value="">Country...</option>
                         <option value="Afganistan">Afghanistan</option>
                         <option value="Albania">Albania</option>
@@ -322,13 +321,13 @@ $user_id = $this->session->userdata('id');
 
                     <input class="intexth" type="text" name="s_amount" placeholder="Amount" /> <br/> <br/>
 
-                    <select class="intexthc" name="income">
+                    <select class="" name="income">
                         <option value="">Income Source</option>
                         <option value="Business"> Business</option>
                         <option value="Salary"> Salary</option>
                     </select> <br/> <br/>
 
-                    <select class="intexthc" name="relation">
+                    <select class="" name="relation">
                         <option value="" >Relation...</option>
                         <option value="Father" >Father</option>
                         <option value="Mother">Mother</option>
@@ -370,7 +369,7 @@ $user_id = $this->session->userdata('id');
                     <input class="intexth" type="text" name="r_add" placeholder="Reciver Address" /> <br/> <br/>
                     <input class="intexth" type="text" name="r_city" placeholder="Reciver Tole" /> <br/> <br/>
                     <input class="intexth" type="text"  name="r_number" placeholder="Contact Number" /> <br/> <br/>
-                    <select class="intexthc" name="identity">
+                    <select class="" name="identity">
                         <option value="">Identity Type....</option>
                         <option value="citizenship">Citizenship</option>
                         <option value="license">License</option>
@@ -380,13 +379,13 @@ $user_id = $this->session->userdata('id');
                     </select> <br/> <br/>
 <?php $mydate = getdate(date("U")); ?> 
                     <input type="hidden" value="<?php echo "  $mydate[year]- $mydate[mon]- $mydate[mday]"; ?>" name="date">
-                    <input class="intids" type="text" name="r_idnumber" placeholder="Id Number" /> 
-                    <input class="intids" type="text" name="r_issueplace" placeholder="Issue Place" /> <br/> <br/> <br/>
+                    <input class="" type="text" name="r_idnumber" placeholder="Id Number" /> 
+                    <input class="" type="text" name="r_issueplace" placeholder="Issue Place" /> <br/> <br/> <br/>
                     <label style="width:24%;">Issued Date </label>
 
                     <input type="text" pattern="\d*" class="issued" name="r_year" placeholder="Year" style="width:24%;" />
 
-                    <select class="issued" name="r_month" style="width:24%;">
+                    <select class="issued" name="r_month" >
 
                         <option value="">Month</option>
                         <option value="1">January</option>
@@ -405,9 +404,9 @@ $user_id = $this->session->userdata('id');
 
                     <input type="text" pattern="\d*" class="issued" name="r_day" placeholder="Day" style="width:23%;" /> <br/> <br/>
 
-                    <label style="width:24%;" >Expiry Date </label>
+                    <label  >Expiry Date </label>
                     <input type="text" pattern="\d*" class="tran" name="e_year" placeholder="Year" style="width:24%;" /> 
-                    <select class="tran" name="e_month" style="width:24%;">
+                    <select class="issued" name="e_month" >
                         <option value="">Month</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
@@ -429,10 +428,11 @@ $user_id = $this->session->userdata('id');
 
 
             </div>
-            <input type="submit" name="submit" value="Add Details" />
-            <?php echo form_close(); ?> <br/>
+            <br/>
+            <input class="frminp" type="submit" name="submit" value="Add Details" />
+            <?php echo form_close(); ?>
             <?php echo form_open('view/index'); ?>
-            <input type="submit" name="submit" value="Cancel" />
+            <input class="frminp" type="submit" name="submit" value="Cancel" />
 <?php echo form_close(); ?>
         </div> 
     </div>

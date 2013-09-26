@@ -1778,6 +1778,8 @@ class view extends CI_Controller {
               
             }
            else {
+               
+                    // die($totalamount);
  
                 //if valid
                 $id = $this->input->post('uid');
@@ -1788,6 +1790,10 @@ class view extends CI_Controller {
                 $sname = $this->input->post('s_name');
                 $country = $this->input->post('country');
                 $amount = $this->input->post('s_amount');
+                
+                //$totalAmount = $total + $amount ;
+                //die($totalAmount);
+                
                 $income = $this->input->post('income');
                 $rname = $this->input->post('r_name');
                 $raddress = $this->input->post('r_add');
@@ -1853,6 +1859,7 @@ class view extends CI_Controller {
             if (($this->form_validation->run() == FALSE) ) {
                
                 $fcid = $this->input->post('uid');
+                $data['cid'] = array('cid'=>$fcid);
          $data['customer'] = $this->dbmodel->customer_detail($fcid); 
          $this->load->view('cme/templets/header');
                $this->load->view('cme/get_tran',$data);
@@ -2402,4 +2409,317 @@ class view extends CI_Controller {
         } 
         }
         
+        public function addSendTransaction_get()
+    {
+        if ($this->session->userdata('logged_in')) {
+
+                       
+            $this->load->library(array('form_validation', 'session'));
+            
+            $this->form_validation->set_rules('ref_number', 'Refrence Number', 'required|xss_clean|max_length[200]');
+           $this->form_validation->set_rules('s_name', 'Sender Name', 'required|xss_clean');
+             $this->form_validation->set_rules('r_amount', 'Amount', 'required|xss_clean');
+             $this->form_validation->set_rules('r_name', 'Recider Name', 'required|xss_clean');
+              $this->form_validation->set_rules('r_add', 'Reciver Address', 'required|xss_clean');
+             $this->form_validation->set_rules('r_number', 'Contact Number', 'required|xss_clean');
+             $this->form_validation->set_rules('identity', 'Identity', 'required|xss_clean');
+             $this->form_validation->set_rules('country', 'Country', 'required|xss_clean');
+             $this->form_validation->set_rules('r_idnumber', 'ID Number', 'required|xss_clean');
+              //$this->form_validation->set_rules('r_issueplace', 'Issue Place', 'required|xss_clean');
+             //$this->form_validation->set_rules('r_issuedate', 'Issue Date', 'required|xss_clean');
+             $country = $this->input->post('country');
+             $data['query']= $this->dbmodel->get_agent();
+              
+              
+                  
+        
+            if (($this->form_validation->run() == FALSE) ) {
+               $fcid = $this->input->post('uid');
+         $data['customer'] = $this->dbmodel->customer_detail($fcid); 
+                $this->load->view('cme/templets/header'); 
+               $this->load->view('cme/get_sendTran',$data);
+               $this->load->view('cme/templets/footer');
+              
+            }
+           else {
+ 
+                //if valid
+                $id = $this->input->post('uid');
+                $cid = $this->input->post('customerid');
+                
+                $rnumber = $this->input->post('ref_number');
+                $compname = $this->input->post('a_name');
+                $auth = $this->input->post('auth_code');
+                $sname = $this->input->post('s_name');
+                $country = $this->input->post('country');
+                $amount = $this->input->post('r_amount');
+              
+                $rname = $this->input->post('r_name');
+                $raddress = $this->input->post('r_add');
+                $contact = $this->input->post('r_number');
+                $identity = $this->input->post('identity');
+                $idnumber = $this->input->post('r_idnumber');
+              
+                $date = date('y-m-d h:m:s');
+                $relation = $this->input->post('relation');
+                $title = $this->input->post('title');
+                $rtitle = $this->input->post('rtitle');
+                $branch = $this->input->post('branch');
+                //$city = $this->input->post('r_city');
+                $village = $this->input->post('village');
+                $ward = $this->input->post('ward');
+                $tole = $this->input->post('tole');
+                $city = $this->input->post('city');
+                $distric = $this->input->post('distric');
+                $zone = $this->input->post('zone');
+                $senderContact = $this->input->post('senderContact');
+                $collectedAmount = $this->input->post('r_coll_amount');
+                $figureAmount = $this->input->post('r_amt_word');
+                
+                
+                
+                
+                $this->dbmodel->addSendTranzaction($id,$cid,$rnumber,$compname,$auth,$sname,$country,$amount,
+                        $rname,$raddress,$contact,$identity,$idnumber,$date,$relation,$title,$rtitle,$branch,
+                        $village,$ward,$tole,$city,$distric,$zone,$senderContact,$collectedAmount,$figureAmount);
+                $this->session->set_flashdata('message', 'Tranzaction added sucessfully');
+               // redirect('view/comfirm');
+            }
+           
+        } else
+            {
+
+            redirect('login', 'refresh');
+        }
+    }
+        
+    
+        public function addSendTransaction()
+    {
+        if ($this->session->userdata('logged_in')) {
+
+                       
+            $this->load->library(array('form_validation', 'session'));
+            
+            $this->form_validation->set_rules('ref_number', 'Refrence Number', 'required|xss_clean|max_length[200]');
+           $this->form_validation->set_rules('s_name', 'Sender Name', 'required|xss_clean');
+             $this->form_validation->set_rules('r_amount', 'Amount', 'required|xss_clean');
+             $this->form_validation->set_rules('r_name', 'Recider Name', 'required|xss_clean');
+              $this->form_validation->set_rules('r_add', 'Reciver Address', 'required|xss_clean');
+             $this->form_validation->set_rules('r_number', 'Contact Number', 'required|xss_clean');
+             $this->form_validation->set_rules('identity', 'Identity', 'required|xss_clean');
+             $this->form_validation->set_rules('country', 'Country', 'required|xss_clean');
+             $this->form_validation->set_rules('r_idnumber', 'ID Number', 'required|xss_clean');
+              //$this->form_validation->set_rules('r_issueplace', 'Issue Place', 'required|xss_clean');
+             //$this->form_validation->set_rules('r_issuedate', 'Issue Date', 'required|xss_clean');
+             $country = $this->input->post('country');
+             $data['query']= $this->dbmodel->get_agent();
+              
+              
+                  
+        
+            if (($this->form_validation->run() == FALSE) ) {
+               $fcid = $this->input->post('uid');
+         $data['customer'] = $this->dbmodel->customer_detail($fcid); 
+                $this->load->view('cme/templets/header'); 
+               $this->load->view('cme/get_sendTran',$data);
+               $this->load->view('cme/templets/footer');
+              
+            }
+           else {
+ 
+                //if valid
+                $id = $this->input->post('uid');
+                $cid = " ";
+                $rnumber = $this->input->post('ref_number');
+                $compname = $this->input->post('a_name');
+                $auth = $this->input->post('auth_code');
+                $sname = $this->input->post('s_name');
+                $country = $this->input->post('country');
+                $amount = $this->input->post('r_amount');
+              
+                $rname = $this->input->post('r_name');
+                $raddress = $this->input->post('r_add');
+                $contact = $this->input->post('r_number');
+                $identity = $this->input->post('identity');
+                $idnumber = $this->input->post('r_idnumber');
+              
+                $date = date('y-m-d h:m:s');
+                $relation = $this->input->post('relation');
+                $title = $this->input->post('title');
+                $rtitle = $this->input->post('rtitle');
+                $branch = $this->input->post('branch');
+                //$city = $this->input->post('r_city');
+                $village = $this->input->post('village');
+                $ward = $this->input->post('ward');
+                $tole = $this->input->post('tole');
+                $city = $this->input->post('city');
+                $distric = $this->input->post('distric');
+                $zone = $this->input->post('zone');
+                $senderContact = $this->input->post('senderContact');
+                $collectedAmount = $this->input->post('r_coll_amount');
+                $figureAmount = $this->input->post('r_amt_word');
+                
+                
+                
+                
+                $this->dbmodel->addSendTranzaction($id,$cid,$rnumber,$compname,$auth,$sname,$country,$amount,
+                        $rname,$raddress,$contact,$identity,$idnumber,$date,$relation,$title,$rtitle,$branch,
+                        $village,$ward,$tole,$city,$distric,$zone,$senderContact,$collectedAmount,$figureAmount);
+                $this->session->set_flashdata('message', 'Tranzaction added sucessfully');
+                //redirect('view/comfirm');
+            }
+           
+        } else
+            {
+
+            redirect('login', 'refresh');
+        }
+        
+    }
+    
+    
+    public function sendingTransaction()
+        {
+            
+         if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
+             
+              $config = array();
+            $config["base_url"] = base_url() . "index.php/view/sendingtranlist";
+            $config["total_rows"] = $this->dbmodel->record_count_send();
+            $config["per_page"] = 10;
+            //$config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+            $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+            $data["tranlist"] = $this->dbmodel->sendtranlist($config["per_page"], $user);
+            $data["links"] = $this->pagination->create_links();
+            
+             //$data['userlist'] = $this->dbmodel->userlist();
+            $data['branch'] = $this->dbmodel->branch();
+            $data['query'] = $this->dbmodel->get_agent();
+            $data['user'] = $this->dbmodel->get_user();
+              $this->load->view('cme/templets/header');  
+        $this->load->view('cme/tranzaction/sendingtranlist',$data);
+        $this->load->view('cme/templets/footer');
+             
+         } else {
+            redirect('login', 'refresh');
+        } 
+            
+        }
+        
+        public function sendsearchtran()
+        {
+             if ($this->session->userdata('logged_in') && ($this->session->userdata('username')=="admin")) {
+            
+            $data['branch'] = $this->dbmodel->branch();
+            $data['query'] = $this->dbmodel->get_agent();
+            $data['user'] = $this->dbmodel->get_user();
+            
+           $fromdate =  $this->input->post('dfrom');
+           $todate =  $this->input->post('dto');
+           $userdata =  $this->input->post('user');
+           $branch =  $this->input->post('branch');
+           $agent =  $this->input->post('agent');
+           $timeperiod = $this->input->post('tranperiod');
+           
+           $data['previousRecord'] = array("fromDate"=>$fromdate, "toDate"=>$todate,"userData"=>$userdata,
+               "branch"=>$branch, "agent"=>$agent, "timePeriod"=>$timeperiod);
+           
+           $data['tranlist'] = $this->dbmodel->searchSendData($fromdate,$todate,$userdata,$branch,$agent,$timeperiod);
+            $config = array();
+           $config["base_url"] = base_url() . "index.php/view/sendingTransaction";
+           //echo (count($data['tranlist']));
+            $config["total_rows"] =  count($data['tranlist']);
+            $config["per_page"] = 10;
+           $config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+           $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+           $data["tranlist"] = $this->dbmodel->searchSend($config["per_page"],$user,$fromdate,$todate,$userdata,$branch,$agent,$timeperiod);
+           
+          $data["links"] = $this->pagination->create_links();
+            
+              $this->load->view('cme/templets/header');  
+        $this->load->view('cme/tranzaction/sendingtranlist',$data);
+        $this->load->view('cme/templets/footer');
+             
+         } else {
+            redirect('login', 'refresh');
+        } 
+        }
+        
+        public function sendUserTransaction()
+        {
+            
+         if ($this->session->userdata('logged_in')) {
+             $id = $this->session->userdata('id');
+              $config = array();
+            $config["base_url"] = base_url() . "index.php/view/sendUserTransaction";
+            $data["tranlist"] = $this->dbmodel->userSendListAll($id);
+            $config["total_rows"] = count($data['tranlist']);
+            $config["per_page"] = 10;
+            //$config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+            $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+            $data["tranlist"] = $this->dbmodel->userSendList($config["per_page"], $user,$id);
+            $data["links"] = $this->pagination->create_links();
+            
+             //$data['userlist'] = $this->dbmodel->userlist();
+            $data['branch'] = $this->dbmodel->branch();
+            $data['query'] = $this->dbmodel->get_agent();
+            $data['user'] = $this->dbmodel->get_user();
+              $this->load->view('cme/templets/header');  
+        $this->load->view('cme/tranzaction/sendingUserList',$data);
+        $this->load->view('cme/templets/footer');
+             
+         } else {
+            redirect('login', 'refresh');
+        } 
+            
+        }
+        
+        public function usersearchsend()
+        {
+             if ($this->session->userdata('logged_in')) {
+             $id = $this->session->userdata('id');
+            $data['branch'] = $this->dbmodel->branch();
+            $data['query'] = $this->dbmodel->get_agent();
+            $data['user'] = $this->dbmodel->get_user();
+            
+           $fromdate =  $this->input->post('dfrom');
+           $todate =  $this->input->post('dto');
+           $agent =  $this->input->post('agent');
+           $timeperiod = $this->input->post('tranperiod');
+           
+           $data['tranlist'] = $this->dbmodel->usersearchsenddata($fromdate,$todate,$agent,$id,$timeperiod);
+            $config = array();
+           $config["base_url"] = base_url() . "index.php/view/usersearchsend";
+            $config["total_rows"] =  count($data['tranlist']);
+            $config["per_page"] = 10;
+           $config["uri_segment"] = 3;
+
+            $this->pagination->initialize($config);
+
+           $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+           $data["tranlist"] = $this->dbmodel->usersearchsend($config["per_page"],$user,$fromdate,$todate,$agent,$id,$timeperiod);
+          $data["links"] = $this->pagination->create_links();
+            
+              $this->load->view('cme/templets/header');  
+        $this->load->view('cme/tranzaction/sendingUserList',$data);
+        $this->load->view('cme/templets/footer');
+             
+         } else {
+            redirect('login', 'refresh');
+        } 
+        }
 }

@@ -12,6 +12,11 @@
          {
              echo $mess;
          }
+         
+         $branch = $this->dbmodel->get_branch($bid);
+        foreach ($branch as $data) {
+            $bname = $data->b_name;
+        }
 ?>
     </p></div>
 
@@ -65,32 +70,30 @@
        
 
             <div class="form">
-            <?php echo form_open_multipart('view/'); ?>
+            <?php echo form_open_multipart('view/addSendTransaction_get'); ?>
                 <input type="hidden" name="uid" value="<?php echo $user_id; ?>" />
                 <input type="hidden" name="customerid" value="<?php echo $cid;?>" />
+                 <input type="hidden" name="branch" value="<?php echo $bname;?>" />
                 <table >
-                    <tr>
-                         <td> <input class="intexth"   type="text" name="ref_number" placeholder="Refrence Number" /> </td>
-                    </tr>
-                    <tr>
-                        <td> <b> Rmittance Company </b> </td>
-                    </tr>
-                    <tr>
-                        <td> <select class="a_name" name="a_name">
-                                <?php
- foreach ($query as $data)
- {    ?>
+                <tr>
+                    <td> <input class="intexth"   type="text" name="ref_number" placeholder="Refrence Number" /> </td>
+
+                    <td> Remittance Company:</td>
+
+                    <td> <select class="a_name" name="a_name">
+                            <?php
+                            foreach ($query as $data) {
+                                ?>
                                 <option value="<?php echo $data->a_name; ?>">
-                                   <?php echo $data->a_name; ?>
+                                <?php echo $data->a_name; ?>
                                 </option> <?php } ?>
-                            </select> </td>
-                    </tr>
-                    <tr>
-                         <td><input class="intexth" type="text" name="auth_code" placeholder="Authentication Code" /></td>
-                    </tr>
+                        </select> </td>
+
+                    <td><input class="intexth" type="text" name="auth_code" placeholder="Authentication Code" /></td>
+                </tr>
 
 
-                </table>
+            </table>
 
 
             <div class="cidentitytran">
@@ -106,6 +109,7 @@
             </table>
             <br/>
             <input class="intexth" type="text" name="s_name" placeholder="Sender Name" value="<?php echo $fname." " .$mname." ".$lname; ?>"/> <br/> <br/>
+            <input type="text" name="senderContact" placeholder="Contact Number" value="<?php echo $conpersonal.", ".$conhome; ?>" /> <br/> <br/>
             <lable><b>Address</b></lable> <br/> <br/>
             
             <input type="text" name="village" placeholder="Village / Municipality" value="<?php echo $vdc; ?>" />
@@ -149,7 +153,7 @@
               <option value="Other">Other</option>
           </select> <br/> <br/>
           
-          <input type="text" name="senderContact" placeholder="Contact Number" value="<?php echo $conpersonal.", ".$conhome; ?>" />
+          
 
             </div>
                  <div class="t_right">
@@ -176,8 +180,8 @@
                     <input class="intexth" type="text" name="r_idnumber" placeholder="Id Number" /> 
                     <br/> <br/>
                      <input class="intexth" type="text" name="r_amount" placeholder="Amount" /> <br/> <br/>
-                    <input class="intexth" type="text" name="r_coll_amount" placeholder="Collected Amount" /> <br/> <br/>
-                    <input class="intexth" type="text"  name="r_amt_word" placeholder="Amount In Figure" /> <br/> <br/>
+                    <input class="intexth" type="text" name="r_coll_amount" placeholder="Service Charge" /> <br/> <br/>
+                    <input class="amountFigure" type="text"  name="r_amt_word" placeholder="Amount In Figure" /> <br/> <br/>
                      </div>
                 <div class="clear"> </div>
  <?php $mydate = getdate(date("U")); ?> 
@@ -188,9 +192,11 @@
                 <div class="clear"> </div>
 
             </div>
-                 <input type="submit" name="submit" value="Add Details" />
-           <?php echo form_close(); ?> <br/>
+            <br/>
+                 <input class="frminp" type="submit" name="submit" value="Add Details" />
+           <?php echo form_close(); ?> 
+                 
             <?php echo form_open('view/index'); ?>
-                 <input type="submit" name="submit" value="Cancel" />
+                 <input class="frminp" type="submit" name="submit" value="Cancel" />
                  <?php echo form_close(); ?>
             </div>

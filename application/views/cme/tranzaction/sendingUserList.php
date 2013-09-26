@@ -18,7 +18,7 @@
             <div class="form">
                 
                 <lable>Search Tranzaction</lable> 
-                <?php echo form_open('view/usersearchtran');?>
+                <?php echo form_open('view/usersearchsend');?>
                     <input type="text" name="dfrom" id="datepicker1" placeholder="From" />
                     <input type="text" name="dto" id="datepicker2" placeholder="To" />
                     
@@ -80,7 +80,8 @@
                         <?php } ?>                   
                         
                     </tr>
-                </table>  
+                </table>             
+               
                 <br/>
                  <?php  echo $links; ?>
                 

@@ -32,7 +32,15 @@
                         <td class="tdlist"> <?php echo $sn++; //$data->u_id; ?></td>
                         <td class="tdlist"> <?php echo $data->uname; ?></td>
                         <td class="tdlist"> <?php echo $data->role; ?></td>
-                        <td class="tdlist"> <?php echo $data->id; ?></td>
+                        <td class="tdlist">
+                         <?php $id = $data->id; 
+                         $branch = $this->dbmodel->get_branch($id);
+                        foreach ($branch as $da)
+                        {
+                            echo $da->b_name;
+                        }
+                        ?>
+                        </td>
                         <td class="tdlist"><?php echo anchor('view/getedituser/'.$data->u_id,'Edit'); ?> / <?php echo anchor('view/deleteuser/'.$data->u_id,'Delete'); ?> </td>
                         <?php } ?>                   
                         

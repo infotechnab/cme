@@ -12,6 +12,18 @@
          {
              echo $mess;
          }
+         
+         $branch = $this->dbmodel->get_branch($bid);
+        foreach ($branch as $data) {
+            $bname = $data->b_name;
+        }
+        if(!empty($cid))
+        {
+        foreach ($cid as $data);
+        {
+            $cid = $data->cid;
+        }
+        }
 ?>
     </p></div>
 
@@ -93,30 +105,28 @@
             <?php echo form_open_multipart('view/addtranzaction_get'); ?>
                 <input type="hidden" name="uid" value="<?php echo $user_id; ?>" />
                 <input type="hidden" name="customerid" value="<?php echo $cid;?>" />
-                <table >
-                    <tr>
-                         <td> <input class="intexth"   type="text" name="ref_number" placeholder="Refrence Number" /> </td>
-                    </tr>
-                    <tr>
-                        <td> <b> Rmittance Company </b> </td>
-                    </tr>
-                    <tr>
-                        <td> <select class="a_name" name="a_name">
-                                <?php
- foreach ($query as $data)
- {    ?>
+                 <input type="hidden" name="branch" value="<?php echo $bname; ?>" />
+                  <table >
+                <tr>
+                    <td> <input class="intexth"   type="text" name="ref_number" placeholder="Refrence Number" /> </td>
+
+                    <td> Remittance Company:</td>
+
+                    <td> <select class="a_name" name="a_name">
+                            <?php
+                            foreach ($query as $data) {
+                                ?>
                                 <option value="<?php echo $data->a_name; ?>">
-                                   <?php echo $data->a_name; ?>
+                                <?php echo $data->a_name; ?>
                                 </option> <?php } ?>
-                            </select> </td>
-                    </tr>
-                    <tr>
-                         <td><input class="intexth" type="text" name="auth_code" placeholder="Authentication Code" /></td>
-                    </tr>
+                        </select> </td>
 
+                    <td><input class="intexth" type="text" name="auth_code" placeholder="Authentication Code" /></td>
+                </tr>
 
-                </table>
-
+            </table>
+                 
+               
 
             <div class="cidentitytran">
 
@@ -132,7 +142,7 @@
             <br/>
             <input class="intexth" type="text" name="s_name" placeholder="Sender Name" /> <br/> <br/>
 
-            <select class="intexthc" name="country">
+            <select class="" name="country">
 <option value="">Country...</option>
 <option value="Afganistan">Afghanistan</option>
 <option value="Albania">Albania</option>
@@ -386,14 +396,14 @@
 
           <input class="intexth" type="text" name="s_amount" placeholder="Amount" /> <br/> <br/>
 
-          <select class="intexthc" name="income">
+          <select class="" name="income">
 <option value="">Income Source</option>
 <option value="Business"> Business</option>
 <option value="Salary"> Salary</option>
 
  </select>
            <br/> <br/>
-          <select class="intexthc" name="relation">
+          <select class="" name="relation">
               <option value="" >Relation...</option>
               <option value="Father" >Father</option>
               <option value="Mother">Mother</option>
@@ -438,19 +448,19 @@
              <input class="intexth" type="text" name="r_add" placeholder="Reciver Address" value="<?php echo $address; ?>" /> <br/> <br/>
              <input class="intexth" type="text" name="r_city" placeholder="Reciver Tole" value="<?php echo $tole; ?>"/> <br/> <br/>
              <input class="intexth" type="text" name="r_number"  placeholder="Contact Number" value="<?php echo $conpersonal.",".$conhome; ?>" /> <br/> <br/>
-              <select class="intexthc" name="identity" id="idselector">                              
+              <select class="" name="identity" id="idselector">                              
                     <option value="" id="default">Identity Type....</option>
               </select>
                    
              <br/> <br/>
               <?php $mydate=getdate(date("U"));?>
               <input type="hidden" value="<?php echo "  $mydate[year]- $mydate[mon]- $mydate[mday]"; ?>" name="date">
-              <input class="intids" type="text" name="r_idnumber" id="idnumber" placeholder="Id Number" />
-               <input class="intids" type="text" name="r_issueplace" id="iplace" placeholder="Issue Place" /> <br/> <br/> <br/>
+              <input class="" type="text" name="r_idnumber" id="idnumber" placeholder="Id Number" />
+               <input class="" type="text" name="r_issueplace" id="iplace" placeholder="Issue Place" /> <br/> <br/> <br/>
                
-               <input type="text"  class="intids" id="isssuedate" name="r_year" placeholder="Issued Date"  />
+               <input type="text"  class="" id="isssuedate" name="r_year" placeholder="Issued Date"  />
                 
-                      <input type="text" class="intids" id="expiredate" name="e_year" placeholder="Expiry Date"/> 
+                      <input type="text" class="" id="expiredate" name="e_year" placeholder="Expiry Date"/> 
              
                
                
@@ -461,9 +471,11 @@
                 <div class="clear"> </div>
 
             </div>
-                 <input type="submit" name="submit" value="Add Details" />
-           <?php echo form_close(); ?> <br/>
+                 <br/>
+                 <input class="frminp" type="submit" name="submit" value="Add Details" />
+           <?php echo form_close(); ?> 
             <?php echo form_open('view/index'); ?>
-                 <input type="submit" name="submit" value="Cancel" />
+                 <input class="frminp" type="submit" name="submit" value="Cancel" />
                  <?php echo form_close(); ?>
             </div>
+</div>
