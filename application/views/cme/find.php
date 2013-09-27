@@ -9,15 +9,16 @@
     </p> 
        </div> 
 <div class="cus_search_find">
-             <div class="form">
+             <div class="form" id="findMe">
                 
                 <?php echo form_open('view/detail');?>
-                    <label>Customer:</label>
-                    <input type="text" name="fcid" placeholder="Customer ID" />
-                    <input type="submit" name="submit" value="Find" /> 
+                    <label>Find Customer:</label>
+                    <input type="text" id="findInput" name="fcid" placeholder="Customer ID" style="padding:5px;"/>
+                    <input type="image" id="findImage" src="<?php echo base_url(); ?>content/images/search.png" name="submit" /> 
                 </form>
-                <br/>
+                
                 
             </div>
+    <br/>
             </div>
            
