@@ -461,8 +461,8 @@ class Dbmodel extends CI_Model {
         //$this->db->order_by('t_id','DESC');
        // $this->db->limit(1);
        $this->db->select_sum('c_amount');
-        $tran = $this->db->get('send_transaction');
-        return $tran->result();
+        $tranCAmount = $this->db->get('send_transaction');
+        return $tranCAmount->result();
     }
     
      public function usertranlist($limit,$start,$id)
@@ -1049,6 +1049,152 @@ class Dbmodel extends CI_Model {
       
          return $tranlist->result();
          
+    }
+    
+     public function sendlistAmountSearch($fromdate,$todate,$userdata,$branch,$agent,$timeperiod)
+    {
+        //$this->db->order_by('t_id','DESC');
+       // $this->db->limit(1);
+       $a = array();
+       $b = array();
+       $c = array();
+       $d  = array();
+       $e = array();
+        if((isset($userdata))&& $userdata ==!""){
+            
+          $a =array("u_id"=>$userdata); 
+        }
+        
+      if((isset($branch))&& $branch ==!""){
+         $b = array("branch"=>$branch);
+        //$b = array($a,array("branch"=>$branch));
+        $a = array_merge($a,$b);
+      }
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >'=>$fromdate,'date <='=>$todate);
+         $a = array_merge($a,$b,$c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($a,$b,$c,$d);
+        }
+        
+        if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($a,$b,$c,$d,$e);
+        }
+        
+        
+        $this->db->select_sum('amount');
+
+      
+    if(isset($a))
+    {
+        $this->db->where($a);
+    }
+        $tran = $this->db->get('send_transaction');
+        return $tran->result();
+    }
+    
+     public function sendlistCAmountSearch($fromdate,$todate,$userdata,$branch,$agent,$timeperiod)
+    {
+        //$this->db->order_by('t_id','DESC');
+       // $this->db->limit(1);
+           $a = array();
+       $b = array();
+       $c = array();
+       $d  = array();
+       $e = array();
+        if((isset($userdata))&& $userdata ==!""){
+            
+          $a =array("u_id"=>$userdata); 
+        }
+        
+      if((isset($branch))&& $branch ==!""){
+         $b = array("branch"=>$branch);
+        //$b = array($a,array("branch"=>$branch));
+        $a = array_merge($a,$b);
+      }
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >'=>$fromdate,'date <='=>$todate);
+         $a = array_merge($a,$b,$c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($a,$b,$c,$d);
+        }
+        
+        if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($a,$b,$c,$d,$e);
+        }
+        
+        
+        $this->db->select_sum('c_amount');
+      
+    if(isset($a))
+    {
+        $this->db->where($a);
+    }
+       
+        $tranCAmount = $this->db->get('send_transaction');
+        return $tranCAmount->result();
+    }
+    
+    public function tranlistAmountSearch($fromdate,$todate,$userdata,$branch,$agent,$timeperiod)
+    {
+        //$this->db->order_by('t_id','DESC');
+       // $this->db->limit(1);
+      
+       
+         $a = array();
+       $b = array();
+       $c = array();
+       $d  = array();
+       $e = array();
+        if((isset($userdata))&& $userdata ==!""){
+            
+          $a =array("u_id"=>$userdata); 
+        }
+        
+      if((isset($branch))&& $branch ==!""){
+         $b = array("branch"=>$branch);
+        //$b = array($a,array("branch"=>$branch));
+        $a = array_merge($a,$b);
+      }
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >'=>$fromdate,'date <='=>$todate);
+         $a = array_merge($a,$b,$c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($a,$b,$c,$d);
+        }
+        
+        if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($a,$b,$c,$d,$e);
+        
+        }
+         $this->db->select_sum('amount');
+      
+    if(isset($a))
+    {   
+                
+        $this->db->where($a);
+        
+    }
+        $tran = $this->db->get('cme_tranzaction');
+        return $tran->result();
     }
     
      public function userSendListAll($id)

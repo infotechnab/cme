@@ -35,16 +35,16 @@
                         <option value=" <?php 
  $tdate = date("Y-m-d");
  echo $date = date('Y-m-d',strtotime($tdate."- 1 weeks"));
- ?>">This Weekly</option>
+ ?>">This Week</option>
                         
                         <option value=" <?php 
  $tdate = date("Y-m-d");
  echo $date = date('Y-m-d',strtotime($tdate."- 4 weeks"));
- ?>">This Monthly</option>
+ ?>">This Month</option>
                         <option value="<?php 
  $tdate = date("Y-m-d");
  echo $date = date('Y-m-d',strtotime($tdate."- 52 weeks"));
- ?>">This Yearly</option>
+ ?>">This Year</option>
                     </select>
                     <input type="submit" name="search" value="Search" />
                     

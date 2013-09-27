@@ -109,9 +109,9 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                     <select name="tranperiod">
                         <option value="">Transaction by..</option>
                         <option <?php if($timePeriod==date("Y-m-d")) { echo 'Selected="Selected"'; } ?> value="<?php echo date("Y-m-d"); ?>">Today</option>
-                        <option <?php if($timePeriod==$dateWeek) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateWeek; ?> ">This Weekly</option>
-                        <option <?php if($timePeriod==$dateMonth) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateMonth; ?> ">This Monthly</option>
-                        <option <?php if($timePeriod==$dateYear) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateYear; ?>">This Yearly</option>
+                        <option <?php if($timePeriod==$dateWeek) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateWeek; ?> ">This Week</option>
+                        <option <?php if($timePeriod==$dateMonth) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateMonth; ?> ">This Month</option>
+                        <option <?php if($timePeriod==$dateYear) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateYear; ?>">This Year</option>
                     </select>
                     <input type="submit" name="search" value="Search" />
                     
@@ -153,7 +153,7 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                  
                   <lable> <b>Total Amount Rs.</b></lable>
                  <?php
-                     $tran = $this->dbmodel->sendlistAmount();
+                    
                foreach ($tran as $data)
                {
                    $total = $data->amount;
@@ -163,8 +163,8 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                 <br/>
                  <lable> <b>Service Charge Rs.</b></lable>
                  <?php
-                     $tran = $this->dbmodel->sendlistCAmount();
-               foreach ($tran as $data)
+                     
+               foreach ($tranCAmount as $data)
                {
                    $total = $data->c_amount;
                }

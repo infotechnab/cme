@@ -1478,7 +1478,7 @@ class view extends CI_Controller {
                   $config = array();
             $config["base_url"] = base_url() . "index.php/view/get_agent";
             $config["total_rows"] = $this->dbmodel->record_count_agent();
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -1506,7 +1506,7 @@ class view extends CI_Controller {
                   $config = array();
             $config["base_url"] = base_url() . "index.php/view/get_useragent";
             $config["total_rows"] = $this->dbmodel->record_count_agent();
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -1537,7 +1537,7 @@ class view extends CI_Controller {
              $config = array();
             $config["base_url"] = base_url() . "index.php/view/userlist";
             $config["total_rows"] = $this->dbmodel->record_count_user();
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
             $config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -1925,7 +1925,7 @@ class view extends CI_Controller {
                  $config = array();
             $config["base_url"] = base_url() . "index.php/view/cuslist";
             $config["total_rows"] = $this->dbmodel->record_count_cuslist();
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -1962,7 +1962,7 @@ class view extends CI_Controller {
                  $config = array();
             $config["base_url"] = base_url() . "index.php/view/usercuslist";
             $config["total_rows"] = $this->dbmodel->record_count_cuslist();
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -1994,7 +1994,7 @@ class view extends CI_Controller {
               $config = array();
             $config["base_url"] = base_url() . "index.php/view/get_agent";
             $config["total_rows"] = $this->dbmodel->record_count_branch();
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2155,7 +2155,7 @@ class view extends CI_Controller {
               $config = array();
             $config["base_url"] = base_url() . "index.php/view/tranlist";
             $config["total_rows"] = $this->dbmodel->record_count_tran();
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2169,6 +2169,7 @@ class view extends CI_Controller {
             $data['branch'] = $this->dbmodel->branch();
             $data['query'] = $this->dbmodel->get_agent();
             $data['user'] = $this->dbmodel->get_user();
+             $data['tran'] = $this->dbmodel->tranlistAmount();
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/tranzaction/tranlist',$data);
         $this->load->view('cme/templets/footer');
@@ -2202,7 +2203,7 @@ class view extends CI_Controller {
            $config["base_url"] = base_url() . "index.php/view/searchtran";
            //echo (count($data['tranlist']));
             $config["total_rows"] =  count($data['tranlist']);
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
            $config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2212,6 +2213,8 @@ class view extends CI_Controller {
            $data["tranlist"] = $this->dbmodel->searchtran($config["per_page"],$user,$fromdate,$todate,$userdata,$branch,$agent,$timeperiod);
            
           $data["links"] = $this->pagination->create_links();
+          
+           $data['tran'] = $this->dbmodel->tranlistAmountSearch($fromdate,$todate,$userdata,$branch,$agent,$timeperiod);
             
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/tranzaction/tranlist',$data);
@@ -2349,7 +2352,7 @@ class view extends CI_Controller {
             $config["base_url"] = base_url() . "index.php/view/usertranlist";
             $data["tranlist"] = $this->dbmodel->usertranlistall($id);
             $config["total_rows"] = count($data['tranlist']);
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2390,7 +2393,7 @@ class view extends CI_Controller {
             $config = array();
            $config["base_url"] = base_url() . "index.php/view/usersearchtran";
             $config["total_rows"] =  count($data['tranlist']);
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
            $config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2587,7 +2590,7 @@ class view extends CI_Controller {
               $config = array();
             $config["base_url"] = base_url() . "index.php/view/sendingtranlist";
             $config["total_rows"] = $this->dbmodel->record_count_send();
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2601,6 +2604,8 @@ class view extends CI_Controller {
             $data['branch'] = $this->dbmodel->branch();
             $data['query'] = $this->dbmodel->get_agent();
             $data['user'] = $this->dbmodel->get_user();
+            $data['tran'] = $this->dbmodel->sendlistAmount();
+            $data['tranCAmount'] = $this->dbmodel->sendlistCAmount();
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/tranzaction/sendingtranlist',$data);
         $this->load->view('cme/templets/footer');
@@ -2634,7 +2639,7 @@ class view extends CI_Controller {
            $config["base_url"] = base_url() . "index.php/view/sendingTransaction";
            //echo (count($data['tranlist']));
             $config["total_rows"] =  count($data['tranlist']);
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
            $config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2644,7 +2649,8 @@ class view extends CI_Controller {
            $data["tranlist"] = $this->dbmodel->searchSend($config["per_page"],$user,$fromdate,$todate,$userdata,$branch,$agent,$timeperiod);
            
           $data["links"] = $this->pagination->create_links();
-            
+           $data['tran'] = $this->dbmodel->sendlistAmountSearch($fromdate,$todate,$userdata,$branch,$agent,$timeperiod);
+            $data['tranCAmount'] = $this->dbmodel->sendlistCAmountSearch($fromdate,$todate,$userdata,$branch,$agent,$timeperiod);
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/tranzaction/sendingtranlist',$data);
         $this->load->view('cme/templets/footer');
@@ -2663,7 +2669,7 @@ class view extends CI_Controller {
             $config["base_url"] = base_url() . "index.php/view/sendUserTransaction";
             $data["tranlist"] = $this->dbmodel->userSendListAll($id);
             $config["total_rows"] = count($data['tranlist']);
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
             //$config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
@@ -2704,7 +2710,7 @@ class view extends CI_Controller {
             $config = array();
            $config["base_url"] = base_url() . "index.php/view/usersearchsend";
             $config["total_rows"] =  count($data['tranlist']);
-            $config["per_page"] = 10;
+            $config["per_page"] = 40;
            $config["uri_segment"] = 3;
 
             $this->pagination->initialize($config);
