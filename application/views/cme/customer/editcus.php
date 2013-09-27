@@ -185,13 +185,11 @@
                             <input class="intextd" type="text" name="dobday" id="db_d" placeholder="Day" value=" <?php if($dob == 0000-00-00){echo "Day"; } else echo date('d',  strtotime($dob)); ?>" /> </td>
                                 <td> <img src="<?php echo base_url()."content/images/calender.png"?>" id="db" /> </td>
                     </tr>
+                    <tr>
+                        <td><b>Current Address </b></td>
+                    </tr>
                     
-                    <tr>
-                           <td> <b>Address </b> </td>
-                    </tr>
-                    <tr>
-                            <td colspan="2"> <input class="intext"  type="text" name="address" placeholder="Adderss" value="<?php echo $address; ?>" /> </td>
-                    </tr>
+                   
                     <tr>                         
                              <td> <input class="intexth"   type="text" name="vdc" placeholder="VDC / Municipality" value="<?php echo $vdc; ?>"/> </td>
                              <td> <input class="intexth"  type="text" name="tole" placeholder="Tole" value="<?php echo $tole; ?>"/> </td>
@@ -200,6 +198,12 @@
                    <tr> 
                               <td> <input class="intexth" type="text" name="distric" placeholder="Distric" value="<?php echo $distirc; ?>"/> </td>
                                <td> <input class="intexth" type="text" name="zone" placeholder="Zone" value="<?php echo $zone; ?>" /> </td>
+                    </tr>
+                     <tr>
+                           <td> <b>Permanent Address </b> </td>
+                    </tr>
+                    <tr>
+                            <td colspan="2"> <input class="intext"  type="text" name="address" placeholder="Adderss" value="<?php echo $address; ?>" /> </td>
                     </tr>
                    
                     <tr>

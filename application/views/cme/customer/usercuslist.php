@@ -17,7 +17,7 @@
                 <?php echo form_open('view/usersearchcus');?>
                     <input type="text" name="id"  placeholder="ID" />
                     <input type="text" name="cusname"  placeholder="First Name" />
-                    
+                     <input type="text" name="cusLname"  placeholder="Last Name" />
                    <input type="text" name="address"  placeholder="Address" />
                     <input type="text" name="phone"  placeholder="Phone Number" />
                     
@@ -53,7 +53,7 @@
                         <td class="tdlist"> <?php echo $data->title." ".$data->fname." ".$data->mname." ".$data->lname; ?></td>
                        
                         
-                        <td class="tdlist"> <?php echo $data->address.", ".$data->vdc.", ".$data->tole.", ".$data->distric.", ".$data->zone; ?></td>
+                        <td class="tdlist"> <?php echo $data->vdc.", ".$data->tole.", ".$data->distric.", ".$data->zone; ?></td>
                          
                           <td class="tdlist"> <?php echo $data->conpersonal.", ".$data->conhome; ?></td>
                          

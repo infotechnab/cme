@@ -1071,6 +1071,16 @@ class view extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
+    
+     public function comfirmSend() {
+        if ($this->session->userdata('logged_in')) {
+            $data['query'] = $this->dbmodel->get_send();
+
+            $this->load->view('cme/comfirmSend', $data);
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
 
     //===============agent =====================//
     public function agent() {
@@ -1648,9 +1658,11 @@ class view extends CI_Controller {
 
             if (($this->form_validation->run() == FALSE)) {
 
-                $fcid = $this->input->post('uid');
-                $data['cid'] = array('cid' => $fcid);
-                $data['customer'] = $this->dbmodel->customer_detail($fcid);
+                $uid = $this->input->post('uid');
+                $cusid = $this->input->post('cusid');
+                
+               
+                $data['customer'] = $this->dbmodel->customer_detail($cusid);
                 $this->load->view('cme/templets/header');
                 $this->load->view('cme/get_tran', $data);
                 $this->load->view('cme/templets/footer');
@@ -2168,7 +2180,8 @@ class view extends CI_Controller {
 
 
             if (($this->form_validation->run() == FALSE)) {
-                $fcid = $this->input->post('uid');
+                $uid = $this->input->post('uid');
+                 $fcid = $this->input->post('cusid');
                 $data['customer'] = $this->dbmodel->customer_detail($fcid);
                 $this->load->view('cme/templets/header');
                 $this->load->view('cme/get_sendTran', $data);
@@ -2213,7 +2226,7 @@ class view extends CI_Controller {
 
                 $this->dbmodel->addSendTranzaction($id, $cid, $rnumber, $compname, $auth, $sname, $country, $amount, $rname, $raddress, $contact, $identity, $idnumber, $date, $relation, $title, $rtitle, $branch, $village, $ward, $tole, $city, $distric, $zone, $senderContact, $collectedAmount, $figureAmount);
                 $this->session->set_flashdata('message', 'Tranzaction added sucessfully');
-                // redirect('view/comfirm');
+                redirect('view/comfirmSend');
             }
         } else {
 
@@ -2248,7 +2261,7 @@ class view extends CI_Controller {
                 $fcid = $this->input->post('uid');
                 $data['customer'] = $this->dbmodel->customer_detail($fcid);
                 $this->load->view('cme/templets/header');
-                $this->load->view('cme/get_sendTran', $data);
+                $this->load->view('cme/SendTran', $data);
                 $this->load->view('cme/templets/footer');
             } else {
 
@@ -2289,7 +2302,7 @@ class view extends CI_Controller {
 
                 $this->dbmodel->addSendTranzaction($id, $cid, $rnumber, $compname, $auth, $sname, $country, $amount, $rname, $raddress, $contact, $identity, $idnumber, $date, $relation, $title, $rtitle, $branch, $village, $ward, $tole, $city, $distric, $zone, $senderContact, $collectedAmount, $figureAmount);
                 $this->session->set_flashdata('message', 'Tranzaction added sucessfully');
-                //redirect('view/comfirm');
+                redirect('view/comfirmSend');
             }
         } else {
 

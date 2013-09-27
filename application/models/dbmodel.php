@@ -81,8 +81,7 @@ class Dbmodel extends CI_Model {
 
 
     public function customer_detail($fcid)
-    {
-        
+    { 
          $this->db->where('cus_id = '."'".$fcid."'");
         $query = $this->db->get('customer_info');
         return $query->result();
@@ -408,6 +407,13 @@ class Dbmodel extends CI_Model {
     {
          $this->db->order_by('t_id','DESC');
         $query = $this->db->get('cme_tranzaction',1);
+        return $query->result();
+    }
+    
+     public function get_send()
+    {
+         $this->db->order_by('s_id','DESC');
+        $query = $this->db->get('send_transaction',1);
         return $query->result();
     }
     
@@ -869,13 +875,15 @@ class Dbmodel extends CI_Model {
          return $tranlist->result();
     }
     
-    public function searchcus($cusid,$name,$address,$branch,$phone)
+    public function searchcus($cusid,$name,$address,$branch,$phone,$lname)
     {
+     
         $a = array();
        $b = array();
        $c = array();
        $d  = array();
        $e = array();
+       $f = array();
         if((isset($cusid))&& $cusid ==!""){
             
           $a =array("cus_id"=>$cusid); 
@@ -903,6 +911,13 @@ class Dbmodel extends CI_Model {
             
           $e =array("address"=>$address); 
           $a = array_merge($a,$b,$c,$d,$e);
+        }
+        
+        if((isset($lname))&& $lname==!"" )
+        {
+            $f = array("lname"=>$lname);
+            $a = array_merge($a,$b,$c,$d,$e,$f);
+            
         }
     if(isset($a))
     {

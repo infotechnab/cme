@@ -27,6 +27,7 @@
                 {
 
                      $cid = $data->c_id;
+                     $cusid = $data->cus_id;
                      $fname = $data->fname;
                      $mname = $data->mname;
                      $lname= $data->lname;
@@ -73,6 +74,7 @@
             <?php echo form_open_multipart('view/addSendTransaction_get'); ?>
                 <input type="hidden" name="uid" value="<?php echo $user_id; ?>" />
                 <input type="hidden" name="customerid" value="<?php echo $cid;?>" />
+                 <input type="hidden" name="cusid" value="<?php echo $cusid;?>" />
                  <input type="hidden" name="branch" value="<?php echo $bname;?>" />
                 <table >
                 <tr>

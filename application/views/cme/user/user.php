@@ -1,5 +1,6 @@
        <div class="cme">   <p id="sucessmsg">
-  <?php if(isset($mess))
+  <?php  if($this->session->flashdata('message')){echo $this->session->flashdata('message');} 
+  if(isset($mess))
   {
       echo $mess;
   }
@@ -28,9 +29,7 @@
                         { ?>
                              <option value="<?php echo $data->id; ?>"><?php echo $data->b_name; ?> </option>
                    <?php     }
-?>
-                       
-                    </select>
+?> </select>
                     <input type="submit" name="submit" value="Add" /> 
                 </form>
                 <br/>

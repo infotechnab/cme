@@ -88,7 +88,7 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
                         <td class="tdlist"> <?php echo $data->s_name; ?></td>
                          <td class="tdlist"> Rs. <?php echo $data->amount; ?></td>
                           <td class="tdlist"> <?php echo $data->r_name; ?></td>
-                           <td class="tdlist"> <?php echo $data->contact; ?></td>
+                           <td class="tdlist"> <?php echo $data->r_contact; ?></td>
                             <td class="tdlist"> <?php echo $data->date; ?></td>
                       <!--  <td class="tdlist"><?php //echo anchor('view/getedituser/'.$data->u_id,'Edit'); ?> / <?php //echo anchor('view/deleteuser/'.$data->u_id,'Delete'); ?> </td> -->
                         <?php } ?>                   

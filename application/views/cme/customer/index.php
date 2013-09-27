@@ -15,8 +15,9 @@
              click:function()
              {
                  $("#c-m-h").toggle();
-                  // $("#c-m-h").css("position","relative");
-                  // $("#c-m-h").css("top","-150px");
+                 //$("#c-m-h").css("position","absolute");
+                 // $("#c-m-h").css("top","350px");
+                 //  $("#c-m-h").css("left","700px");
                  var imgid = $(this).attr("id");
                 
                  //calculate(imgid);
@@ -154,13 +155,11 @@
                         <td> <img src="<?php echo base_url()."content/images/calender.png"?>" id="db" /> </td>
                         
                     </tr>
+                    <tr>
+                        <td><b>Current Address</b></td>
+                    </tr>
                     
-                    <tr>
-                           <td> <b>Address </b> </td>
-                    </tr>
-                    <tr>
-                            <td colspan="2"> <input class="intext"  type="text" name="address" placeholder="Adderss" /> *</td>
-                    </tr>
+                    
                     <tr>                         
                              <td> <input class="intexth"   type="text" name="vdc" placeholder="VDC / Municipality"/> </td>
                              <td> <input class="intexth"  type="text" name="ward" placeholder="Ward No."/> </td>
@@ -174,6 +173,13 @@
                    <tr> 
                               <td> <input class="intexth" type="text" name="distric" placeholder="Distric"/> </td>
                                <td> <input class="intexth" type="text" name="zone" placeholder="Zone" /> * </td>
+                    </tr>
+                    
+                    <tr>
+                           <td> <b>Permanent Address </b> </td>
+                    </tr>
+                    <tr>
+                            <td colspan="2"> <input class="intext"  type="text" name="address" placeholder="Adderss" /> </td>
                     </tr>
                    
                     <tr>
