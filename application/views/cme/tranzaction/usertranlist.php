@@ -1,4 +1,18 @@
-       <div class="cme">   <p id="sucessmsg">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css" />
+<script>
+$(function() {
+ $( "#datepicker1" ).datepicker({ dateFormat: "yy-mm-dd" });
+
+});
+$(function() {
+$( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
+});
+
+</script>
+<div class="cme">   <p id="sucessmsg">
   <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
   echo validation_errors();
   if(isset($error))

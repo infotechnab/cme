@@ -1,3 +1,72 @@
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"> </script>
+          <script type="text/javascript" src="<?php echo base_url(); ?>/content/script/jquery.min.js"></script>
+          
+         <script type="text/javascript" src="<?php echo base_url(); ?>/content/script/salyani-script.js">            
+        </script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>/content/script/jquery.min.js">
+        </script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>/content/script/moment+langs.js">        
+        </script>
+        
+         <script>
+             
+             $(document).ready(function(){
+             $("img").bind({                 
+             click:function()
+             {
+                 $("#c-m-h").toggle();
+                  // $("#c-m-h").css("position","relative");
+                  // $("#c-m-h").css("top","-150px");
+                 var imgid = $(this).attr("id");
+                
+                 //calculate(imgid);
+                merodata(imgid);
+                 
+             }
+              
+   });
+   
+   function merodata(mgid)
+   {
+        $("#datapass").val(mgid);
+   }
+   
+   $("#okbutton").bind({
+   click:function()
+   {
+       //alert(imgid);
+       calculate();
+        $("#c-m-h").hide();
+   }
+
+   });
+   
+});
+          
+            
+            
+    </script>
+ 
+    <script type="text/javascript">
+	window.onload = function(){
+		new JsDatePick({
+			useMode:2,
+			target:"inputField",
+			dateFormat:"%d-%M-%Y"
+			/*selectedDate:{ This is an example of what the full configuration offers.
+				day:5,	For full documentation about these settings please see the full version of the code.
+				month:9,
+				year:2006
+			},
+			yearsRange:[1978,2020],
+			limitToToday:false,
+			cellColorScheme:"beige",
+			dateFormat:"%m-%d-%Y",
+			imgPath:"img/",
+			weekStartDay:1*/
+		});
+	};
+</script>
  <?php
        $role = $this->session->userdata('username');
        $bid = $this->session->userdata('bid');
@@ -233,7 +302,7 @@ else { ?>
 
 
 <!-- calender -->
-        <div class="calendars-month-header" id="c-m-h" >
+        <div class="calendars-month-header" id="c-m-h" style="display:none;" >
             <select title="Change the year" class="calendars-month-year" id="yearInput">
                 <?php
                 for ($i = 2020; $i <= 2080; $i++) {
