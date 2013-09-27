@@ -32,17 +32,28 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
            <?php
            //fetching previous data 
           // print_r($previousRecord);
+         
            if(!empty($previousRecord))
            {
-               foreach ($previousRecord as $preData)
-               {
-               // $fromDate = $preData->fromDate;
-               // $toDate = $preData["toDate"];
-              // $userData = $preData->userData;
-              // $branchPre = $preData->branch;
-              //$agent = $preData->agent;
-              // $timePeriod = $preData->timePeriod;
-               }
+               $fromDate = $previousRecord["fromDate"];
+               
+               $fromDate = $previousRecord["fromDate"];
+              $toDate = $previousRecord["toDate"];
+               $userData = $previousRecord["userData"];
+              $branchPre = $previousRecord["branch"];
+               $agent = $previousRecord["agent"];
+               $timePeriod = $previousRecord["timePeriod"];
+              
+               
+           }
+           else
+           {
+             $fromDate = "";
+              $toDate = "";
+             $userData = "";
+              $branchPre = "";
+              $agent = "";
+              $timePeriod = "";
                
            }
            ?>
@@ -128,10 +139,11 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                         <option <?php if($timePeriod==$dateYear) { echo 'Selected="Selected"'; } ?> value="<?php echo $dateYear; ?>">This Year</option>
                     </select>
                     <input type="submit" name="search" value="Search" />
-                    
+                     <input type="reset" value="Reset"/>
                <?php echo form_close(); ?>
+                   
                 
-                <br/>
+             
                  <br/>
                 <table id="cmeTable" class="tbllist">
                     <tr class="trlist">
