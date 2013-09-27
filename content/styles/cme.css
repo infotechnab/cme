@@ -19,7 +19,8 @@ color: #04457c;} /* visited link */
 a:hover {text-decoration:underline;}   /* mouse over link */
 a:active {text-decoration:underline;}
 
-body {
+body 
+{
     margin: 0;
     padding: 0;
     background-color: #f4f1f1;
@@ -55,8 +56,8 @@ color:#ffffff;
 
 
 
-tr:nth-child(even) {background: #e2e2e2}
-tr:nth-child(odd) {background: #FFF}
+#cmeTable tr:nth-child(even) {background: #e2e2e2}
+#cmeTable tr:nth-child(odd) {background: #FFF}
 
 .sign{
     width: 20%;
