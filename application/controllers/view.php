@@ -1264,6 +1264,8 @@ class view extends CI_Controller {
               $this->form_validation->set_rules('cmea_email', 'Email', 'required|xss_clean'); 
             $this->form_validation->set_rules('cmen_name', 'Nepali Name', 'required|xss_clean');
             $this->form_validation->set_rules('toll_number', 'Nepali Name', 'required|xss_clean');
+            $this->form_validation->set_rules('cmea_login', 'Login', 'required|xss_clean');
+            $this->form_validation->set_rules('cmea_web', 'Web', 'required|xss_clean');
         
             if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload('agentfile'))) {
                 $data['error']=$this->upload->display_errors('agentfile');
@@ -1283,8 +1285,13 @@ class view extends CI_Controller {
                 $tollnumber = $this->input->post('toll_number');
                 $email = $this->input->post('cmea_email');
                 $principal = $this->input->post('cmea_principal');
+                $login =  $this->input->post('cmea_login');
+                $web = $this->input->post('cmea_web');
+                $cusid = $this->input->post('cmea_cusID');
+                $userid = $this->input->post('cmea_userID');
+                $acode = $this->input->post('cmea_acode');
                 
-                $this->dbmodel->addagent($image,$name,$address,$number,$email,$principal,$nname,$tollnumber);
+                $this->dbmodel->addagent($image,$name,$address,$number,$email,$principal,$nname,$tollnumber,$login,$web,$cusid,$userid,$acode);
                 $this->session->set_flashdata('message', 'Agent added sucessfully');
                 redirect('view/get_agent');
             }
@@ -1357,7 +1364,12 @@ class view extends CI_Controller {
                 $tnumber = $this->input->post('t_number');
                 $email = $this->input->post('cmea_email');
                 $principal = $this->input->post('cmea_principal');
-                $this->dbmodel->updatea($id, $name, $address, $number, $email,$principal,$image,$nname,$tnumber);
+                $login = $this->input->post('cmea_login');
+                $web = $this->input->post('cmea_web');
+                $cusid = $this->input->post('cmea_cusID');
+                $userid = $this->input->post('cmea_userID');
+                $acode = $this->input->post('cmea_acode');
+                $this->dbmodel->updatea($id, $name, $address, $number, $email,$principal,$image,$nname,$tnumber,$login,$web,$cusid,$userid,$acode);
                 $this->session->set_flashdata('message', 'Remittance Company Modified Sucessfully');
                redirect('view/get_agent');
 
@@ -1374,7 +1386,12 @@ class view extends CI_Controller {
                  $tnumber = $this->input->post('t_number');
                 $email = $this->input->post('cmea_email');
                 $principal = $this->input->post('cmea_principal');
-                $this->dbmodel->updatea($id, $name, $address, $number, $email,$principal,$image,$nname,$tnumber);
+                $login = $this->input->post('cmea_login');
+                $web = $this->input->post('cmea_web');
+                $cusid = $this->input->post('cmea_cusID');
+                $userid = $this->input->post('cmea_userID');
+                $acode = $this->input->post('cmea_acode');
+                $this->dbmodel->updatea($id, $name, $address, $number, $email,$principal,$image,$nname,$tnumber,$login,$web,$cusid,$userid,$acode);
                 $this->session->set_flashdata('message', 'Remittance Company Modified Sucessfully');
                redirect('view/get_agent');
 
@@ -2679,6 +2696,9 @@ class view extends CI_Controller {
             $data["tranlist"] = $this->dbmodel->userSendList($config["per_page"], $user,$id);
             $data["links"] = $this->pagination->create_links();
             
+             $data['tran'] = $this->dbmodel->sendlistAmountUser($id);
+            $data['tranCAmount'] = $this->dbmodel->sendlistCAmountUser($id);
+            
              //$data['userlist'] = $this->dbmodel->userlist();
             $data['branch'] = $this->dbmodel->branch();
             $data['query'] = $this->dbmodel->get_agent();
@@ -2719,6 +2739,9 @@ class view extends CI_Controller {
             
            $data["tranlist"] = $this->dbmodel->usersearchsend($config["per_page"],$user,$fromdate,$todate,$agent,$id,$timeperiod);
           $data["links"] = $this->pagination->create_links();
+          
+           $data['tran'] = $this->dbmodel->sendlistAmountSearchUser($fromdate,$todate,$agent,$id,$timeperiod);
+            $data['tranCAmount'] = $this->dbmodel->sendlistCAmountSearchUser($fromdate,$todate,$agent,$id,$timeperiod);
             
               $this->load->view('cme/templets/header');  
         $this->load->view('cme/tranzaction/sendingUserList',$data);

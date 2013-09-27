@@ -22,8 +22,8 @@
            {
                foreach ($previousRecord as $preData)
                {
-                $fromDate = $preData->fromDate;
-                $toDate = $preData["toDate"];
+               // $fromDate = $preData->fromDate;
+               // $toDate = $preData["toDate"];
               // $userData = $preData->userData;
               // $branchPre = $preData->branch;
               //$agent = $preData->agent;

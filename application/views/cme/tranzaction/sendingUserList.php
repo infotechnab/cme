@@ -80,7 +80,27 @@
                         <?php } ?>                   
                         
                     </tr>
-                </table>             
+                </table>  
+                 
+                  <lable> <b>Total Amount Rs.</b></lable>
+                 <?php
+                    
+               foreach ($tran as $data)
+               {
+                   $total = $data->amount;
+               }
+               echo $total;
+                 ?>
+                <br/>
+                 <lable> <b>Service Charge Rs.</b></lable>
+                 <?php
+                     
+               foreach ($tranCAmount as $data)
+               {
+                   $total = $data->c_amount;
+               }
+               echo $total;
+                 ?>
                
                 <br/>
                  <?php  echo $links; ?>

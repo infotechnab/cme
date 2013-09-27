@@ -322,7 +322,7 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-    public function addagent($image,$name,$address,$number,$email,$principal,$nname,$tollnumber)
+    public function addagent($image,$name,$address,$number,$email,$principal,$nname,$tollnumber,$login,$web,$cusid,$userid,$acode)
     {
         $data = array(
             'image'=>$image,
@@ -332,7 +332,12 @@ class Dbmodel extends CI_Model {
             'a_number'=>$number,
             't_number'=>$tollnumber,
             'a_email'=>$email,
-            'a_principal'=>$principal
+            'a_principal'=>$principal,
+            'login'=>$login,
+            'web'=>$web,
+            'cus_id'=>$cusid,
+            'user_id'=>$userid,
+            'access_code'=>$acode
         );
          $this->db->insert('cme_agent', $data);
         
@@ -505,7 +510,7 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-    public function updatea($id, $name, $address, $number, $email,$principal,$image,$nname,$tnumber)
+    public function updatea($id, $name, $address, $number, $email,$principal,$image,$nname,$tnumber,$login,$web,$cusid,$userid,$acode)
     {
         
          $this->load->database();
@@ -517,6 +522,11 @@ class Dbmodel extends CI_Model {
             't_number'=>$tnumber,
             'a_email' => $email,
             'a_principal'=>$principal,
+            'login'=>$login,
+             'web'=>$web,
+              'cus_id'=>$cusid,
+               'user_id'=>$userid,
+                 'access_code'=>$acode,      
             'image'=>$image);
         
         
@@ -1099,6 +1109,33 @@ class Dbmodel extends CI_Model {
         return $tran->result();
     }
     
+    public function sendlistAmountSearchUser($fromdate,$todate,$agent,$id,$timeperiod)
+    {
+       $c = array();
+       $d  = array();
+       $e  = array();
+            if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >='=>$fromdate,'date <='=>$todate);
+         $a = array_merge($c);
+      }
+       if((isset($agent))&& $agent ==!""){
+                      $d =array("agent"=>$agent); 
+          $a = array_merge($c,$d);
+        }
+         if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($c,$d,$e);
+        }
+         $this->db->select_sum('amount');
+          if(isset($a))
+    {
+        $this->db->where($a);
+        $this->db->where('u_id',$id);
+    }  $tran = $this->db->get('send_transaction');
+        return $tran->result();
+    }
+    
      public function sendlistCAmountSearch($fromdate,$todate,$userdata,$branch,$agent,$timeperiod)
     {
         //$this->db->order_by('t_id','DESC');
@@ -1146,6 +1183,64 @@ class Dbmodel extends CI_Model {
         $tranCAmount = $this->db->get('send_transaction');
         return $tranCAmount->result();
     }
+    
+     public function sendlistCAmountSearchUser($fromdate,$todate,$agent,$id,$timeperiod)
+    {
+        //$this->db->order_by('t_id','DESC');
+       // $this->db->limit(1);
+           $c = array();
+       $d  = array();
+       $e  = array();
+        
+        
+     
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >='=>$fromdate,'date <='=>$todate);
+         $a = array_merge($c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($c,$d);
+        }
+        
+         if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($c,$d,$e);
+        }
+        
+         $this->db->select_sum('c_amount');
+      
+    if(isset($a))
+    {
+        $this->db->where($a);
+        $this->db->where('u_id',$id);
+    }
+       
+        $tranCAmount = $this->db->get('send_transaction');
+        return $tranCAmount->result();
+    }
+    
+     public function sendlistAmountUser($id)
+    {
+       
+         $this->db->select_sum('amount');
+        $this->db->where('u_id',$id);
+     $tran = $this->db->get('send_transaction');
+        return $tran->result();
+    }
+    
+         public function sendlistCAmountUser($id)
+    {
+       
+         $this->db->select_sum('c_amount');
+        $this->db->where('u_id',$id);
+     $tranCAmount = $this->db->get('send_transaction');
+        return $tranCAmount->result();
+    }
+
     
     public function tranlistAmountSearch($fromdate,$todate,$userdata,$branch,$agent,$timeperiod)
     {

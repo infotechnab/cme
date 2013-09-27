@@ -121,7 +121,7 @@
                                 </option> <?php } ?>
                         </select> </td>
 
-                    <td><input class="intexth" type="text" name="auth_code" placeholder="Authentication Code" /></td>
+                    <td><input class="intexth" type="text" name="auth_code" placeholder="Authorization Code" /></td>
                 </tr>
 
             </table>
