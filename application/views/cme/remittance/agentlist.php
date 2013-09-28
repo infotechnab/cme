@@ -26,10 +26,10 @@
                            <th class="tdlist">Customer ID</th>
                              <th class="tdlist">User ID</th>
                                <th class="tdlist">Access Code</th>
-                        <th class="tdlist">Image</th>
+                        <th class="tdlist" style="width: 80px;">Image</th>
                         <th class="tdlist"> Principal Agent</th>
-                          <th class="tdlist">Link</th>
-                        <th class="tdlist"> Action </th>
+                        <th class="tdlist" style="width: 80px;">Link</th>
+                        <th class="tdlist" style="width: 80px;"> Action </th>
                     </tr>
                     <?php $sn=1;
                     foreach ($query as $data) { ?>
@@ -46,7 +46,7 @@
                         <td class="tdlist"> <?php echo $data->access_code; ?></td>
                         <td class="tdlist"> <img class="listimg" src="<?php echo base_url()."agentimg/".$data->image; ?>" /></td>
                         <td class="tdlist"> <?php echo $data->a_principal; ?></td>
-                        <td class="tdlist"> <a href="<?php echo "http://".$data->login; ?>" target="_blank" > Login </a> / <a href="<?php echo "http://". $data->web;  ?>" target="_blank" >Web</a></td>
+                        <td class="tdlist"> <a href="<?php echo $data->login; ?>" target="_blank" > Login </a> / <a href="<?php echo "http://". $data->web;  ?>" target="_blank" >Web</a></td>
                         <td class="tdlist"> <?php echo anchor('view/geteditagent/'.$data->id,'Edit'); ?> / <?php echo anchor('view/deleteagent/'.$data->id,'Delete'); ?> </td>
                         <?php } ?>                   
                         

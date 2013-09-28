@@ -1141,7 +1141,7 @@ class view extends CI_Controller {
                 $acode = $this->input->post('cmea_acode');
 
                 $this->dbmodel->addagent($image, $name, $address, $number, $email, $principal, $nname, $tollnumber, $login, $web, $cusid, $userid, $acode);
-                $this->session->set_flashdata('message', 'Agent added sucessfully');
+                $this->session->set_flashdata('message', 'New Remitance Company added sucessfully');
                 redirect('view/get_agent');
             }
         } else {
@@ -2062,8 +2062,9 @@ class view extends CI_Controller {
             $address = $this->input->post('address');
             $branch = $this->input->post('branch');
             $phone = $this->input->post('phone');
+            $lname = $this->input->post('searchcus');
 
-            $data['cuslist'] = $this->dbmodel->searchcus($cusid, $name, $address, $branch, $phone);
+            $data['cuslist'] = $this->dbmodel->searchcus($cusid, $name, $address, $branch, $phone, $lname);
             $data['branch'] = $this->dbmodel->branch();
             $this->load->view('cme/templets/header');
             $this->load->view('cme/customer/cuslist', $data);
