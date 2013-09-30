@@ -28,7 +28,7 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
          
             <hr/>
             
-           <br/> 
+         
            <?php
            //fetching previous data 
           // print_r($previousRecord);
@@ -145,15 +145,16 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                 
              
                  <br/>
-                <table id="cmeTable" class="tbllist">
+               <table id="cmeTable" class="tbllist">
                     <tr class="trlist">
                         <th class="tdlist"> S.N </th>
-                        <th class="tdlist"> Remittance Company</th>
+                        <th class="tdlist">Company</th>
                         <th class="tdlist"> Branch</th>
-                        <th class="tdlist"> Sender Name </th>
-                         <th class="tdlist"> Amount </th>
-                          <th class="tdlist"> Receiver Name </th>
-                           <th class="tdlist"> Contact Number </th>
+                        <th class="tdlist"> Sender</th>
+                         
+                          <th class="tdlist"> Receiver</th>
+                           <th class="tdlist"> Contact</th>
+                           <th class="tdlist"> Amount </th>
                             <th class="tdlist"> Transaction Date </th>
                       
                      <!--   <th class="tdlist"> Action </th> -->
@@ -165,9 +166,10 @@ $dateYear = date('Y-m-d',strtotime($tdate."- 52 weeks"));
                         <td class="tdlist"> <?php echo $data->agent; ?></td>
                         <td class="tdlist"> <?php echo $data->branch; ?></td>
                         <td class="tdlist"> <?php echo $data->s_name; ?></td>
-                         <td class="tdlist"> Rs.  <?php echo $data->amount; ?></td>
+                         
                           <td class="tdlist"> <?php echo $data->r_name; ?></td>
                            <td class="tdlist"> <?php echo $data->contact; ?></td>
+                           <td class="tdlist"> Rs.  <?php echo $data->amount; ?></td>
                             <td class="tdlist"> <?php echo $data->date; ?></td>
                       <!--  <td class="tdlist"><?php //echo anchor('view/getedituser/'.$data->u_id,'Edit'); ?> / <?php //echo anchor('view/deleteuser/'.$data->u_id,'Delete'); ?> </td> -->
                         <?php } ?>                   

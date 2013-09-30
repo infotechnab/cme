@@ -95,13 +95,12 @@ color:#ffffff;
 #menuList li { 
     list-style: none;
     display: inline;
-margin-right: 5px;
-margin-left: 5px;
-
+margin:5px 5px 10px 5px;
 background-color: #013c6f;
 padding: 5px;
 font-size: 16px;
 font-weight: bold;
+min-height: 30px;
 
 }
 

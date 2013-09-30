@@ -10,7 +10,7 @@
        </div>        
         
         <div class="cus_search_list">
-            <label> <b>Customer List</b></label>
+           <label> <b>Customer List</b></label> &nbsp; <?php echo anchor('view/addcustomer','Add New Customer');?> 
          
             <hr/>
              <lable>Search Customer</lable> 

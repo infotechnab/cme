@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title> Chitwan Money Express</title>
+        <title>.:: CME - Chitwan Money Express</title>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>content/styles/cme.css" />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
        
@@ -26,11 +26,15 @@
            <?php
            $admin = "admin";
            $user = "user";
-           $adminMenuList = array("Home"=>"view/index", "Remittance Company"=>"view/get_agent",
-               "User"=>"view/userlist","Customers"=>"view/cuslist","Remitance Claim"=>"view/tranzaction",
-               "Branch"=>"view/branchlist","Transaction"=>"view/tranlist","Remittance Send"=>'view/sendremit',"Send Transaction List"=>"view/sendingTransaction");
-           $userMenuList = array("Home"=>"view/index","Remitance Company"=>"view/get_useragent","Customers"=>"view/usercuslist","Add New Customer"=>"view/addcustomer","Remitance Claim"=>"view/tranzaction",
-               "Transaction"=>"view/usertranlist","Remittance Send"=>'view/sendremit',"Send Transaction List"=>"view/sendUserTransaction");
+           $adminMenuList = array("Home"=>"view/index","Receive Money"=>"view/tranzaction","Send Money"=>'view/sendremit',
+               "Customers"=>"view/cuslist","Remittance Company"=>"view/get_agent",
+               "User"=>"view/userlist",
+               "Branch"=>"view/branchlist","Received Transaction"=>"view/tranlist",
+               "Sent Transaction"=>"view/sendingTransaction");
+           $userMenuList = array("Home"=>"view/index","Receive Money"=>"view/tranzaction","Send Money"=>'view/sendremit',
+                 "Customers"=>"view/usercuslist", "Remitance Company"=>"view/get_useragent",  
+               "Received Transaction"=>"view/usertranlist",
+               "Sent Transaction"=>"view/sendUserTransaction");
           
            if($role==$admin)
            {

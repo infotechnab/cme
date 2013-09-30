@@ -746,9 +746,9 @@ class Dbmodel extends CI_Model {
     
     public function usersearchtran($limit,$start,$fromdate,$todate,$agent,$id,$timeperiod){
        
-                $this->db->limit($limit, $start); 
+       $this->db->limit($limit, $start); 
  
-      
+     // die($id);
        $c = array();
        $d  = array();
        $e = array();
@@ -773,6 +773,9 @@ class Dbmodel extends CI_Model {
     if(isset($a))
     {
         $this->db->where($a);
+        $this->db->where('u_id',$id);
+    }
+    else{
         $this->db->where('u_id',$id);
     }
           $tranlist = $this->db->get('cme_tranzaction');
@@ -868,6 +871,7 @@ class Dbmodel extends CI_Model {
          return $tranlist->result();
          
     }
+    
     public function get_user_tran($id){
         $this->db->where('cid',$id);
          $tranlist = $this->db->get('cme_tranzaction');
