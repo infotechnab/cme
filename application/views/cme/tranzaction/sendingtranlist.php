@@ -24,7 +24,7 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
        </div>        
         
         <div class="cus_search_list">
-           <label> <b>Send Tranzaction List</b></label> <br/>
+           <label> <b>Sent Transactions </b></label> <br/>
          
             <hr/>
             

@@ -491,6 +491,13 @@ class Dbmodel extends CI_Model {
         $tranlist = $this->db->get('cme_tranzaction');
         return $tranlist->result();
     }
+    public function userTranTotal($id)
+    {
+        $this->db->select_sum('amount');
+        $this->db->where('u_id',$id);
+        $tranList = $this->db->get('cme_tranzaction');
+        return $tranList->result();
+    }
     
    
      public function geteditagent($id)
@@ -783,8 +790,46 @@ class Dbmodel extends CI_Model {
          return $tranlist->result();
          
     }
-    
-    public function searchtranpagi(){
+    public function getTotalRecievedSearchAmout($fromdate, $todate, $agent, $id, $timeperiod)
+    {
+         $c = array();
+       $d  = array();
+       $e = array();
+       
+       if((isset($fromdate)&&($todate))&& $fromdate == !"" && $todate ==!""){
+         $c = array('date >'=>$fromdate,'date <='=>$todate);
+         $a = array_merge($c);
+         
+      }
+       if((isset($agent))&& $agent ==!""){
+            
+          $d =array("agent"=>$agent); 
+          $a = array_merge($c,$d);
+        }
+        
+        if((isset($timeperiod))&& $timeperiod==!"" )
+        {
+             $e =array("date >="=>$timeperiod); 
+          $a = array_merge($c,$d,$e);
+        }
+      $this->db->select_sum('amount');
+    if(isset($a))
+    {
+       
+        $this->db->where($a);
+        $this->db->where('u_id',$id);
+    }
+    else{
+        
+        $this->db->where('u_id',$id);
+    }
+          $tranlist = $this->db->get('cme_tranzaction');
+      
+         return $tranlist->result();
+         
+    }
+
+        public function searchtranpagi(){
          return $this->db->count_all(searchtran());
     }
     
@@ -832,6 +877,7 @@ class Dbmodel extends CI_Model {
          return $tranlist->result();
          
     }
+    
     
     public function usersearchtrandata($fromdate,$todate,$agent,$id,$timeperiod){
        
@@ -1360,7 +1406,11 @@ class Dbmodel extends CI_Model {
         $this->db->where($a);
         $this->db->where('u_id',$id);
     }
-          $tranlist = $this->db->get('send_transaction');
+    else
+    {
+        $this->db->where('u_id',$id);
+    }
+    $tranlist = $this->db->get('send_transaction');
       
          return $tranlist->result();
          
@@ -1395,6 +1445,10 @@ class Dbmodel extends CI_Model {
     if(isset($a))
     {
         $this->db->where($a);
+        $this->db->where('u_id',$id);
+    }
+    else 
+    {
         $this->db->where('u_id',$id);
     }
           $tranlist = $this->db->get('send_transaction');

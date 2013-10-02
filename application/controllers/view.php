@@ -2109,6 +2109,7 @@ class view extends CI_Controller {
             $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
             $data["tranlist"] = $this->dbmodel->usertranlist($config["per_page"], $user, $id);
+            $data["tran"] = $this->dbmodel->userTranTotal($id);
             $data["links"] = $this->pagination->create_links();
 
             //$data['userlist'] = $this->dbmodel->userlist();
@@ -2147,6 +2148,7 @@ class view extends CI_Controller {
             $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
             $data["tranlist"] = $this->dbmodel->usersearchtran($config["per_page"], $user, $fromdate, $todate, $agent, $id, $timeperiod);
+            $data["tran"] = $this->dbmodel->getTotalRecievedSearchAmout($fromdate, $todate, $agent, $id, $timeperiod);
             $data["links"] = $this->pagination->create_links();
 
             $this->load->view('cme/templets/header');

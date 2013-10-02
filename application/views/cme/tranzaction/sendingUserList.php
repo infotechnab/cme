@@ -12,7 +12,8 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
 });
 
 </script>      
-<div class="cme">   <p id="sucessmsg">
+<div class="cme">
+  <p id="sucessmsg">
   <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
   echo validation_errors();
   if(isset($error))
@@ -24,7 +25,7 @@ $( "#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
        </div>        
         
         <div class="cus_search_list">
-           <label> <b>Tranzaction List</b></label>  <br/> 
+           <label> <b>Sent Transactions</b></label>  <br/> 
          
             <hr/>
             

@@ -15,9 +15,9 @@
             click:function()
             {
                 $("#c-m-h").toggle();
-                //$("#c-m-h").css("position","absolute");
-                // $("#c-m-h").css("top","350px");
-                //  $("#c-m-h").css("left","700px");
+                $("#c-m-h").css("position","fixed");
+                $("#c-m-h").css("top","350px");
+                $("#c-m-h").css("left","700px");
                 var imgid = $(this).attr("id");
 
                 //calculate(imgid);
@@ -97,7 +97,7 @@ $cid = $cid + 1;
     <b>   Customer Entry </b>
     <hr/>
     <div class="form">
-<?php echo form_open_multipart('view/addcustomerdetail'); ?>
+        <?php echo form_open_multipart('view/addcustomerdetail'); ?>
 
         <input type="hidden" name="userid" value="<?php echo $user_id; ?>"/>
         <input type="hidden" name="brid" value="<?php echo $bid; ?>"/>
@@ -291,45 +291,60 @@ $cid = $cid + 1;
         </div>
     </div>
     <input type="submit" name="submit" value="Add Customer" />
-<?php echo form_close(); ?>
+    <?php echo form_close(); ?>
 </div>
 </div>
 
 <!-- calender -->
-<div class="calendars-month-header" id="c-m-h" style="display:none;" >
-    <select title="Change the year" class="calendars-month-year" id="yearInput">
-        <?php
-        for ($i = 2020; $i <= 2080; $i++) {
-            ?>
-            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-
+<div class="calendars-month-header" id="c-m-h">
+    <img src="<?php echo base_url(); ?>content/images/closeMe.png" id="closeBtn"/>
+    <table>
+        <tr>
+            <td>
+                <label>Nepali to English Date Convertor</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+        <select title="Change the year" class="calendars-month-year" id="yearInput">
             <?php
-        }
-        ?>
+            for ($i = 2020; $i <= 2080; $i++) {
+                ?>
+                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
 
-
-    </select>
-    <select title="Change the month" class="calendars-month-year" id="monthInput">
-        <?php
-        $monthlist = array(1 => "Baisakh", 2 => "Jestha", 3 => "Ashadh", 4 => "Shrawn", 5 => "Bhadra", 6 => "Ashwin", 7 => "Kartik", 8 => "Mangsir", 9 => "Paush", 10 => "Mangh", 11 => "Falgun", 12 => "Chaitra");
-        foreach ($monthlist as $monthid => $month) {
+                <?php
+            }
             ?>
-            <option value="<?php echo $monthid ?>"><?php echo $month . '(' . $monthid . ')'; ?> </option>
-            <?php
-        }
-        ?>
 
-    </select>
-    <select title="Change the  day" class="calendars-month-year" id="dayInput">
-        <?php
-        for ($i = 1; $i <= 32; $i++) {
-            echo '<option value=' . $i . '>' . $i . '</option>';
-        }
-        ?>
-    </select>
-    <br/>
-    <button id="okbutton">Ok</button>
-    <!-- <button id="closebutton">Close</button> -->
-    <input type="hidden" id="datapass" value=""/>
+
+        </select>
+        <select title="Change the month" class="calendars-month-year" id="monthInput">
+            <?php
+            $monthlist = array(1 => "Baisakh", 2 => "Jestha", 3 => "Ashadh", 4 => "Shrawn", 5 => "Bhadra", 6 => "Ashwin", 7 => "Kartik", 8 => "Mangsir", 9 => "Paush", 10 => "Mangh", 11 => "Falgun", 12 => "Chaitra");
+            foreach ($monthlist as $monthid => $month) {
+                ?>
+                <option value="<?php echo $monthid ?>"><?php echo $month . '(' . $monthid . ')'; ?> </option>
+                <?php
+            }
+            ?>
+
+        </select>
+        <select title="Change the  day" class="calendars-month-year" id="dayInput">
+            <?php
+            for ($i = 1; $i <= 32; $i++) {
+                echo '<option value=' . $i . '>' . $i . '</option>';
+            }
+            ?>
+        </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="okbutton">Ok</button>
+                <!-- <button id="closebutton">Close</button> -->
+                <input type="hidden" id="datapass" value=""/>
+            </td>
+        </tr>
+    </table>
 
 </div>

@@ -92,12 +92,12 @@
                    
                                  <?php echo form_open('view/get_tran'); ?>
                                 <input type="hidden" value="<?php echo $cus_id ?>" name="id" />
-                 <input class="frminp" type="submit" name="conform" value="Recive Remittance">
+                 <input class="frminp" type="submit" name="conform" value="Receive Money">
                 <?php echo form_close(); ?>
                            
                  <?php echo form_open('view/send_tran'); ?>
                                 <input type="hidden" value="<?php echo $cus_id ?>" name="id" />
-                 <input class="frminp" type="submit" name="conform" value="Send Remittance">
+                 <input class="frminp" type="submit" name="conform" value="Send Money">
                 <?php echo form_close(); ?>
             
                  

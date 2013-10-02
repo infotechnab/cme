@@ -4,7 +4,7 @@
         <title>.:: CME - Chitwan Money Express</title>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>content/styles/cme.css" />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-       
+        <link rel="icon" href="<?php echo base_url(); ?>content/images/favicon.ico" type="image/gif" sizes="16x16"> 
     </head>
     <body>
         <div class="full">

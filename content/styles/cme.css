@@ -27,6 +27,32 @@ body
     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
+#c-m-h
+{
+   display: none;
+   border:2px solid #013c6f;
+   border-radius: 25px;
+   box-shadow: 0px 0px 10px #000;
+    padding: 10px;
+    background-color: #013c6f;
+    color: #fff;
+    font-weight: bold;
+    
+    
+}
+#closeBtn{
+    float: right;
+    position: absolute;
+    
+    right: -10px;
+    top: -20px;
+    
+}
+#c-m-h table{
+     border-spacing:10px 10px;
+}
+
+
 
 #cmeTable
 {
@@ -52,7 +78,45 @@ padding-bottom:3px;
 background-color:#013c6f;
 color:#ffffff;
 }
+#logInFormDiv
+{
+   border: 1px #888888 solid;
+   border-radius: 15px;
+   width: 320px;
+   float: left;
+    margin: 20px;
+    padding: 10px;
+}
 
+#logInForm
+{
+    border-spacing:10px 10px;
+   
+}
+#logInForm img
+{
+    margin-left: 5px;
+}
+
+#logInForm td
+{
+   
+    padding:1px 7px 1px 7px;
+    
+}
+#loginFormSucessMsg
+{
+    color:#e4362f;
+    float: left;    
+    margin: 20px;
+    padding: 10px;
+}
+
+
+#sucessmsg{
+    color:#e4362f;
+    
+}
 
 
 
@@ -98,7 +162,7 @@ color:#ffffff;
 margin:5px 5px 10px 5px;
 background-color: #013c6f;
 padding: 5px;
-font-size: 16px;
+font-size: 14px;
 font-weight: bold;
 min-height: 30px;
 
@@ -178,9 +242,7 @@ h2{
     height: 30px;
 }
 
-#sucessmsg{
-    color: #003399;
-}
+
 .userdetail{
     float: left;
     height: auto;
