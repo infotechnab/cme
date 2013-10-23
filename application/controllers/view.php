@@ -1109,13 +1109,15 @@ class view extends CI_Controller {
             $this->load->library(array('form_validation', 'session'));
 
             $this->form_validation->set_rules('cmea_name', 'Name', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('cmea_address', 'Address', 'required|xss_clean');
-            $this->form_validation->set_rules('cmea_number', 'Phone Number', 'required|xss_clean');
-            $this->form_validation->set_rules('cmea_email', 'Email', 'required|xss_clean');
             $this->form_validation->set_rules('cmen_name', 'Nepali Name', 'required|xss_clean');
-            $this->form_validation->set_rules('toll_number', 'Nepali Name', 'required|xss_clean');
-            $this->form_validation->set_rules('cmea_login', 'Login', 'required|xss_clean');
-            $this->form_validation->set_rules('cmea_web', 'Web', 'required|xss_clean');
+            $this->form_validation->set_rules('cmea_number', 'Phone Number', 'required|xss_clean');
+            $this->form_validation->set_rules('cmea_address', 'Address', 'required|xss_clean');
+            
+            //$this->form_validation->set_rules('cmea_email', 'Email', 'required|xss_clean');
+            
+            //$this->form_validation->set_rules('toll_number', 'Nepali Name', 'required|xss_clean');
+           // $this->form_validation->set_rules('cmea_login', 'Login', 'required|xss_clean');
+            //$this->form_validation->set_rules('cmea_web', 'Web', 'required|xss_clean');
 
             if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload('agentfile'))) {
                 $data['error'] = $this->upload->display_errors('agentfile');

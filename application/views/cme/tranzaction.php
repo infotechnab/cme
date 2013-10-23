@@ -21,7 +21,7 @@ $user_id = $this->session->userdata('id');
         ?>
     </p>
     <div class="cus_detail">
-        <label><b>Remit Claim Form</b></label>
+        <label><b>Remittance Claim Form</b></label>
         <hr/>
 
 

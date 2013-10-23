@@ -137,6 +137,7 @@ color:#ffffff;
     background-color: #ffffff;
     width: 85%;
     box-shadow: 0px 0px 10px #888888;
+    min-width: 945px;
 }
 .title{
     margin: 0 auto 0 auto;
@@ -276,6 +277,7 @@ h2{
 .userdetailimg{
   
   float: right;
+  box-shadow: 0px 0px 5px #D0D0D0;
         
 }
 .issued {
@@ -285,7 +287,7 @@ h2{
     padding: 2%;
 }
 .id_details{
-    border: solid 1px #000;
+   
 }
 .cme_agent{
     width: 50%;

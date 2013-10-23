@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>content/styles/cme.css" />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <link rel="icon" href="<?php echo base_url(); ?>content/images/favicon.ico" type="image/gif" sizes="16x16"> 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     </head>
     <body>
         <div class="full">
