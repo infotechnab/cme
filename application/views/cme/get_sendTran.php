@@ -21,7 +21,7 @@
     </p></div>
 
         <div class="cus_detail">
-            <b>Remit Send Form</b>
+            <b>Remittance  Collection Form</b>
             <hr/>
 <?php   foreach ($customer as $data)
                 {

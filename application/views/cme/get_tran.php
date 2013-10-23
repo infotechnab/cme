@@ -28,7 +28,7 @@
     </p></div>
 
         <div class="cus_detail">
-            <b>Remit Claim Form</b>
+            <b>Remittance Claim Form</b>
             <hr/>
 <?php   foreach ($customer as $data)
                 {
