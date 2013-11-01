@@ -13,7 +13,7 @@
                 
                 <?php echo form_open('view/detail');?>
                     <label>Find Customer:</label>
-                    <input type="text" id="findInput" name="fcid" placeholder="Customer ID" style="padding:5px;"/>
+                    <input type="text" id="findInput" name="fcid" placeholder="Customer ID" style="padding:5px;" required="required"/>
                     <input type="image" id="findImage" src="<?php echo base_url(); ?>content/images/search.png" name="submit" /> 
                 </form>
                 

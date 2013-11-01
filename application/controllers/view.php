@@ -1279,15 +1279,24 @@ class view extends CI_Controller {
 
     public function get_tran() {
         if ($this->session->userdata('logged_in')) {
+            $fcid = $this->input->post('id');            
+            trim($fcid);
+            if(!isset($fcid)|| ($fcid==""))
+            {
+            redirect('view');
+            }
+            else
+            {
             $this->load->view('cme/templets/header');
-
-            $data['query'] = $this->dbmodel->get_agent();
-            $fcid = $this->input->post('id');
+            $data['query'] = $this->dbmodel->get_agent();            
             $data['customer'] = $this->dbmodel->customer_detail($fcid);
-
             $this->load->view('cme/get_tran', $data);
             $this->load->view('cme/templets/footer');
-        } else {
+                
+            }
+        }
+        
+        else {
             redirect('login', 'refresh');
         }
     }
@@ -2163,8 +2172,11 @@ class view extends CI_Controller {
 
     public function addSendTransaction_get() {
         if ($this->session->userdata('logged_in')) {
-
-
+            
+            $uid = trim($this->input->post('uid'));
+            
+            if(isset($uid)||($uid!=""))
+            {
             $this->load->library(array('form_validation', 'session'));
 
             $this->form_validation->set_rules('ref_number', 'Refrence Number', 'required|xss_clean|max_length[200]');
@@ -2180,10 +2192,6 @@ class view extends CI_Controller {
             //$this->form_validation->set_rules('r_issuedate', 'Issue Date', 'required|xss_clean');
             $country = $this->input->post('country');
             $data['query'] = $this->dbmodel->get_agent();
-
-
-
-
             if (($this->form_validation->run() == FALSE)) {
                 $uid = $this->input->post('uid');
                  $fcid = $this->input->post('cusid');
@@ -2191,7 +2199,9 @@ class view extends CI_Controller {
                 $this->load->view('cme/templets/header');
                 $this->load->view('cme/get_sendTran', $data);
                 $this->load->view('cme/templets/footer');
-            } else {
+            }
+            
+            else {
 
                 //if valid
                 $id = $this->input->post('uid');
@@ -2233,7 +2243,8 @@ class view extends CI_Controller {
                 $this->session->set_flashdata('message', 'Tranzaction added sucessfully');
                 redirect('view/comfirmSend');
             }
-        } else {
+        }
+        }else {
 
             redirect('login', 'refresh');
         }

@@ -159,7 +159,7 @@ $('#popupBoxClose').click( function() {
                         </tr>
                         <tr>
                             <td class="det_info"> <b>Contact: </b></td>
-                            <td class="det_info"> <b><?php echo $conpersonal.",".$conhome; ?></b></td>
+                            <td class="det_info"> <b><?php echo $conpersonal.", ".$conhome; ?></b></td>
                         </tr>
                         <tr>
                             <td class="det_info"> <b> Email: </b></td>
@@ -211,7 +211,7 @@ $('#popupBoxClose').click( function() {
                  
                 </div>
                 <div class="userdetailimg">
-                   <img class="userdetailimg" src="<?php echo base_url()."custmr_detail_image/". $image; ?>" width="150px" height="160px" />
+                   <img class="userdetailimg" src="<?php echo base_url()."custmr_detail_image/". $image; ?>" width="250px" height="250px" />
                 </div>
                 <div class="clear" > </div>
                 
