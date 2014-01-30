@@ -1,4 +1,4 @@
-       <div class="cme">   <p id="sucessmsg">
+<div class="cme">   <p id="sucessmsg">
   <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
   echo validation_errors();
   if(isset($error))

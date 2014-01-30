@@ -21,7 +21,7 @@ $user_id = $this->session->userdata('id');
         ?>
     </p>
     <div class="cus_detail">
-        <label><b>Remit Send Form</b></label>
+        <label><b>Remittance Collection Form</b></label>
         <hr/>
 
 
@@ -132,15 +132,26 @@ $user_id = $this->session->userdata('id');
                         <option value="passport">Passport</option>
                         <option value="other">Other</option>
 
+                        <script>
+                            $(document).ready(function(){
+                                $("#calculateTotal").click(function(){
+                             var amount = $("#amount").val();
+                              var sCharge = $("#serviceCharge").val();
+                             var total = amount + sCharge;
+                              $("#calculateTotal").val(total);
+                            });
+                          }); 
+                        </script>
                     </select> <br/> <br/>                   
                     <input class="intexth" type="text" name="r_idnumber" placeholder="Id Number" /> 
                     <br/> <br/>
-                     <input class="intexth" type="text" name="r_amount" placeholder="Amount" /> <br/> <br/>
-                    <input class="intexth" type="text" name="r_coll_amount" placeholder="Service Charge" /> <br/> <br/>
-                    <input class="amountFigure" type="text"  name="r_amt_word" placeholder="Amount In Figure" /> <br/> <br/>
+                    <input class="intexth" type="text" id="amount" name="r_amount" placeholder="Amount" /> <br/> <br/>
+                     <input class="intexth" type="text" id="serviceCharge" name="r_coll_amount" placeholder="Service Charge" /> <br/> <br/>
+                    <input class="amountFigure" type="text" id="calculateTotal"  name="r_amt_word" placeholder="Total Amount" /> <br/> <br/>
+                     <input class="amountFigure" type="text"  name="r_amt_word" placeholder="Amount In Word" /> <br/> <br/>
                      </div>
                 <div class="clear"> </div>
- <?php $mydate = getdate(date("U")); ?> 
+                <?php $mydate = getdate(date("U")); ?> 
                     <input type="hidden" value="<?php echo "  $mydate[year]- $mydate[mon]- $mydate[mday]"; ?>" name="date">
 
 
